@@ -2,13 +2,15 @@
 <html lang="ru">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>TASK BOR — задача есть, исполнитель найдётся</title>
-<meta name="description" content="TASK BOR — маркетплейс бытовых услуг в Ташкенте. Заказчики находят исполнителя рядом, исполнители получают заказы напрямую, без комиссии.">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>TASK BOR — бытовые услуги в Ташкенте: мастер рядом за минуты</title>
+<meta name="description" content="TASK BOR — приложение бытовых услуг в Ташкенте. Уборка, ремонт, муж на час, переезд. Мастера рядом, чат и голосовые, оплата напрямую без комиссии.">
+<link rel="canonical" href="https://emhsh1993.github.io/taskbor-site/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="TASK BOR">
-<meta property="og:title" content="TASK BOR — задача есть, исполнитель найдётся">
-<meta property="og:description" content="Маркетплейс бытовых услуг в Ташкенте. Заказчики находят мастера рядом, исполнители — новые заказы. Напрямую, без комиссии платформы.">
+<meta property="og:url" content="https://emhsh1993.github.io/taskbor-site/">
+<meta property="og:title" content="TASK BOR — задача есть, мастер найдётся">
+<meta property="og:description" content="Бытовые услуги в Ташкенте: мастера рядом, чат с голосовыми, оплата напрямую — без комиссии платформы.">
 <meta property="og:image" content="https://emhsh1993.github.io/taskbor-site/og.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -16,1010 +18,686 @@
 <meta property="og:locale:alternate" content="uz_UZ">
 <meta property="og:locale:alternate" content="en_US">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="TASK BOR — задача есть, исполнитель найдётся">
-<meta name="twitter:description" content="Маркетплейс бытовых услуг в Ташкенте. Заказчики находят мастера рядом, исполнители — новые заказы. Напрямую, без комиссии платформы.">
 <meta name="twitter:image" content="https://emhsh1993.github.io/taskbor-site/og.png">
-<meta name="theme-color" content="#0C3527">
-<link rel="icon" type="image/png" href="data:image/png;base64,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">
+<meta name="theme-color" content="#0F5B3A">
+<link rel="icon" type="image/png" href="img/favicon.png">
+<link rel="apple-touch-icon" href="img/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;600;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="img/ru_home.webp">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"MobileApplication","name":"TASK BOR","operatingSystem":"iOS, Android","applicationCategory":"LifestyleApplication","areaServed":"Tashkent, Uzbekistan","inLanguage":["ru","uz","en"],"offers":{"@type":"Offer","price":"0","priceCurrency":"UZS"},"url":"https://emhsh1993.github.io/taskbor-site/"}
+</script>
 <style>
-  :root{
-    --paper:#F7F4EC;      /* тёплый белый — основа страницы */
-    --card:#FFFFFF;
-    --deep:#06271C;       /* тёмно-зелёный — только акцентные блоки */
-    --deep-2:#0A3728;
-    --ink:#0C3527;        /* текст */
-    --ink-dim:#5F7A6C;    /* вторичный текст */
-    --line:rgba(12,53,39,.13);
-    --ochre:#BE8420;
-    --majolica:#1F857E;
-    --ochre-lt:#E3A63C;    /* яркие варианты — для тёмных блоков */
-    --majolica-lt:#3FA8A0;
-    --accent:var(--majolica);
-    --accent-ink:#FFFFFF;
+:root{
+  --green:#0F5B3A; --green-2:#137049; --green-d:#0B3D28; --green-dd:#06281A;
+  --mint:#E7F2EB; --mint-2:#D4EADB; --lime:#C6F06B;
+  --bg:#F5F7F4; --card:#FFFFFF; --ink:#0D2619; --muted:#5B6F64; --line:rgba(13,38,25,.09);
+  --star:#F5B301; --r:24px; --r-sm:16px; --side:20px; --max:1180px;
+  --shadow:0 1px 2px rgba(13,38,25,.04),0 8px 24px rgba(13,38,25,.06);
+  --shadow-lg:0 30px 80px -20px rgba(6,40,26,.35),0 12px 30px -10px rgba(6,40,26,.2);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:Manrope,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;background:var(--bg);color:var(--ink);font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 var(--side)}
+h1,h2,h3{letter-spacing:-.03em;line-height:1.08;font-weight:800}
+h2{font-size:clamp(30px,4.4vw,52px)}
+h3{font-size:20px;letter-spacing:-.02em;line-height:1.25}
+.kicker{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--green)}
+.kicker::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--green);box-shadow:0 0 0 4px var(--mint-2)}
+.lead{font-size:clamp(17px,1.6vw,19px);color:var(--muted);max-width:560px}
+section{padding:clamp(72px,10vw,120px) 0}
+.sec-head{display:grid;gap:16px;margin-bottom:clamp(36px,5vw,56px);max-width:720px}
+.center{text-align:center;margin-left:auto;margin-right:auto;justify-items:center}
+
+/* header */
+header{position:sticky;top:0;z-index:50;background:rgba(245,247,244,.82);backdrop-filter:saturate(1.6) blur(14px);-webkit-backdrop-filter:saturate(1.6) blur(14px);border-bottom:1px solid transparent;transition:border-color .2s}
+header.scrolled{border-bottom-color:var(--line)}
+.bar{display:flex;align-items:center;justify-content:space-between;height:68px;gap:16px}
+.brand{display:flex;align-items:center;gap:10px;font-weight:800;font-size:18px;letter-spacing:-.02em;white-space:nowrap}
+.brand img{width:36px;height:36px;border-radius:10px}
+nav.links{display:flex;gap:4px}
+nav.links a{padding:8px 14px;border-radius:999px;font-weight:600;font-size:15px;color:var(--muted);transition:.15s}
+nav.links a:hover{color:var(--ink);background:rgba(13,38,25,.05)}
+.bar-r{display:flex;align-items:center;gap:10px}
+.langs{display:flex;background:#fff;border:1px solid var(--line);border-radius:999px;padding:3px}
+.langs button{min-width:38px;height:32px;padding:0 10px;border-radius:999px;font-size:13px;font-weight:700;color:var(--muted);transition:.15s}
+.langs button[aria-pressed="true"]{background:var(--green);color:#fff}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;height:48px;padding:0 22px;border-radius:999px;font-weight:700;font-size:16px;transition:transform .15s,box-shadow .15s,background .15s;white-space:nowrap}
+.btn:active{transform:scale(.98)}
+.btn-primary{background:var(--green);color:#fff;box-shadow:0 8px 20px -8px rgba(15,91,58,.6)}
+.btn-primary:hover{background:var(--green-2)}
+.btn-sm{height:40px;padding:0 18px;font-size:15px}
+
+/* hero */
+.hero{padding:clamp(28px,5vw,64px) 0 clamp(56px,7vw,96px);position:relative;overflow:hidden}
+.hero::before{content:"";position:absolute;inset:-20% -10% auto auto;width:900px;height:900px;background:radial-gradient(closest-side,rgba(198,240,107,.35),transparent 70%);pointer-events:none;z-index:-1}
+.hero::after{content:"";position:absolute;left:-300px;bottom:-300px;width:700px;height:700px;background:radial-gradient(closest-side,rgba(15,91,58,.10),transparent 70%);pointer-events:none;z-index:-1}
+.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center}
+.hero h1{font-size:clamp(40px,6.4vw,78px);margin:18px 0 22px}
+.hero h1 .hl{color:var(--green);position:relative;white-space:nowrap}
+.hero h1 .hl::after{content:"";position:absolute;left:0;right:0;bottom:.06em;height:.22em;background:var(--lime);z-index:-1;border-radius:4px;opacity:.85}
+.stores{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px}
+.store{display:flex;align-items:center;gap:12px;height:60px;padding:0 22px 0 18px;border-radius:16px;background:var(--ink);color:#fff;min-width:200px;position:relative;transition:transform .15s,box-shadow .15s}
+a.store:hover{transform:translateY(-2px);box-shadow:0 12px 24px -10px rgba(13,38,25,.5)}
+.store svg{width:26px;height:26px;flex:none}
+.store small{display:block;font-size:11px;font-weight:600;opacity:.7;line-height:1.1;letter-spacing:.02em}
+.store b{display:block;font-size:18px;line-height:1.2;letter-spacing:-.01em}
+.store.soon{cursor:default}
+.store .tag{margin-left:auto;padding-left:12px;font-size:11px;font-weight:800;color:var(--lime);text-transform:uppercase;letter-spacing:.06em}
+.chips{display:flex;flex-wrap:wrap;gap:8px 18px;margin-top:28px;color:var(--muted);font-size:15px;font-weight:600}
+.chips span{display:inline-flex;align-items:center;gap:8px}
+.chips svg{width:18px;height:18px;color:var(--green)}
+
+/* phones */
+.phone{position:relative;width:min(300px,72vw);aspect-ratio:1290/2796;border-radius:46px;padding:9px;background:linear-gradient(145deg,#1c2420,#050807);box-shadow:var(--shadow-lg),inset 0 0 0 1.5px rgba(255,255,255,.12)}
+.phone img{width:100%;height:100%;object-fit:cover;object-position:top;border-radius:38px;background:#fff}
+.phone::before{content:"";position:absolute;top:19px;left:50%;transform:translateX(-50%);width:30%;height:22px;border-radius:999px;background:#050807;z-index:2}
+.stage{position:relative;display:flex;justify-content:center;align-items:center;min-height:620px}
+.stage .p-back{position:absolute;transform:translate(46%,6%) rotate(7deg) scale(.86);filter:saturate(.95);z-index:0}
+.stage .p-front{z-index:1;transform:translateX(-14%) rotate(-3deg)}
+.float{position:absolute;z-index:3;background:#fff;border-radius:18px;padding:12px 16px;box-shadow:var(--shadow-lg);display:flex;align-items:center;gap:12px;font-size:14px;line-height:1.3;animation:bob 6s ease-in-out infinite}
+.float b{display:block;font-size:15px}
+.float small{color:var(--muted);font-weight:600}
+.float .ic{width:38px;height:38px;border-radius:12px;display:grid;place-items:center;background:var(--mint);color:var(--green);flex:none}
+.float .ic svg{width:20px;height:20px}
+.f1{left:-2%;top:16%}
+.f2{right:-4%;top:54%;animation-delay:-2s}
+.f3{left:6%;bottom:6%;animation-delay:-4s}
+.stars{color:var(--star);letter-spacing:1px}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+.dot-live{width:10px;height:10px;border-radius:50%;background:#22C55E;box-shadow:0 0 0 0 rgba(34,197,94,.5);animation:ping 2s infinite}
+@keyframes ping{0%{box-shadow:0 0 0 0 rgba(34,197,94,.5)}100%{box-shadow:0 0 0 12px rgba(34,197,94,0)}}
+
+/* stats */
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:8px}
+.stat{background:var(--card);border-radius:var(--r);padding:24px;box-shadow:var(--shadow)}
+.stat b{display:block;font-size:clamp(32px,4vw,44px);font-weight:800;letter-spacing:-.04em;color:var(--green);line-height:1}
+.stat span{display:block;margin-top:8px;color:var(--muted);font-weight:600;font-size:15px}
+
+/* categories */
+.cats{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.cat{position:relative;border-radius:var(--r);overflow:hidden;background:var(--card);box-shadow:var(--shadow);display:flex;flex-direction:column;transition:transform .2s,box-shadow .2s}
+.cat:hover{transform:translateY(-4px);box-shadow:0 24px 50px -24px rgba(6,40,26,.35)}
+.cat .ph{aspect-ratio:16/10;overflow:hidden;background:var(--mint)}
+.cat .ph img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
+.cat:hover .ph img{transform:scale(1.05)}
+.cat .tx{padding:18px 20px 22px}
+.cat p{color:var(--muted);font-size:15px;margin-top:6px}
+
+/* how */
+.how{background:var(--card);border-radius:40px;margin:0 12px;padding:clamp(56px,8vw,96px) 0}
+.seg{display:inline-flex;background:var(--bg);border-radius:999px;padding:5px;border:1px solid var(--line)}
+.seg button{height:44px;padding:0 22px;border-radius:999px;font-weight:700;color:var(--muted);transition:.2s}
+.seg button[aria-pressed="true"]{background:var(--green);color:#fff;box-shadow:0 6px 16px -6px rgba(15,91,58,.6)}
+.how-grid{display:grid;grid-template-columns:1fr auto;gap:64px;align-items:center;margin-top:44px}
+.steps{display:grid;gap:14px;counter-reset:s;list-style:none}
+.step{display:grid;grid-template-columns:56px 1fr;gap:18px;padding:22px;border-radius:var(--r);background:var(--bg);border:1px solid var(--line)}
+.step .n{width:56px;height:56px;border-radius:18px;background:var(--green);color:#fff;display:grid;place-items:center;font-weight:800;font-size:22px}
+.step p{color:var(--muted);font-size:15.5px;margin-top:4px}
+.how .phone{width:min(290px,70vw)}
+.fade{transition:opacity .25s}
+.fade.out{opacity:0}
+
+/* features */
+.bento{display:grid;grid-template-columns:repeat(6,1fr);gap:16px}
+.tile{background:var(--card);border-radius:var(--r);padding:28px;box-shadow:var(--shadow);position:relative;overflow:hidden;display:flex;flex-direction:column;gap:10px}
+.tile p{color:var(--muted);font-size:15.5px}
+.tile .ic{width:48px;height:48px;border-radius:14px;background:var(--mint);color:var(--green);display:grid;place-items:center;margin-bottom:6px}
+.tile .ic svg{width:24px;height:24px}
+.t-big{grid-column:span 3;min-height:460px}
+.t-sm{grid-column:span 2}
+.t-big .shot{margin-top:auto;align-self:center;width:78%;max-width:340px;border-radius:28px 28px 0 0;overflow:hidden;box-shadow:0 -10px 40px -10px rgba(6,40,26,.25);margin-bottom:-28px;height:300px}
+.t-big .shot img{width:100%;object-position:top}
+.t-dark{background:var(--green-d);color:#fff}
+.t-dark p{color:rgba(255,255,255,.72)}
+.t-dark .ic{background:rgba(255,255,255,.1);color:var(--lime)}
+.flow{display:flex;flex-wrap:wrap;gap:6px;margin-top:4px}
+.flow span{font-size:13px;font-weight:700;padding:6px 10px;border-radius:999px;background:var(--mint);color:var(--green)}
+.flow span.on{background:var(--green);color:#fff}
+
+/* masters */
+.masters{background:var(--green-dd);color:#fff;border-radius:40px;margin:0 12px;position:relative;overflow:hidden}
+.masters::before{content:"";position:absolute;right:-200px;top:-200px;width:700px;height:700px;background:radial-gradient(closest-side,rgba(198,240,107,.18),transparent 70%)}
+.masters .kicker{color:var(--lime)}
+.masters .kicker::before{background:var(--lime);box-shadow:0 0 0 4px rgba(198,240,107,.2)}
+.masters .lead{color:rgba(255,255,255,.72)}
+.m-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center;position:relative}
+.m-list{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:36px}
+.m-item{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:20px;padding:20px}
+.m-item svg{width:26px;height:26px;color:var(--lime);margin-bottom:12px}
+.m-item b{display:block;font-size:17px;letter-spacing:-.01em}
+.m-item p{color:rgba(255,255,255,.65);font-size:14.5px;margin-top:4px}
+.m-phones{display:flex;justify-content:center;align-items:flex-start;gap:20px;position:relative}
+.m-phones .phone{width:min(250px,40vw)}
+.m-phones .phone:nth-child(2){margin-top:70px}
+.btn-lime{background:var(--lime);color:var(--green-dd);margin-top:32px}
+.btn-lime:hover{background:#d4f58a}
+
+/* faq */
+.faq-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:56px;align-items:start}
+.faq{display:grid;gap:10px}
+details{background:var(--card);border-radius:20px;box-shadow:var(--shadow);overflow:hidden}
+summary{list-style:none;cursor:pointer;padding:22px 24px;font-weight:700;font-size:17.5px;display:flex;justify-content:space-between;align-items:center;gap:16px}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"";flex:none;width:32px;height:32px;border-radius:50%;background:var(--mint) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230F5B3A' stroke-width='2.5' stroke-linecap='round'%3E%3Cpath d='M12 5v14M5 12h14'/%3E%3C/svg%3E") center/16px no-repeat;transition:transform .2s}
+details[open] summary::after{transform:rotate(45deg)}
+details .a{padding:0 24px 22px;color:var(--muted)}
+details .a a{color:var(--green);font-weight:700;text-decoration:underline;text-underline-offset:3px}
+
+/* cta */
+.cta{background:linear-gradient(135deg,var(--green) 0%,var(--green-d) 100%);color:#fff;border-radius:40px;padding:clamp(40px,6vw,72px);display:grid;grid-template-columns:1fr auto;gap:40px;align-items:center;position:relative;overflow:hidden}
+.cta::after{content:"";position:absolute;right:-120px;bottom:-160px;width:480px;height:480px;border-radius:50%;background:radial-gradient(closest-side,rgba(198,240,107,.25),transparent)}
+.cta h2{max-width:620px}
+.cta p{color:rgba(255,255,255,.75);margin-top:14px;max-width:520px}
+.cta .store{background:#fff;color:var(--ink)}
+.cta .store .tag{color:var(--green)}
+.qr{background:#fff;border-radius:24px;padding:18px;width:200px;text-align:center;color:var(--muted);font-size:13px;font-weight:600;line-height:1.35;position:relative;z-index:1}
+.qr img{width:164px;height:164px;margin:0 auto 10px}
+
+/* footer */
+footer{padding:48px 0 calc(40px + env(safe-area-inset-bottom))}
+.f-row{display:flex;flex-wrap:wrap;justify-content:space-between;gap:24px;align-items:center}
+.f-links{display:flex;flex-wrap:wrap;gap:8px 24px;font-weight:600;font-size:15px;color:var(--muted)}
+.f-links a:hover{color:var(--green)}
+.copy{color:var(--muted);font-size:14px;margin-top:20px}
+
+/* scroll reveal: pure CSS, content is always visible where unsupported */
+@media (prefers-reduced-motion:no-preference){
+  @supports (animation-timeline:view()){
+    .rv{animation:rv linear both;animation-timeline:view();animation-range:entry 0% entry 35%}
+    @keyframes rv{from{opacity:0;transform:translateY(28px)}}
   }
-  [data-role="executor"]{ --accent:var(--ochre); }
-  /* внутри тёмных блоков акцент берём светлее, иначе тонет в фоне */
-  .panel,.final{ --accent:var(--majolica-lt); --accent-ink:#06271C; }
-  [data-role="executor"] .panel,[data-role="executor"] .final{ --accent:var(--ochre-lt); }
-
-  *{box-sizing:border-box}
-  html{scroll-behavior:smooth}
-  body{
-    margin:0;background:var(--paper);color:var(--ink);
-    font-family:'Manrope',system-ui,sans-serif;-webkit-font-smoothing:antialiased;
-    overflow-x:hidden;
-  }
-  img{display:block;max-width:100%}
-  a{color:inherit;text-decoration:none}
-
-  /* ——— фирменный мотив: восьмиконечная звезда (гирих) ——— */
-  .tile-bg{
-    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='64' height='64' viewBox='0 0 64 64'%3E%3Cg fill='none' stroke='%230C3527' stroke-opacity='.55' stroke-width='1'%3E%3Cpath d='M32 6 58 32 32 58 6 32Z'/%3E%3Cpath d='M13 13h38v38H13Z'/%3E%3C/g%3E%3C/svg%3E");
-    background-size:64px 64px;
-  }
-
-  .wrap{max-width:1140px;margin:0 auto;padding:0 28px}
-
-  /* ——— шапка ——— */
-  header{
-    position:sticky;top:0;z-index:40;
-    background:rgba(247,244,236,.88);backdrop-filter:blur(14px);
-    border-bottom:1px solid var(--line);
-  }
-  .bar{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:14px 0}
-  .brand{display:flex;align-items:center;gap:11px}
-  .brand img{width:34px;height:34px;border-radius:9px}
-  .brand b{font-family:'Unbounded';font-weight:600;font-size:16px;letter-spacing:-.02em}
-  .bar-right{display:flex;align-items:center;gap:22px}
-  .legal{font-size:13px;color:var(--ink-dim);transition:color .2s}
-  .legal:hover{color:var(--accent)}
-  .langs{display:flex;gap:2px;border:1px solid var(--line);border-radius:999px;padding:3px}
-  .langs button{
-    border:0;background:transparent;color:var(--ink-dim);cursor:pointer;
-    font:600 11.5px/1 'Manrope';letter-spacing:.06em;padding:8px 12px;border-radius:999px;transition:.2s;
-  }
-  .langs button.on{background:var(--accent);color:var(--accent-ink)}
-
-  /* ——— герой ——— */
-  .hero{position:relative;padding:76px 0 40px;overflow:hidden}
-  .hero-glow{
-    position:absolute;width:620px;height:620px;border-radius:50%;
-    background:radial-gradient(circle,color-mix(in srgb,var(--accent) 26%,transparent),transparent 68%);
-    top:-260px;right:-160px;pointer-events:none;transition:background .5s;
-  }
-  .hero-tile{
-    position:absolute;inset:0;opacity:.045;pointer-events:none;
-    -webkit-mask-image:linear-gradient(to bottom,black,transparent 78%);
-            mask-image:linear-gradient(to bottom,black,transparent 78%);
-  }
-  .hero-in{position:relative;display:grid;grid-template-columns:1.06fr .94fr;gap:56px;align-items:center}
-  .eyebrow{
-    display:inline-flex;align-items:center;gap:9px;font-size:12px;font-weight:600;
-    letter-spacing:.11em;text-transform:uppercase;color:var(--accent);margin-bottom:22px;
-  }
-  .eyebrow i{width:22px;height:1px;background:var(--accent);display:block}
-  h1{
-    font-family:'Unbounded';font-weight:600;font-size:clamp(33px,4.7vw,56px);
-    line-height:1.08;letter-spacing:-.035em;margin:0 0 20px;
-  }
-  h1 em{font-style:normal;color:var(--accent);transition:color .4s}
-  .lede{font-size:17px;line-height:1.65;color:var(--ink-dim);max-width:44ch;margin:0 0 30px}
-
-  .roles{display:inline-flex;background:var(--card);border:1px solid var(--line);border-radius:999px;padding:4px;gap:3px;margin-bottom:26px}
-  .roles button{
-    border:0;background:transparent;color:var(--ink-dim);cursor:pointer;
-    font:700 13.5px/1 'Manrope';padding:12px 22px;border-radius:999px;transition:.24s;
-  }
-  .roles button.on{background:var(--accent);color:var(--accent-ink)}
-
-  .stores{display:flex;flex-wrap:wrap;gap:11px;margin-bottom:22px}
-  .store{
-    display:flex;align-items:center;gap:11px;border:1px solid var(--line);border-radius:14px;
-    padding:11px 17px;background:var(--card);position:relative;
-  }
-  .store svg{flex:0 0 auto}
-  .store span{display:block;font-size:10.5px;color:var(--ink-dim);line-height:1.2}
-  .store b{display:block;font-size:14px;font-weight:700;line-height:1.25}
-  .soon{
-    position:absolute;top:-8px;right:-7px;background:var(--accent);color:var(--accent-ink);
-    font:700 9.5px/1 'Manrope';letter-spacing:.05em;text-transform:uppercase;padding:4px 8px;border-radius:999px;transition:background .4s;
-  }
-  .qr{display:flex;align-items:center;gap:13px}
-  .qr div{width:62px;height:62px;border-radius:11px;background:var(--card);border:1px solid var(--line);padding:5px;flex:0 0 auto}
-  .qr p{margin:0;font-size:12.5px;line-height:1.45;color:var(--ink-dim);max-width:20ch}
-
-  /* ——— карта в герое ——— */
-  .panel{
-    position:relative;border:1px solid var(--line);border-radius:26px;overflow:hidden;
-    background:linear-gradient(160deg,#0E4632,var(--deep));aspect-ratio:1/1.06;border-color:transparent;
-  }
-  .panel .grid{position:absolute;inset:0;opacity:.5}
-  .panel .grid line{stroke:#F2EDE1;stroke-opacity:.09;stroke-width:1}
-  .panel .road{stroke:#F2EDE1;stroke-opacity:.16;stroke-width:9;stroke-linecap:round}
-  .me{transform-origin:center}
-  .ring{fill:none;stroke:var(--accent);stroke-width:1.6;opacity:0;transform-origin:50% 50%;animation:ring 3.2s ease-out infinite}
-  .ring:nth-of-type(2){animation-delay:1.05s}
-  .ring:nth-of-type(3){animation-delay:2.1s}
-  @keyframes ring{0%{opacity:.85;r:14}100%{opacity:0;r:96}}
-  .pin{opacity:0;animation:pop .6s cubic-bezier(.34,1.56,.64,1) forwards}
-  @keyframes pop{from{opacity:0;transform:translateY(-9px) scale(.6)}to{opacity:1;transform:none}}
-  .float{
-    position:absolute;left:18px;right:18px;bottom:18px;background:rgba(6,39,28,.9);
-    backdrop-filter:blur(8px);border:1px solid rgba(242,237,225,.16);border-radius:17px;color:#F2EDE1;padding:15px 17px;
-    display:flex;align-items:center;gap:13px;
-  }
-  .float .dot{width:9px;height:9px;border-radius:50%;background:var(--accent);flex:0 0 auto;box-shadow:0 0 0 4px color-mix(in srgb,var(--accent) 22%,transparent)}
-  .float b{display:block;font-size:14.5px;font-weight:700}
-  .float span{display:block;font-size:12.5px;color:#A9BFB1;margin-top:2px}
-  .float .price{margin-left:auto;font-family:'Unbounded';font-weight:600;font-size:15px;color:var(--accent);white-space:nowrap;transition:color .4s}
-
-  /* ——— секции ——— */
-  section{padding:84px 0;position:relative}
-  .rule{height:1px;background:var(--line)}
-  .head{max-width:640px;margin-bottom:44px}
-  .kicker{font-size:12px;font-weight:700;letter-spacing:.11em;text-transform:uppercase;color:var(--accent);margin-bottom:13px;transition:color .4s}
-  h2{font-family:'Unbounded';font-weight:600;font-size:clamp(25px,3.1vw,35px);line-height:1.16;letter-spacing:-.03em;margin:0 0 13px}
-  .head p{margin:0;color:var(--ink-dim);font-size:15.5px;line-height:1.65}
-
-  .cats{display:grid;grid-template-columns:1fr 1fr;gap:20px}
-  .cat{
-    position:relative;border:1px solid var(--line);border-radius:22px;padding:30px 28px;overflow:hidden;
-    background:var(--card);transition:border-color .25s,transform .25s,box-shadow .25s;
-  }
-  .cat:hover{transform:translateY(-4px);border-color:color-mix(in srgb,var(--accent) 45%,var(--line));box-shadow:0 14px 30px rgba(12,53,39,.08)}
-  .cat .deco{position:absolute;right:-30px;top:-30px;width:170px;height:170px;opacity:.06}
-  .cat .ic{width:46px;height:46px;border-radius:13px;background:var(--accent);display:grid;place-items:center;margin-bottom:18px;transition:background .4s}
-  .cat h3{font-family:'Unbounded';font-weight:600;font-size:19px;margin:0 0 9px;letter-spacing:-.02em}
-  .cat p{margin:0;font-size:14px;line-height:1.6;color:var(--ink-dim)}
-
-  .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
-  .step{border-top:1px solid var(--line);padding-top:20px}
-  .step .n{
-    font-family:'Unbounded';font-weight:700;font-size:12px;color:var(--accent);
-    letter-spacing:.08em;margin-bottom:12px;transition:color .4s;
-  }
-  .step h4{font-size:15.5px;font-weight:700;margin:0 0 7px;line-height:1.3}
-  .step p{margin:0;font-size:13.5px;line-height:1.6;color:var(--ink-dim)}
-
-  .perks{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
-  .perk{border:1px solid var(--line);border-radius:18px;padding:24px 22px;background:var(--card);transition:box-shadow .25s,transform .25s}
-  .perk:hover{transform:translateY(-3px);box-shadow:0 12px 26px rgba(12,53,39,.07)}
-  .perk .ic{width:38px;height:38px;border-radius:11px;border:1px solid var(--line);display:grid;place-items:center;margin-bottom:15px}
-  .perk p{margin:0;font-size:14px;line-height:1.55;font-weight:500}
-
-  details{border-bottom:1px solid var(--line)}
-  summary{
-    list-style:none;cursor:pointer;padding:21px 0;display:flex;gap:16px;align-items:center;
-    font-size:15.5px;font-weight:700;
-  }
-  summary::-webkit-details-marker{display:none}
-  summary svg{margin-left:auto;flex:0 0 auto;transition:transform .25s}
-  details[open] summary svg{transform:rotate(45deg)}
-  details p{margin:0 0 21px;font-size:14.5px;line-height:1.7;color:var(--ink-dim);max-width:70ch}
-
-  .final{position:relative;border-radius:30px;overflow:hidden;background:var(--deep);color:#F2EDE1;padding:64px 40px;text-align:center}
-  .final .tile{position:absolute;inset:0;opacity:.07;filter:invert(1)}
-  .final > *{position:relative}
-  .final h2{margin-bottom:14px}
-  .final p{color:#A9BFB1;max-width:46ch;margin:0 auto 28px;font-size:15.5px;line-height:1.65}
-  .final .stores{justify-content:center;margin-bottom:0}
-  .final .store{background:rgba(242,237,225,.07);border-color:rgba(242,237,225,.18)}
-  .final .store span{color:#A9BFB1}
-
-  footer{border-top:1px solid var(--line);padding:30px 0 46px}
-  .foot{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;font-size:13px;color:var(--ink-dim)}
-
-  .rv{opacity:0;transform:translateY(20px);transition:opacity .65s cubic-bezier(.2,.7,.3,1),transform .65s cubic-bezier(.2,.7,.3,1)}
-  .rv.in{opacity:1;transform:none}
-
-  @media (max-width:940px){
-    .hero-in{grid-template-columns:1fr;gap:40px}
-    .panel{max-width:440px}
-    .steps,.perks{grid-template-columns:1fr 1fr}
-  }
-  @media (max-width:600px){
-    .wrap{padding:0 20px}
-    .cats,.steps,.perks{grid-template-columns:1fr}
-    .legal{font-size:12px}
-    section{padding:60px 0}
-    .final{padding:44px 22px;border-radius:22px}
-  }
-  @media (prefers-reduced-motion:reduce){
-    *{animation:none!important;transition:none!important}
-    .rv{opacity:1;transform:none}
-  }
-
-  /* ——— секция с промо-роликом ——— */
-  .reel-sec{background:var(--deep);color:#F2EDE1;position:relative;overflow:hidden}
-  .reel-sec .tilebg{position:absolute;inset:0;opacity:.06;filter:invert(1)}
-  .reel-sec .wrap{position:relative;display:grid;grid-template-columns:1fr 340px;gap:56px;align-items:center}
-  .reel-sec h2{margin-bottom:14px}
-  .reel-sec .kicker{color:var(--majolica-lt)}
-  [data-role="executor"] .reel-sec .kicker{color:var(--ochre-lt)}
-  .reel-sec p{color:#A9BFB1;font-size:15.5px;line-height:1.7;margin:0 0 18px;max-width:46ch}
-  .reel-notes{display:flex;flex-direction:column;gap:11px;margin:0;padding:0;list-style:none}
-  .reel-notes li{display:flex;gap:11px;align-items:flex-start;font-size:14px;line-height:1.55;color:#F2EDE1}
-  .reel-notes svg{flex:0 0 auto;margin-top:3px}
-  .promo-reel{width:100%;max-width:340px;margin:0 auto}
-  .promo-reel .frame{position:relative;width:100%;aspect-ratio:1080/1920;border-radius:30px;overflow:hidden;background:#050D0A;box-shadow:0 30px 70px rgba(0,0,0,.45)}
-  @media (max-width:940px){ .reel-sec .wrap{grid-template-columns:1fr;gap:36px} }
-
-.promo-reel{
-  --ink:#071F17;
-  --base:#0B3D2E;
-  --base2:#0F4A38;
-  --panel:#0A3327;
-  --accent:#16C47F;
-  --accent-dim:rgba(22,196,127,.16);
-  --paper:#F4F6F3;
-  --muted:#8FA99B;
-  --display:'Unbounded','Manrope',system-ui,sans-serif;
-  --body:'Manrope',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
 }
+@media (prefers-reduced-motion:reduce){.float,.dot-live{animation:none}html{scroll-behavior:auto}}
 
-/* ---------- рамка кадра 9:16 ---------- */
-.promo-reel .frame{
-  position:relative;overflow:hidden;
-  border-radius:14px;
-  box-shadow:0 30px 80px rgba(0,0,0,.6);
-  flex:0 0 auto;
+/* responsive */
+@media (max-width:1020px){
+  nav.links{display:none}
+  .hero-grid,.how-grid,.m-grid,.faq-grid{grid-template-columns:minmax(0,1fr)}
+  .stage{min-height:560px;margin-top:8px}
+  .how-grid .phone{margin:0 auto}
+  .bento{grid-template-columns:1fr 1fr}
+  .t-big{grid-column:span 2;min-height:0}
+  .t-sm{grid-column:span 1}
+  .stats{grid-template-columns:repeat(2,1fr)}
+  .cats{grid-template-columns:repeat(2,1fr)}
+  .cta{grid-template-columns:1fr}
 }
-.promo-reel .stage{
-  width:1080px;height:1920px;
-  transform-origin:top left;
-  position:relative;overflow:hidden;
-  background:
-    radial-gradient(120% 70% at 50% 8%, #12583F 0%, var(--base) 42%, var(--ink) 100%);
-  font-family:var(--body);
+@media (max-width:640px){
+  :root{--side:16px}
+  body{font-size:16px}
+  .bar{height:60px}
+  .brand span{display:none}
+  .bar-r .btn{display:none}
+  .langs button{min-width:36px;padding:0 8px}
+  .hero h1 .hl{white-space:normal}
+  .store{flex:1 1 100%;min-width:0}
+  .stage{min-height:480px}
+  .stage .phone{width:min(240px,60vw)}
+  .stage .p-back{transform:translate(38%,5%) rotate(7deg) scale(.86)}
+  .f1{left:0;top:6%}
+  .f2{right:0;top:58%}
+  .f3{left:2%;bottom:2%}
+  .float{padding:10px 12px;font-size:13px}
+  .float .ic{width:32px;height:32px}
+  .stat{padding:18px}
+  .cats{grid-template-columns:1fr 1fr;gap:10px}
+  .cat .tx{padding:12px 14px 16px}
+  .cat h3{font-size:16px}
+  .cat p{font-size:13.5px}
+  .how,.masters{margin:0 8px;border-radius:28px}
+  .step{grid-template-columns:44px 1fr;padding:18px;gap:14px}
+  .step .n{width:44px;height:44px;border-radius:14px;font-size:18px}
+  .seg{width:100%}
+  .seg button{flex:1;padding:0 10px}
+  .bento{grid-template-columns:1fr}
+  .t-big,.t-sm{grid-column:span 1}
+  .tile{padding:22px}
+  .t-big .shot{width:86%;height:260px;margin-bottom:-22px}
+  .m-list{grid-template-columns:1fr}
+  .m-phones{gap:14px}
+  .m-phones .phone{width:calc(50% - 7px);border-radius:32px;padding:6px}
+  .m-phones .phone img{border-radius:27px}
+  .m-phones .phone::before{top:12px;height:16px}
+  .m-phones .phone:nth-child(2){margin-top:44px}
+  .cta{border-radius:28px;padding:32px 22px}
+  .qr{display:none}
+  summary{padding:18px 18px;font-size:16px}
+  details .a{padding:0 18px 18px}
 }
-.promo-reel .stage::after{
-  content:"";position:absolute;inset:0;pointer-events:none;
-  background:radial-gradient(80% 55% at 50% 45%, transparent 40%, rgba(3,12,9,.55) 100%);
-}
-.promo-reel .grain{
-  position:absolute;inset:0;opacity:.05;pointer-events:none;
-  background-image:radial-gradient(rgba(255,255,255,.9) 1px, transparent 1px);
-  background-size:5px 5px;
-}
-
-/* стоп-кадр: пока не играем — всё скрыто */
-.promo-reel .stage:not(.play) .anim{animation-name:none !important}
-.promo-reel .anim{opacity:0}
-
-/* ---------- безопасные зоны ---------- */
-.promo-reel .stage.guides .safe{display:block}
-
-/* ---------- общие текстовые блоки ---------- */
-.promo-reel .caption{
-  position:absolute;left:100px;right:100px;top:300px;
-  text-align:center;font-size:62px;line-height:1.14;font-weight:700;
-  letter-spacing:-.015em;color:var(--paper);
-}
-.promo-reel .caption em{font-style:normal;color:var(--accent)}
-
-/* ---------- СЦЕНА 1 ---------- */
-.promo-reel .s1{position:absolute;inset:0}
-.promo-reel .s1 .big{
-  position:absolute;left:110px;right:110px;top:760px;
-  text-align:center;font-family:var(--display);
-  font-size:88px;line-height:1.12;font-weight:600;letter-spacing:-.02em;
-}
-.promo-reel .s1 .big.b{top:900px;color:var(--muted);font-weight:400;font-size:78px}
-.promo-reel .clock{position:absolute;left:50%;top:520px;margin-left:-90px;width:180px;height:180px}
-.promo-reel .clock circle{fill:none;stroke:rgba(244,246,243,.14);stroke-width:6}
-.promo-reel .clock .sweep{
-  stroke:var(--accent);stroke-width:6;stroke-linecap:round;
-  stroke-dasharray:534;stroke-dashoffset:534;transform:rotate(-90deg);transform-origin:50% 50%;
-}
-.promo-reel .stage.play .clock .sweep{animation:sweep 3.4s .7s linear both}
-@keyframes sweep{to{stroke-dashoffset:0}}
-.promo-reel .clock .dot{fill:var(--accent)}
-
-/* ---------- ТЕЛЕФОН ---------- */
-.promo-reel .phone{
-  position:absolute;left:50%;top:520px;width:500px;height:990px;margin-left:-250px;
-  border-radius:58px;border:9px solid rgba(244,246,243,.14);
-  background:var(--panel);
-  box-shadow:0 40px 90px rgba(0,0,0,.55), inset 0 0 0 2px rgba(0,0,0,.35);
-  perspective:1400px;
-}
-.promo-reel .notch{position:absolute;left:50%;top:14px;margin-left:-64px;width:128px;height:12px;border-radius:8px;background:rgba(0,0,0,.45);z-index:5}
-.promo-reel .screen{position:absolute;inset:0;border-radius:49px;overflow:hidden;background:linear-gradient(180deg,#0C3B2C,#082A20)}
-.promo-reel .scr{position:absolute;inset:0;padding:74px 30px 30px}
-
-.promo-reel .appbar{display:flex;align-items:center;justify-content:space-between;margin-bottom:26px}
-.promo-reel .brandmini{font-family:var(--display);font-weight:800;font-size:23px;letter-spacing:.08em;color:var(--paper)}
-.promo-reel .role{
-  font-size:18px;font-weight:600;padding:7px 14px;border-radius:99px;
-  background:var(--accent-dim);color:var(--accent);border:1px solid rgba(22,196,127,.35);
-}
-.promo-reel .scr h3{font-size:31px;font-weight:800;letter-spacing:-.01em;margin-bottom:22px}
-
-/* чипы категорий */
-.promo-reel .chips{display:flex;flex-wrap:wrap;gap:11px;margin-bottom:28px}
-.promo-reel .chip{
-  font-size:20px;font-weight:600;padding:12px 18px;border-radius:16px;
-  background:rgba(244,246,243,.06);border:1px solid rgba(244,246,243,.09);color:var(--muted);
-}
-.promo-reel .chip.on{background:var(--accent);color:#04231A;border-color:var(--accent)}
-
-/* поля формы */
-.promo-reel .field{
-  background:rgba(244,246,243,.05);border:1px solid rgba(244,246,243,.09);
-  border-radius:20px;padding:16px 20px;margin-bottom:14px;
-}
-.promo-reel .field .lb{font-size:17px;color:var(--muted);font-weight:600;margin-bottom:6px}
-.promo-reel .field .vl{font-size:24px;font-weight:700;letter-spacing:-.01em}
-.promo-reel .cta{
-  position:absolute;left:30px;right:30px;bottom:34px;
-  background:var(--accent);color:#04231A;border-radius:22px;
-  text-align:center;padding:22px;font-size:26px;font-weight:800;letter-spacing:-.01em;
-}
-.promo-reel .stage.play .cta.press{animation:fadeUp .5s var(--in) both, press .5s 8.6s cubic-bezier(.3,1.4,.5,1) both}
-@keyframes press{0%{transform:scale(1)}35%{transform:scale(.94);box-shadow:0 0 0 0 rgba(22,196,127,.6)}100%{transform:scale(1);box-shadow:0 0 0 34px rgba(22,196,127,0)}}
-
-/* курсор-палец */
-.promo-reel .cursor{
-  position:absolute;width:44px;height:44px;border-radius:99px;
-  background:rgba(244,246,243,.9);box-shadow:0 0 0 12px rgba(244,246,243,.18);z-index:9;
-}
-
-/* карта */
-.promo-reel .map{position:absolute;inset:0;background:
-  linear-gradient(rgba(244,246,243,.05) 1px,transparent 1px) 0 0/56px 56px,
-  linear-gradient(90deg,rgba(244,246,243,.05) 1px,transparent 1px) 0 0/56px 56px,
-  linear-gradient(180deg,#0C3E2E,#07281E)}
-.promo-reel .road{position:absolute;background:rgba(244,246,243,.07)}
-.promo-reel .pin{position:absolute;width:52px;height:52px;margin:-26px 0 0 -26px}
-.promo-reel .pin i{display:block;width:52px;height:52px;border-radius:99px;background:rgba(22,196,127,.18);border:2px solid rgba(22,196,127,.45)}
-.promo-reel .pin b{position:absolute;left:15px;top:15px;width:22px;height:22px;border-radius:99px;background:var(--accent)}
-.promo-reel .me{position:absolute;left:50%;top:46%;width:86px;height:86px;margin:-43px 0 0 -43px}
-.promo-reel .me .ring{position:absolute;inset:0;border-radius:99px;border:3px solid var(--paper);opacity:.9}
-.promo-reel .me .core{position:absolute;left:27px;top:27px;width:32px;height:32px;border-radius:99px;background:var(--paper)}
-.promo-reel .stage.play .me .pulse{animation:pulse 2.4s 10.4s ease-out infinite both}
-.promo-reel .me .pulse{position:absolute;inset:0;border-radius:99px;border:3px solid rgba(244,246,243,.5)}
-@keyframes pulse{0%{transform:scale(1);opacity:.6}100%{transform:scale(2.6);opacity:0}}
-.promo-reel .mapnote{
-  position:absolute;left:26px;right:26px;bottom:34px;
-  background:rgba(4,26,19,.82);border:1px solid rgba(22,196,127,.3);
-  border-radius:22px;padding:20px 24px;backdrop-filter:blur(8px);
-}
-.promo-reel .mapnote .n{font-size:34px;font-weight:800;color:var(--accent);letter-spacing:-.01em}
-.promo-reel .mapnote .t{font-size:20px;color:var(--muted);font-weight:600;margin-top:4px}
-
-/* карточки исполнителей */
-.promo-reel .card{
-  background:rgba(244,246,243,.055);border:1.5px solid rgba(244,246,243,.09);
-  border-radius:24px;padding:20px;margin-bottom:14px;display:flex;gap:16px;align-items:center;position:relative;
-}
-.promo-reel .card.pick{border-color:var(--accent);background:rgba(22,196,127,.1)}
-.promo-reel .av{width:64px;height:64px;border-radius:99px;flex:0 0 64px;background:linear-gradient(135deg,#1E7A5B,#0E4331);
-  display:flex;align-items:center;justify-content:center;font-size:26px;font-weight:800;color:var(--paper)}
-.promo-reel .who{flex:1;min-width:0}
-.promo-reel .who .nm{font-size:24px;font-weight:800;letter-spacing:-.01em}
-.promo-reel .who .mt{font-size:18px;color:var(--muted);font-weight:600;margin-top:5px}
-.promo-reel .pr{text-align:right}
-.promo-reel .pr .p{font-size:23px;font-weight:800;white-space:nowrap}
-.promo-reel .pr .u{font-size:16px;color:var(--muted);font-weight:600}
-.promo-reel .star{color:var(--accent)}
-.promo-reel .tick{position:absolute;right:-10px;top:-10px;width:46px;height:46px;border-radius:99px;background:var(--accent);
-  display:flex;align-items:center;justify-content:center}
-.promo-reel .toast{
-  position:absolute;left:30px;right:30px;bottom:34px;background:var(--accent);color:#04231A;
-  border-radius:22px;padding:20px;text-align:center;font-size:24px;font-weight:800;
-}
-
-/* лента заказов исполнителя */
-.promo-reel .job{
-  background:rgba(244,246,243,.055);border:1.5px solid rgba(244,246,243,.09);
-  border-radius:24px;padding:20px;margin-bottom:14px;
-}
-.promo-reel .job .top{display:flex;justify-content:space-between;align-items:baseline;gap:12px}
-.promo-reel .job .ttl{font-size:24px;font-weight:800;letter-spacing:-.01em}
-.promo-reel .job .sum{font-size:23px;font-weight:800;color:var(--accent);white-space:nowrap}
-.promo-reel .job .sub{font-size:18px;color:var(--muted);font-weight:600;margin-top:7px}
-.promo-reel .newbadge{font-size:16px;font-weight:700;color:#04231A;background:var(--accent);border-radius:99px;padding:4px 10px;margin-left:10px}
-
-/* ---------- ФИНАЛ ---------- */
-.promo-reel .end{position:absolute;inset:0}
-.promo-reel .logo{position:absolute;left:50%;top:700px;margin-left:-90px;width:180px;height:180px}
-.promo-reel .logo .box{
-  position:absolute;inset:0;border-radius:44px;border:8px solid var(--accent);
-  background:rgba(22,196,127,.1);
-}
-.promo-reel .logo svg{position:absolute;left:38px;top:44px;width:104px;height:92px}
-.promo-reel .logo .mk{fill:none;stroke:var(--accent);stroke-width:14;stroke-linecap:round;stroke-linejoin:round;
-  stroke-dasharray:150;stroke-dashoffset:150}
-.promo-reel .stage.play .logo .mk{animation:draw .75s 26.5s cubic-bezier(.6,.1,.3,1) both}
-@keyframes draw{from{stroke-dashoffset:150}to{stroke-dashoffset:0}}
-.promo-reel .wordmark{
-  position:absolute;left:0;right:0;top:940px;text-align:center;
-  font-family:var(--display);font-weight:800;font-size:86px;letter-spacing:.05em;
-}
-.promo-reel .slogan{
-  position:absolute;left:110px;right:110px;top:1090px;text-align:center;
-  font-size:54px;line-height:1.28;font-weight:600;color:var(--paper);letter-spacing:-.01em;
-}
-.promo-reel .slogan .two{color:var(--accent)}
-.promo-reel .city{
-  position:absolute;left:0;right:0;top:1300px;text-align:center;
-  font-size:26px;font-weight:700;letter-spacing:.3em;text-transform:uppercase;color:var(--muted);
-}
-
-/* ---------- keyframes ---------- */
-@keyframes fadeUp{from{opacity:0;transform:translateY(44px)}to{opacity:1;transform:translateY(0)}}
-@keyframes fadeIn{from{opacity:0}to{opacity:1}}
-@keyframes fadeOut{to{opacity:0}}
-@keyframes riseUp{from{opacity:0;transform:translateY(180px) scale(.96)}to{opacity:1;transform:translateY(0) scale(1)}}
-@keyframes sinkDown{to{opacity:0;transform:translateY(-90px) scale(.97)}}
-@keyframes popIn{0%{opacity:0;transform:scale(.3)}70%{transform:scale(1.14)}100%{opacity:1;transform:scale(1)}}
-@keyframes slideIn{from{opacity:0;transform:translateX(60px)}to{opacity:1;transform:translateX(0)}}
-@keyframes flip{0%{transform:rotateY(0)}50%{transform:rotateY(92deg)}100%{transform:rotateY(0)}}
-@keyframes tap{0%{opacity:0;transform:scale(.4)}40%{opacity:1;transform:scale(1)}100%{opacity:0;transform:scale(1.5)}}
-@keyframes zoomOut{from{opacity:0;transform:scale(1.25)}to{opacity:1;transform:scale(1)}}
-
-/* назначения анимаций */
-.promo-reel .stage.play .a-up{animation:fadeUp .75s var(--in,0s) cubic-bezier(.2,.85,.25,1) both}
-.promo-reel .stage.play .a-in{animation:fadeIn .6s var(--in,0s) ease both}
-.promo-reel .stage.play .a-pop{animation:popIn .55s var(--in,0s) cubic-bezier(.3,1.5,.5,1) both}
-.promo-reel .stage.play .a-slide{animation:slideIn .6s var(--in,0s) cubic-bezier(.2,.85,.25,1) both}
-.promo-reel .stage.play .a-zoom{animation:zoomOut 1s var(--in,0s) cubic-bezier(.2,.8,.2,1) both}
-.promo-reel .stage.play .a-tap{animation:tap .7s var(--in,0s) ease-out both}
-.promo-reel .stage.play .out{animation-name:var(--an,fadeUp),fadeOut;animation-duration:var(--ad,.75s),.45s;
-  animation-delay:var(--in,0s),var(--out,30s);animation-fill-mode:both,forwards;
-  animation-timing-function:cubic-bezier(.2,.85,.25,1),ease}
-.promo-reel .stage.play .a-phone{animation:riseUp .9s 4.35s cubic-bezier(.2,.9,.25,1) both,
-  flip .95s 20.4s ease-in-out both, sinkDown .7s 25.2s cubic-bezier(.5,0,.7,0) forwards}
-
-/* ---------- панель управления (вне кадра) ---------- */
-
 </style>
 </head>
-<body data-role="customer">
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="i-apple" viewBox="0 0 24 24"><path fill="currentColor" d="M16.37 12.6c-.02-2.2 1.8-3.26 1.88-3.31-1.03-1.5-2.62-1.7-3.19-1.73-1.36-.14-2.65.8-3.34.8-.69 0-1.75-.78-2.88-.76-1.48.02-2.85.86-3.61 2.19-1.54 2.67-.39 6.62 1.11 8.79.73 1.06 1.6 2.25 2.75 2.2 1.1-.04 1.52-.71 2.85-.71 1.33 0 1.71.71 2.88.69 1.19-.02 1.94-1.08 2.66-2.14.84-1.23 1.19-2.42 1.21-2.48-.03-.01-2.32-.89-2.34-3.53zM14.18 6.13c.61-.74 1.02-1.76.91-2.78-.88.04-1.94.59-2.57 1.32-.56.65-1.06 1.69-.93 2.69.98.08 1.98-.5 2.59-1.23z"/></symbol>
+    <symbol id="i-play" viewBox="0 0 24 24"><path fill="#34A853" d="M3.6 2.3 13.4 12 3.6 21.7c-.36-.2-.6-.6-.6-1.07V3.37c0-.47.24-.87.6-1.07z"/><path fill="#FBBC04" d="m16.8 8.6-3.4 3.4 3.4 3.4 3.9-2.2c.8-.46.8-1.94 0-2.4l-3.9-2.2z"/><path fill="#4285F4" d="M3.6 2.3c.3-.17.68-.18 1.04.03L16.8 8.6 13.4 12 3.6 2.3z"/><path fill="#EA4335" d="M13.4 12l3.4 3.4-12.16 6.27c-.36.21-.74.2-1.04.03L13.4 12z"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10" opacity=".25"/><path d="m7.5 12.5 3 3 6-6.5"/></symbol>
+    <symbol id="i-chat" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a8 8 0 0 1-11.8 7L4 20l1.1-4.6A8 8 0 1 1 21 12z"/><path d="M9 11v2M12 9v6M15 11v2"/></symbol>
+    <symbol id="i-route" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="19" r="2.5"/><circle cx="18" cy="5" r="2.5"/><path d="M8.5 19H16a3.5 3.5 0 0 0 0-7H8a3.5 3.5 0 0 1 0-7h7.5"/></symbol>
+    <symbol id="i-star" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="m12 3 2.7 5.6 6.1.8-4.5 4.2 1.1 6.1L12 16.8 6.6 19.7l1.1-6.1-4.5-4.2 6.1-.8z"/></symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></symbol>
+    <symbol id="i-phone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="2.5" width="12" height="19" rx="3"/><path d="M10.5 18h3"/></symbol>
+    <symbol id="i-globe" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 3.8 5.6 3.8 9s-1.3 6.4-3.8 9c-2.5-2.6-3.8-5.6-3.8-9S9.5 5.6 12 3z"/></symbol>
+    <symbol id="i-wallet" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 7V5.5A1.5 1.5 0 0 0 17.5 4h-12A2.5 2.5 0 0 0 3 6.5v11A2.5 2.5 0 0 0 5.5 20h13a1.5 1.5 0 0 0 1.5-1.5V15"/><path d="M21 9h-5a3 3 0 0 0 0 6h5z"/></symbol>
+    <symbol id="i-board" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7.5" height="9" rx="2"/><rect x="13.5" y="3" width="7.5" height="5" rx="2"/><rect x="13.5" y="11" width="7.5" height="10" rx="2"/><rect x="3" y="15" width="7.5" height="6" rx="2"/></symbol>
+    <symbol id="i-send" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.5 3.5 2.5 11l7 2.5 2.5 7z"/><path d="m21.5 3.5-12 10"/></symbol>
+    <symbol id="i-power" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="2.5" y="7" width="19" height="10" rx="5"/><circle cx="16.5" cy="12" r="2.6" fill="currentColor"/></symbol>
+    <symbol id="i-sliders" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 6h10M18 6h2M4 12h4M12 12h8M4 18h12M20 18h0"/><circle cx="16" cy="6" r="2"/><circle cx="10" cy="12" r="2"/><circle cx="18" cy="18" r="2"/></symbol>
+    <symbol id="i-bolt" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></symbol>
+  </defs>
+</svg>
 
-<header>
+<header id="top">
   <div class="wrap bar">
-    <div class="brand">
-      <img src="data:image/png;base64,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" alt="TASK BOR">
-      <b>TASK BOR</b>
-    </div>
-    <div class="bar-right">
-      <a class="legal" href="legal.html" data-t="legal"></a>
-      <div class="langs">
-        <button data-lang="RU" class="on">RU</button>
-        <button data-lang="UZ">UZ</button>
-        <button data-lang="EN">EN</button>
+    <a class="brand" href="#top" aria-label="TASK BOR"><img src="img/logo.png" alt="" width="36" height="36"><span>TASK BOR</span></a>
+    <nav class="links" aria-label="Main">
+      <a href="#services" data-i="navServices">Услуги</a>
+      <a href="#how" data-i="navHow">Как это работает</a>
+      <a href="#masters" data-i="navMasters">Мастерам</a>
+      <a href="#faq" data-i="navFaq">Вопросы</a>
+    </nav>
+    <div class="bar-r">
+      <div class="langs" role="group" aria-label="Language">
+        <button data-lang="ru" aria-pressed="true">RU</button>
+        <button data-lang="uz" aria-pressed="false">UZ</button>
+        <button data-lang="en" aria-pressed="false">EN</button>
       </div>
+      <a class="btn btn-primary btn-sm" href="#download" data-i="navCta">Скачать</a>
     </div>
   </div>
 </header>
 
+<main>
+<!-- HERO -->
 <section class="hero">
-  <div class="hero-glow"></div>
-  <div class="hero-tile tile-bg"></div>
-  <div class="wrap hero-in">
+  <div class="wrap hero-grid">
     <div>
-      <div class="eyebrow"><i></i><span data-t="eyebrow"></span></div>
-      <h1 data-t="h1"></h1>
-      <p class="lede" data-t="lede"></p>
-
-      <div class="roles">
-        <button data-r="customer" class="on" data-t="roleC"></button>
-        <button data-r="executor" data-t="roleE"></button>
-      </div>
-
-      <div class="stores">
-        <div class="store">
-          <span class="soon" data-t="soon"></span>
-          <svg width="19" height="19" viewBox="0 0 24 24"><path d="M16.7 12.3c0-2 1.6-3 1.7-3-.9-1.4-2.4-1.6-2.9-1.6-1.2-.1-2.4.7-3 .7-.6 0-1.6-.7-2.7-.7-1.4 0-2.7.8-3.4 2.1-1.5 2.5-.4 6.3 1 8.3.7 1 1.5 2.1 2.6 2 1-.1 1.4-.7 2.6-.7s1.6.7 2.7.6c1.1 0 1.8-1 2.5-2 .8-1.1 1.1-2.2 1.1-2.3-.1 0-2.2-.8-2.2-3.4zM14.6 5.4c.6-.7 1-1.7.9-2.7-.9.1-1.9.6-2.5 1.3-.5.6-1 1.6-.9 2.5 1 .1 1.9-.4 2.5-1.1z" fill="currentColor"/></svg>
-          <div><span data-t="soonOn"></span><b>App Store</b></div>
-        </div>
-        <div class="store">
-          <span class="soon" data-t="soon"></span>
-          <svg width="19" height="19" viewBox="0 0 24 24"><path d="M4 3l16 9-16 9 3-9-3-9z" fill="currentColor"/></svg>
-          <div><span data-t="soonOn"></span><b>Google Play</b></div>
-        </div>
-      </div>
-
-      <div class="qr">
-        <div><img id="qr" alt="QR"></div>
-        <p data-t="qr"></p>
+      <span class="kicker" data-i="heroKicker">Ташкент · бытовые услуги</span>
+      <h1><span data-i="h1a">Задача есть —</span> <span class="hl" data-i="h1b">мастер найдётся</span></h1>
+      <p class="lead" data-i="heroLead">Уборка, ремонт, муж на час, переезд и любая помощь по дому. Опишите задачу — мастера рядом откликнутся за минуты. Оплата напрямую, без комиссии платформы.</p>
+      <div class="stores" data-stores></div>
+      <div class="chips">
+        <span><svg><use href="#i-check"/></svg><b data-i="chip1">0% комиссии</b></span>
+        <span><svg><use href="#i-check"/></svg><b data-i="chip2">Мастера рядом</b></span>
+        <span><svg><use href="#i-check"/></svg><b>RU · UZ · EN</b></span>
       </div>
     </div>
-
-    <div class="panel">
-      <svg class="grid" viewBox="0 0 400 424" preserveAspectRatio="none">
-        <line x1="0" y1="70" x2="400" y2="70"/><line x1="0" y1="150" x2="400" y2="150"/>
-        <line x1="0" y1="230" x2="400" y2="230"/><line x1="0" y1="310" x2="400" y2="310"/>
-        <line x1="80" y1="0" x2="80" y2="424"/><line x1="170" y1="0" x2="170" y2="424"/>
-        <line x1="260" y1="0" x2="260" y2="424"/><line x1="340" y1="0" x2="340" y2="424"/>
-      </svg>
-      <svg viewBox="0 0 400 424" style="position:absolute;inset:0">
-        <path class="road" d="M-10 196 H410"/>
-        <path class="road" d="M212 -10 V300"/>
-        <circle class="ring" cx="212" cy="196" r="14"/>
-        <circle class="ring" cx="212" cy="196" r="14"/>
-        <circle class="ring" cx="212" cy="196" r="14"/>
-        <g class="me"><circle cx="212" cy="196" r="9" fill="var(--accent)"/><circle cx="212" cy="196" r="16" fill="none" stroke="var(--accent)" stroke-opacity=".45"/></g>
-        <g class="pin" style="animation-delay:.5s"><circle cx="104" cy="118" r="15" fill="var(--ink)" stroke="var(--accent)" stroke-opacity=".6"/><circle cx="104" cy="118" r="4.5" fill="var(--accent)"/></g>
-        <g class="pin" style="animation-delay:.9s"><circle cx="308" cy="120" r="15" fill="var(--ink)" stroke="var(--accent)" stroke-opacity=".6"/><circle cx="308" cy="120" r="4.5" fill="var(--accent)"/></g>
-        <g class="pin" style="animation-delay:1.3s"><circle cx="120" cy="286" r="15" fill="var(--ink)" stroke="var(--accent)" stroke-opacity=".6"/><circle cx="120" cy="286" r="4.5" fill="var(--accent)"/></g>
-        <g class="pin" style="animation-delay:1.7s"><circle cx="320" cy="272" r="15" fill="var(--ink)" stroke="var(--accent)" stroke-opacity=".6"/><circle cx="320" cy="272" r="4.5" fill="var(--accent)"/></g>
-        <g class="pin" style="animation-delay:2.1s"><circle cx="248" cy="86" r="15" fill="var(--ink)" stroke="var(--accent)" stroke-opacity=".6"/><circle cx="248" cy="86" r="4.5" fill="var(--accent)"/></g>
-      </svg>
-      <div class="float">
-        <span class="dot"></span>
-        <div><b data-t="panelT"></b><span data-t="panelS"></span></div>
-        <span class="price" data-t="panelP"></span>
-      </div>
+    <div class="stage" aria-hidden="true">
+      <div class="phone p-back"><img data-shot="chat" src="img/ru_chat.webp" alt="" width="600" height="1300" loading="eager"></div>
+      <div class="phone p-front"><img data-shot="home" src="img/ru_home.webp" alt="" width="600" height="1300" fetchpriority="high"></div>
+      <div class="float f1"><span class="dot-live"></span><div><b data-i="fl1a">Мастер в пути</b><small data-i="fl1b">будет через 20 минут</small></div></div>
+      <div class="float f2"><div class="ic"><svg><use href="#i-star"/></svg></div><div><b><span class="stars">★★★★★</span> 4.9</b><small data-i="fl2b">87 выполненных заказов</small></div></div>
+      <div class="float f3"><div class="ic"><svg><use href="#i-bolt"/></svg></div><div><b data-i="fl3a">Новый заказ рядом</b><small data-i="fl3b">Муж на час · 1,2 км</small></div></div>
+    </div>
+  </div>
+  <div class="wrap">
+    <div class="stats rv">
+      <div class="stat"><b>0%</b><span data-i="st1">комиссия платформы</span></div>
+      <div class="stat"><b>6</b><span data-i="st2">категорий услуг</span></div>
+      <div class="stat"><b>1</b><span data-i="st3">аккаунт — две роли</span></div>
+      <div class="stat"><b>3</b><span data-i="st4">языка интерфейса</span></div>
     </div>
   </div>
 </section>
 
-<div class="wrap"><div class="rule"></div></div>
-
-<section class="rv">
+<!-- CATEGORIES -->
+<section id="services" style="padding-top:24px">
   <div class="wrap">
-    <div class="head">
-      <div class="kicker" data-t="catsK"></div>
-      <h2 data-t="catsH"></h2>
-      <p data-t="catsP"></p>
+    <div class="sec-head rv">
+      <span class="kicker" data-i="catK">Услуги</span>
+      <h2 data-i="catH">Всё для дома — в одном приложении</h2>
+      <p class="lead" data-i="catP">Выберите категорию или опишите задачу своими словами — подходящие мастера увидят её сразу.</p>
     </div>
     <div class="cats">
-      <div class="cat">
-        <div class="deco tile-bg" style="border-radius:50%"></div>
-        <div class="ic"><svg width="21" height="21" viewBox="0 0 24 24" fill="none"><path d="M14 3l7 7-3 3-7-7 3-3z" stroke="#fff" stroke-width="1.8" stroke-linejoin="round"/><path d="M11 6L4 13c-1 3 0 6 2 7l7-7" stroke="#fff" stroke-width="1.8" stroke-linejoin="round"/></svg></div>
-        <h3 data-t="cat1H"></h3><p data-t="cat1P"></p>
-      </div>
-      <div class="cat">
-        <div class="deco tile-bg" style="border-radius:50%"></div>
-        <div class="ic"><svg width="21" height="21" viewBox="0 0 24 24" fill="none"><path d="M14.7 6.3a4 4 0 00-5.4 5.4L3 18l3 3 6.3-6.3a4 4 0 005.4-5.4l-2.6 2.6-2-2 2.6-2.6z" stroke="#fff" stroke-width="1.7" stroke-linejoin="round"/></svg></div>
-        <h3 data-t="cat2H"></h3><p data-t="cat2P"></p>
-      </div>
+      <article class="cat rv"><div class="ph"><img src="img/cat_uborka.webp" alt="" loading="lazy" width="490" height="479"></div><div class="tx"><h3 data-i="c1h">Уборка</h3><p data-i="c1p">Квартиры, дома и офисы — разово или регулярно.</p></div></article>
+      <article class="cat rv"><div class="ph"><img src="img/cat_muj_na_chas.webp" alt="" loading="lazy" width="498" height="479"></div><div class="tx"><h3 data-i="c2h">Муж на час</h3><p data-i="c2p">Полки, люстры, карнизы, розетки и мелкий ремонт.</p></div></article>
+      <article class="cat rv"><div class="ph"><img src="img/cat_remont.webp" alt="" loading="lazy" width="505" height="476"></div><div class="tx"><h3 data-i="c3h">Ремонт</h3><p data-i="c3p">Сантехника, электрика, отделка, бытовая техника.</p></div></article>
+      <article class="cat rv"><div class="ph"><img src="img/cat_perenos_vishey.webp" alt="" loading="lazy" width="494" height="486"></div><div class="tx"><h3 data-i="c4h">Перенос вещей</h3><p data-i="c4p">Переезд, грузчики, подъём мебели на этаж.</p></div></article>
+      <article class="cat rv"><div class="ph"><img src="img/cat_sad_i_dvor.webp" alt="" loading="lazy" width="494" height="468"></div><div class="tx"><h3 data-i="c5h">Сад и двор</h3><p data-i="c5p">Уход за садом, покос, уборка двора и участка.</p></div></article>
+      <article class="cat rv"><div class="ph"><img src="img/cat_lyubaya_rabota.webp" alt="" loading="lazy" width="495" height="465"></div><div class="tx"><h3 data-i="c6h">Любая работа</h3><p data-i="c6p">Не нашли категорию? Опишите задачу — мастер найдётся.</p></div></article>
     </div>
   </div>
 </section>
 
-<section class="rv">
+<!-- HOW -->
+<section id="how" class="how">
   <div class="wrap">
-    <div class="head">
-      <div class="kicker" data-t="howK"></div>
-      <h2 data-t="howH"></h2>
-      <p data-t="howP"></p>
+    <div class="sec-head center rv">
+      <span class="kicker" data-i="howK">Как это работает</span>
+      <h2 data-i="howH">Три шага — и задача решена</h2>
+      <div class="seg" role="group" aria-label="Role">
+        <button data-role="c" aria-pressed="true" data-i="roleC">Заказчику</button>
+        <button data-role="m" aria-pressed="false" data-i="roleM">Мастеру</button>
+      </div>
     </div>
-    <div class="steps" id="steps"></div>
+    <div class="how-grid">
+      <ol class="steps fade" id="steps"></ol>
+      <div class="phone fade" id="howPhone"><img data-shot="cdetail" src="img/ru_cdetail.webp" alt="" loading="lazy" width="600" height="1300"></div>
+    </div>
   </div>
 </section>
 
-<section class="rv">
+<!-- FEATURES -->
+<section id="features">
   <div class="wrap">
-    <div class="head">
-      <div class="kicker" data-t="whyK"></div>
-      <h2 data-t="whyH"></h2>
+    <div class="sec-head rv">
+      <span class="kicker" data-i="featK">Возможности</span>
+      <h2 data-i="featH">Всё под рукой — от заказа до отзыва</h2>
     </div>
-    <div class="perks" id="perks"></div>
+    <div class="bento">
+      <div class="tile t-big rv">
+        <div class="ic"><svg><use href="#i-chat"/></svg></div>
+        <h3 data-i="f1h">Чат с мастером</h3>
+        <p data-i="f1p">Текст, голосовые сообщения и реакции. Карточка заказа закреплена сверху — всё обсуждение в одном месте.</p>
+        <div class="shot"><img data-shot="chat" src="img/ru_chat.webp" alt="" loading="lazy" width="600" height="1300"></div>
+      </div>
+      <div class="tile t-big t-dark rv">
+        <div class="ic"><svg><use href="#i-route"/></svg></div>
+        <h3 data-i="f2h">Статус в реальном времени</h3>
+        <p data-i="f2p">Видно, когда мастер принял заказ, выехал и начал работу.</p>
+        <div class="flow"><span class="on" data-i="fs1">Создан</span><span class="on" data-i="fs2">Принят</span><span class="on" data-i="fs3">В пути</span><span data-i="fs4">В работе</span><span data-i="fs5">Завершён</span></div>
+        <div class="shot"><img data-shot="cdetail" src="img/ru_cdetail.webp" alt="" loading="lazy" width="600" height="1300"></div>
+      </div>
+      <div class="tile t-sm rv">
+        <div class="ic"><svg><use href="#i-star"/></svg></div>
+        <h3 data-i="f3h">Честные отзывы</h3>
+        <p data-i="f3p">Оставить отзыв можно только после выполненного заказа — рейтингу можно доверять.</p>
+      </div>
+      <div class="tile t-sm rv">
+        <div class="ic"><svg><use href="#i-pin"/></svg></div>
+        <h3 data-i="f4h">Мастера рядом</h3>
+        <p data-i="f4p">Выбирайте сами из тех, кто онлайн в вашем районе, или отправьте заказ всем сразу.</p>
+      </div>
+      <div class="tile t-sm rv">
+        <div class="ic"><svg><use href="#i-phone"/></svg></div>
+        <h3 data-i="f5h">Вход по номеру</h3>
+        <p data-i="f5p">Код из SMS — и вы внутри. Никаких паролей и долгих анкет.</p>
+      </div>
+    </div>
   </div>
 </section>
 
-<section class="rv">
+<!-- MASTERS -->
+<section id="masters" class="masters">
+  <div class="wrap m-grid">
+    <div class="rv">
+      <span class="kicker" data-i="mK">Мастерам</span>
+      <h2 style="margin:16px 0" data-i="mH">Заказы сами находят вас</h2>
+      <p class="lead" data-i="mP">Работайте, когда удобно, и получайте всю сумму от клиента — платформа не берёт комиссию.</p>
+      <div class="m-list">
+        <div class="m-item"><svg><use href="#i-board"/></svg><b data-i="m1h">«Мне» и «Доска»</b><p data-i="m1p">Личные заказы от клиентов и общие задачи рядом с вами.</p></div>
+        <div class="m-item"><svg><use href="#i-send"/></svg><b data-i="m2h">Уведомления в Telegram</b><p data-i="m2p">Узнавайте о новых заказах сразу, даже с закрытым приложением.</p></div>
+        <div class="m-item"><svg><use href="#i-power"/></svg><b data-i="m3h">Онлайн, когда хотите</b><p data-i="m3p">Один переключатель — и вы видны клиентам или на отдыхе.</p></div>
+        <div class="m-item"><svg><use href="#i-sliders"/></svg><b data-i="m4h">Своя зона и ставка</b><p data-i="m4p">Районы, радиус, услуги и цена за час — настраиваете сами.</p></div>
+      </div>
+      <a class="btn btn-lime" href="#download" data-i="mCta">Стать мастером</a>
+    </div>
+    <div class="m-phones rv" aria-hidden="true">
+      <div class="phone"><img data-shot="receive" src="img/ru_receive.webp" alt="" loading="lazy" width="600" height="1300"></div>
+      <div class="phone"><img data-shot="tasks" src="img/ru_tasks.webp" alt="" loading="lazy" width="600" height="1300"></div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="wrap faq-grid">
+    <div class="sec-head rv">
+      <span class="kicker" data-i="faqK">Вопросы</span>
+      <h2 data-i="faqH">Коротко о главном</h2>
+      <p class="lead" data-i="faqP">Не нашли ответ? Напишите нам — ответим в течение дня.</p>
+      <a class="btn btn-primary" href="mailto:emhsh1993@gmail.com" data-i="faqBtn" style="justify-self:start">Написать в поддержку</a>
+    </div>
+    <div class="faq" id="faqList"></div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section id="download" style="padding-top:0">
   <div class="wrap">
-    <div class="head"><div class="kicker" data-t="faqK"></div><h2 data-t="faqH"></h2></div>
-    <div id="faq"></div>
-  </div>
-</section>
-
-
-<section class="reel-sec rv">
-  <div class="tilebg tile-bg"></div>
-  <div class="wrap">
-    <div>
-      <div class="kicker" data-t="reelK"></div>
-      <h2 data-t="reelH"></h2>
-      <p data-t="reelP"></p>
-      <ul class="reel-notes" id="reelNotes"></ul>
-    </div>
-    <div><div class="promo-reel">
-  <div class="frame">
-<div class="stage js-promo-stage">
-  <div class="grain"></div>
-
-  <!-- ================= СЦЕНА 1: проблема (0–4.4с) ================= -->
-  <div class="s1">
-    <svg class="clock anim a-in out" viewBox="0 0 180 180" style="--in:.5s;--an:fadeIn;--ad:.6s;--out:4.0s">
-      <circle cx="90" cy="90" r="85"/>
-      <circle class="sweep" cx="90" cy="90" r="85"/>
-      <circle class="dot" cx="90" cy="90" r="7"/>
-    </svg>
-    <div class="big anim out" style="--in:.45s;--out:4.0s">Завтра гости.</div>
-    <div class="big b anim out" style="--in:1.5s;--out:4.0s">А убирать некогда.</div>
-  </div>
-
-  <!-- ================= ПОДПИСИ ================= -->
-  <div class="caption anim out" style="--in:5.0s;--out:9.4s">Опишите задачу<br>за одну минуту</div>
-  <div class="caption anim out" style="--in:9.9s;--out:14.3s">Исполнители рядом<br>сразу видят заказ</div>
-  <div class="caption anim out" style="--in:14.9s;--out:19.9s">Сравните<br>и выберите сами</div>
-  <div class="caption anim out" style="--in:20.7s;--out:25.1s">А если вы исполнитель —<br><em>заказы приходят сами</em></div>
-
-  <!-- ================= ТЕЛЕФОН (4.4–26с) ================= -->
-  <div class="phone anim a-phone">
-    <div class="notch"></div>
-    <div class="screen">
-
-      <!-- ЭКРАН 1: форма заказа -->
-      <div class="scr anim out" style="--in:5.2s;--an:fadeIn;--ad:.5s;--out:9.4s">
-        <div class="appbar">
-          <div class="brandmini">TASK BOR</div>
-          <div class="role">Клиент</div>
-        </div>
-        <h3>Новая задача</h3>
-        <div class="chips">
-          <div class="chip on anim a-pop" style="--in:5.7s">Уборка</div>
-          <div class="chip anim a-pop" style="--in:5.85s">Сантехника</div>
-          <div class="chip anim a-pop" style="--in:6.0s">Электрика</div>
-          <div class="chip anim a-pop" style="--in:6.15s">Мебель</div>
-          <div class="chip anim a-pop" style="--in:6.3s">Ремонт</div>
-        </div>
-        <div class="field anim a-up" style="--in:6.7s">
-          <div class="lb">Что нужно сделать</div>
-          <div class="vl">Уборка 2-комнатной квартиры</div>
-        </div>
-        <div class="field anim a-up" style="--in:7.3s">
-          <div class="lb">Когда</div>
-          <div class="vl">Завтра, 10:00</div>
-        </div>
-        <div class="field anim a-up" style="--in:7.9s">
-          <div class="lb">Где</div>
-          <div class="vl">Юнусабад, Ташкент</div>
-        </div>
-        <div class="cta press anim" style="--in:8.4s">Опубликовать задачу</div>
-        <div class="cursor anim a-tap" style="left:76px;top:262px;--in:6.2s"></div>
-        <div class="cursor anim a-tap" style="left:210px;bottom:74px;top:auto;--in:8.7s"></div>
+    <div class="cta rv">
+      <div style="position:relative;z-index:1">
+        <h2 data-i="ctaH">Задача есть? Скачайте TASK BOR</h2>
+        <p data-i="ctaP">Бесплатно для заказчиков и мастеров. Регистрация по номеру телефона — меньше минуты.</p>
+        <div class="stores" data-stores></div>
       </div>
-
-      <!-- ЭКРАН 2: карта -->
-      <div class="scr anim out" style="--in:9.9s;--an:fadeIn;--ad:.5s;--out:14.3s;padding:0">
-        <div class="map">
-          <div class="road" style="left:0;right:0;top:38%;height:16px"></div>
-          <div class="road" style="left:0;right:0;top:68%;height:10px"></div>
-          <div class="road" style="left:34%;top:0;bottom:0;width:14px"></div>
-          <div class="road" style="left:72%;top:0;bottom:0;width:9px"></div>
-
-          <div class="me anim a-in" style="--in:10.2s">
-            <div class="pulse"></div><div class="ring"></div><div class="core"></div>
-          </div>
-
-          <div class="pin anim a-pop" style="left:24%;top:26%;--in:10.6s"><i></i><b></b></div>
-          <div class="pin anim a-pop" style="left:71%;top:31%;--in:10.85s"><i></i><b></b></div>
-          <div class="pin anim a-pop" style="left:33%;top:60%;--in:11.1s"><i></i><b></b></div>
-          <div class="pin anim a-pop" style="left:78%;top:57%;--in:11.35s"><i></i><b></b></div>
-          <div class="pin anim a-pop" style="left:18%;top:47%;--in:11.6s"><i></i><b></b></div>
-          <div class="pin anim a-pop" style="left:62%;top:73%;--in:11.85s"><i></i><b></b></div>
-          <div class="pin anim a-pop" style="left:47%;top:20%;--in:12.1s"><i></i><b></b></div>
-
-          <div class="mapnote anim a-up" style="--in:12.5s">
-            <div class="n">7 исполнителей рядом</div>
-            <div class="t">Юнусабад · радиус 3 км</div>
-          </div>
-        </div>
-      </div>
-
-      <!-- ЭКРАН 3: отклики -->
-      <div class="scr anim out" style="--in:14.9s;--an:fadeIn;--ad:.5s;--out:20.0s">
-        <div class="appbar">
-          <div class="brandmini">TASK BOR</div>
-          <div class="role">Клиент</div>
-        </div>
-        <h3>Отклики · 3</h3>
-
-        <div class="card pick anim a-slide" style="--in:15.3s">
-          <div class="av">Н</div>
-          <div class="who">
-            <div class="nm">Нигора А.</div>
-            <div class="mt"><span class="star">★</span> 4.9 · 34 уборки</div>
-          </div>
-          <div class="pr"><div class="p">180 000</div><div class="u">сум</div></div>
-          <div class="tick anim a-pop" style="--in:18.2s">
-            <svg width="24" height="20" viewBox="0 0 24 20"><path d="M2 10 L9 17 L22 3" fill="none" stroke="#04231A" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </div>
-        </div>
-
-        <div class="card anim a-slide" style="--in:15.8s">
-          <div class="av">Д</div>
-          <div class="who">
-            <div class="nm">Дилноза К.</div>
-            <div class="mt"><span class="star">★</span> 4.8 · 51 уборка</div>
-          </div>
-          <div class="pr"><div class="p">200 000</div><div class="u">сум</div></div>
-        </div>
-
-        <div class="card anim a-slide" style="--in:16.3s">
-          <div class="av">М</div>
-          <div class="who">
-            <div class="nm">Малика Т.</div>
-            <div class="mt"><span class="star">★</span> 5.0 · 12 уборок</div>
-          </div>
-          <div class="pr"><div class="p">165 000</div><div class="u">сум</div></div>
-        </div>
-
-        <div class="toast anim a-up" style="--in:18.7s">Исполнитель выбран</div>
-        <div class="cursor anim a-tap" style="left:200px;top:250px;--in:17.6s"></div>
-      </div>
-
-      <!-- ЭКРАН 4: исполнитель -->
-      <div class="scr anim a-in" style="--in:20.9s">
-        <div class="appbar">
-          <div class="brandmini">TASK BOR</div>
-          <div class="role">Исполнитель</div>
-        </div>
-        <h3>Заказы рядом с вами</h3>
-
-        <div class="job anim a-up" style="--in:21.5s">
-          <div class="top">
-            <div class="ttl">Уборка квартиры<span class="newbadge">NEW</span></div>
-            <div class="sum">180 000</div>
-          </div>
-          <div class="sub">Юнусабад · 1,2 км · завтра 10:00</div>
-        </div>
-
-        <div class="job anim a-up" style="--in:22.0s">
-          <div class="top">
-            <div class="ttl">Сборка мебели</div>
-            <div class="sum">250 000</div>
-          </div>
-          <div class="sub">Мирзо-Улугбек · 3,4 км · сегодня 18:00</div>
-        </div>
-
-        <div class="job anim a-up" style="--in:22.5s">
-          <div class="top">
-            <div class="ttl">Замена розеток</div>
-            <div class="sum">120 000</div>
-          </div>
-          <div class="sub">Чиланзар · 4,1 км · завтра 14:00</div>
-        </div>
-
-        <div class="cta anim a-up" style="--in:23.2s">Откликнуться</div>
-        <div class="cursor anim a-tap" style="left:210px;bottom:74px;top:auto;--in:23.9s"></div>
-      </div>
-
-    </div>
-  </div>
-
-  <!-- ================= ФИНАЛ (26–30с) ================= -->
-  <div class="end">
-    <div class="logo anim a-pop" style="--in:26.1s">
-      <div class="box"></div>
-      <svg viewBox="0 0 104 92"><path class="mk" d="M10 48 L38 76 L94 12"/></svg>
-    </div>
-    <div class="wordmark anim a-up" style="--in:27.0s">TASK BOR</div>
-    <div class="slogan">
-      <div class="anim a-up" style="--in:27.7s">Задача есть —</div>
-      <div class="two anim a-up" style="--in:28.1s">исполнитель найдётся</div>
-    </div>
-    <div class="city anim a-in" style="--in:28.9s">Ташкент</div>
-  </div>
-
-  <!-- направляющие -->
-</div>
-</div>
-</div></div>
-  </div>
-</section>
-
-<section class="rv">
-  <div class="wrap">
-    <div class="final">
-      <div class="tile tile-bg"></div>
-      <h2 data-t="finH"></h2>
-      <p data-t="finP"></p>
-      <div class="stores">
-        <div class="store">
-          <span class="soon" data-t="soon"></span>
-          <svg width="19" height="19" viewBox="0 0 24 24"><path d="M16.7 12.3c0-2 1.6-3 1.7-3-.9-1.4-2.4-1.6-2.9-1.6-1.2-.1-2.4.7-3 .7-.6 0-1.6-.7-2.7-.7-1.4 0-2.7.8-3.4 2.1-1.5 2.5-.4 6.3 1 8.3.7 1 1.5 2.1 2.6 2 1-.1 1.4-.7 2.6-.7s1.6.7 2.7.6c1.1 0 1.8-1 2.5-2 .8-1.1 1.1-2.2 1.1-2.3-.1 0-2.2-.8-2.2-3.4zM14.6 5.4c.6-.7 1-1.7.9-2.7-.9.1-1.9.6-2.5 1.3-.5.6-1 1.6-.9 2.5 1 .1 1.9-.4 2.5-1.1z" fill="currentColor"/></svg>
-          <div><span data-t="soonOn"></span><b>App Store</b></div>
-        </div>
-        <div class="store">
-          <span class="soon" data-t="soon"></span>
-          <svg width="19" height="19" viewBox="0 0 24 24"><path d="M4 3l16 9-16 9 3-9-3-9z" fill="currentColor"/></svg>
-          <div><span data-t="soonOn"></span><b>Google Play</b></div>
-        </div>
-      </div>
+      <div class="qr"><img src="img/qr.svg" alt="QR" width="164" height="164"><span data-i="qr">Наведите камеру телефона, чтобы открыть сайт</span></div>
     </div>
   </div>
 </section>
+</main>
 
 <footer>
-  <div class="wrap foot">
-    <span data-t="foot"></span>
-    <span style="display:flex;gap:18px;flex-wrap:wrap">
-      <a href="legal.html" data-t="legal"></a>
-      <a href="delete-account.html" data-t="deleteAccountLink"></a>
-      <a href="mailto:emhsh1993@gmail.com">emhsh1993@gmail.com</a>
-    </span>
+  <div class="wrap">
+    <div class="f-row">
+      <a class="brand" href="#top"><img src="img/logo.png" alt="" width="36" height="36"><span>TASK BOR</span></a>
+      <nav class="f-links">
+        <a href="legal.html" data-i="fLegal">Условия и конфиденциальность</a>
+        <a href="delete-account.html" data-i="fDel">Удаление аккаунта</a>
+        <a href="https://t.me/taskborbot" target="_blank" rel="noopener">Telegram</a>
+        <a href="mailto:emhsh1993@gmail.com">emhsh1993@gmail.com</a>
+      </nav>
+    </div>
+    <p class="copy">© <span id="yr">2026</span> TASK BOR · <span data-i="fCity">Ташкент, Узбекистан</span></p>
   </div>
 </footer>
 
 <script>
-const T={
-RU:{
- legal:'Условия и конфиденциальность',
- deleteAccountLink:'Удалить аккаунт',
- reelK:'Как это выглядит',
- reelH:'30 секунд — и всё понятно',
- reelP:'Короткий ролик о том, как заказ проходит путь от заказчика до исполнителя.',
- reelNotes:['Задача публикуется за пару шагов','Исполнители рядом видят её сразу','Первый откликнувшийся берёт заказ'],
- eyebrow:'Ташкент · бытовые услуги',
- h1:['Задача есть — ','исполнитель найдётся'],
- lede:'TASK BOR соединяет заказчиков и исполнителей напрямую: без посредников, без комиссии платформы и без десятка звонков знакомым.',
- roleC:'Я заказчик', roleE:'Я исполнитель',
- soon:'Скоро', soonOn:'Скоро в',
- qr:'Наведите камеру, чтобы открыть страницу на телефоне',
- panel:{customer:['Исполнители рядом','Юнусабад · радиус 3 км','5 онлайн'],
-        executor:['Новый заказ рядом','Уборка квартиры · 1,2 км','180 000']},
- catsK:'Категории', catsH:'Начинаем с двух — этого достаточно',
- catsP:'На старте в приложении две категории. Вместе они закрывают большинство бытовых задач по дому.',
- cat1H:'Уборка', cat1P:'Квартиры, дома и офисы — от разовой уборки до регулярной, по вашему графику.',
- cat2H:'Любой заказ', cat2P:'Всё остальное: мелкий ремонт, сборка мебели, электрика, сантехника, переезд, помощь по дому.',
- howK:'Как это работает', howH:'Один аккаунт — две роли',
- howP:'Переключайтесь между ролями в любой момент, без повторной регистрации.',
- steps:{customer:[['Опишите задачу','Категория, адрес на карте, фото и пожелания — за пару шагов.'],
-                  ['Выберите исполнителя','На карте, в списке рядом — или отправьте заказ всем свободным сразу.'],
-                  ['Договоритесь о цене','Почасово по ставке мастера или назовите свою сумму.'],
-                  ['Оцените работу','После выполнения оставьте отзыв и рейтинг.']],
-        executor:[['Заполните анкету','Фото, услуги, район работы и ваши расценки.'],
-                  ['Включите приём заказов','Настройте зону, радиус и категории — заказы найдут вас сами.'],
-                  ['Берите то, что подходит','Цена и время видны заранее, до подтверждения.'],
-                  ['Получайте оплату','Напрямую от клиента, без комиссии платформы.']]},
- whyK:'Почему TASK BOR', whyH:'Меньше суеты — больше дела',
- perks:['Не искать мастера через знакомых','Не тратить время на десятки звонков','Реальные исполнители рядом с вами','Оплата напрямую, без комиссии'],
- faqK:'Вопросы', faqH:'Коротко о главном',
- faq:[['Когда выйдет приложение?','Готовим публикацию в App Store и Google Play. Точная дата появится на этой странице, как только будет известна.'],
-      ['Берёт ли платформа комиссию?','Нет. Заказчик и исполнитель рассчитываются напрямую — наличными или переводом. Платформа в расчётах не участвует.'],
-      ['Где работает сервис?','На старте — Ташкент. Дальше будем смотреть по спросу.'],
-      ['Можно быть и заказчиком, и исполнителем?','Да. Это один аккаунт с двумя ролями, переключение — в один тап.']],
- finH:'Скоро в вашем телефоне', finP:'Приложение готовится к публикации. Загляните сюда чуть позже — или сохраните страницу по QR-коду выше.',
- foot:'TASK BOR · Ташкент, Узбекистан'
+/* Store links: paste the real URL when the app is live, e.g.
+   ios:'https://apps.apple.com/app/idXXXXXXXXX', android:'https://play.google.com/store/apps/details?id=uz.taskbor.app' */
+var STORES={ios:'',android:''};
+
+var T={
+ru:{
+ title:'TASK BOR — бытовые услуги в Ташкенте: мастер рядом за минуты',
+ desc:'TASK BOR — приложение бытовых услуг в Ташкенте. Уборка, ремонт, муж на час, переезд. Мастера рядом, чат и голосовые, оплата напрямую без комиссии.',
+ navServices:'Услуги',navHow:'Как это работает',navMasters:'Мастерам',navFaq:'Вопросы',navCta:'Скачать',
+ heroKicker:'Ташкент · бытовые услуги',h1a:'Задача есть —',h1b:'мастер найдётся',
+ heroLead:'Уборка, ремонт, муж на час, переезд и любая помощь по дому. Опишите задачу — мастера рядом откликнутся за минуты. Оплата напрямую, без комиссии платформы.',
+ chip1:'0% комиссии',chip2:'Мастера рядом',
+ fl1a:'Мастер в пути',fl1b:'будет через 20 минут',fl2b:'87 выполненных заказов',fl3a:'Новый заказ рядом',fl3b:'Муж на час · 1,2 км',
+ st1:'комиссия платформы',st2:'категорий услуг',st3:'аккаунт — две роли',st4:'языка интерфейса',
+ soon:'Скоро',on:'Скачать в',onSoon:'Скоро в',
+ catK:'Услуги',catH:'Всё для дома — в одном приложении',catP:'Выберите категорию или опишите задачу своими словами — подходящие мастера увидят её сразу.',
+ c1h:'Уборка',c1p:'Квартиры, дома и офисы — разово или регулярно.',
+ c2h:'Муж на час',c2p:'Полки, люстры, карнизы, розетки и мелкий ремонт.',
+ c3h:'Ремонт',c3p:'Сантехника, электрика, отделка, бытовая техника.',
+ c4h:'Перенос вещей',c4p:'Переезд, грузчики, подъём мебели на этаж.',
+ c5h:'Сад и двор',c5p:'Уход за садом, покос, уборка двора и участка.',
+ c6h:'Любая работа',c6p:'Не нашли категорию? Опишите задачу — мастер найдётся.',
+ howK:'Как это работает',howH:'Три шага — и задача решена',roleC:'Заказчику',roleM:'Мастеру',
+ stepsC:[['Опишите задачу','Категория, адрес, время и бюджет. Добавьте фото или голосовое — так мастеру проще понять задачу.'],
+         ['Выберите мастера','Сами — из тех, кто сейчас онлайн рядом, по рейтингу и отзывам. Или отправьте заказ всем: первый свободный примет.'],
+         ['Следите и оцените','Статус меняется в реальном времени, детали — в чате. После работы оставьте отзыв.']],
+ stepsM:[['Включите роль мастера','В профиле выберите «Исполнитель», отметьте услуги, районы и ставку за час.'],
+         ['Получайте заказы','Личные заказы — во вкладке «Мне», общие рядом — на «Доске». Уведомления приходят и в Telegram.'],
+         ['Работайте и растите','Клиент платит вам напрямую, без комиссии. Хорошие отзывы приносят новых клиентов.']],
+ featK:'Возможности',featH:'Всё под рукой — от заказа до отзыва',
+ f1h:'Чат с мастером',f1p:'Текст, голосовые сообщения и реакции. Карточка заказа закреплена сверху — всё обсуждение в одном месте.',
+ f2h:'Статус в реальном времени',f2p:'Видно, когда мастер принял заказ, выехал и начал работу.',
+ fs1:'Создан',fs2:'Принят',fs3:'В пути',fs4:'В работе',fs5:'Завершён',
+ f3h:'Честные отзывы',f3p:'Оставить отзыв можно только после выполненного заказа — рейтингу можно доверять.',
+ f4h:'Мастера рядом',f4p:'Выбирайте сами из тех, кто онлайн в вашем районе, или отправьте заказ всем сразу.',
+ f5h:'Вход по номеру',f5p:'Код из SMS — и вы внутри. Никаких паролей и долгих анкет.',
+ mK:'Мастерам',mH:'Заказы сами находят вас',mP:'Работайте, когда удобно, и получайте всю сумму от клиента — платформа не берёт комиссию.',
+ m1h:'«Мне» и «Доска»',m1p:'Личные заказы от клиентов и общие задачи рядом с вами.',
+ m2h:'Уведомления в Telegram',m2p:'Узнавайте о новых заказах сразу, даже с закрытым приложением.',
+ m3h:'Онлайн, когда хотите',m3p:'Один переключатель — и вы видны клиентам или на отдыхе.',
+ m4h:'Своя зона и ставка',m4p:'Районы, радиус, услуги и цена за час — настраиваете сами.',
+ mCta:'Стать мастером',
+ faqK:'Вопросы',faqH:'Коротко о главном',faqP:'Не нашли ответ? Напишите нам — ответим в течение дня.',faqBtn:'Написать в поддержку',
+ faq:[['Когда приложение появится в App Store и Google Play?','Приложение проходит финальную проверку в магазинах. Как только оно станет доступно, кнопки на этой странице заработают.'],
+      ['Сколько стоит пользоваться TASK BOR?','Приложение бесплатное. Платформа не берёт комиссию: заказчик и мастер рассчитываются напрямую — наличными или переводом.'],
+      ['Как формируется цена?','Почасово по ставке мастера или фиксированной суммой по договорённости. Сумму вы видите заранее, до подтверждения заказа.'],
+      ['Где работает сервис?','Сейчас — в Ташкенте. Дальше — другие города Узбекистана и Центральной Азии.'],
+      ['Как стать мастером?','Войдите по номеру телефона, в профиле выберите роль «Исполнитель», отметьте услуги, районы и ставку. Переключаться между ролями можно в любой момент.'],
+      ['Как удалить аккаунт и данные?','В приложении: Профиль → Удалить аккаунт. Или по инструкции на странице <a href="delete-account.html">«Удаление аккаунта»</a>.']],
+ ctaH:'Задача есть? Скачайте TASK BOR',ctaP:'Бесплатно для заказчиков и мастеров. Регистрация по номеру телефона — меньше минуты.',
+ qr:'Наведите камеру телефона, чтобы открыть сайт',
+ fLegal:'Условия и конфиденциальность',fDel:'Удаление аккаунта',fCity:'Ташкент, Узбекистан'
 },
-UZ:{
- legal:'Shartlar va maxfiylik',
- deleteAccountLink:'Akkauntni o\u02bbchirish',
- reelK:'Bu qanday koʻrinadi',
- reelH:'30 soniya — va hammasi tushunarli',
- reelP:'Buyurtma buyurtmachidan ijrochigacha qanday yoʻl bosishi haqida qisqa rolik.',
- reelNotes:['Vazifa bir necha qadamda eʼlon qilinadi','Yaqin atrofdagi ijrochilar uni darhol koʻradi','Birinchi javob bergan buyurtmani oladi'],
- eyebrow:'Toshkent · maishiy xizmatlar',
- h1:['Vazifa bor — ','ijrochi topiladi'],
- lede:'TASK BOR buyurtmachi va ijrochini bevosita bogʻlaydi: vositachilarsiz, platforma komissiyasisiz va oʻnlab qoʻngʻiroqlarsiz.',
- roleC:'Men buyurtmachiman', roleE:'Men ijrochiman',
- soon:'Tez orada', soonOn:'Tez orada',
- qr:'Sahifani telefonda ochish uchun kamerani tuting',
- panel:{customer:['Yaqin atrofdagi ijrochilar','Yunusobod · radius 3 km','5 onlayn'],
-        executor:['Yaqinda yangi buyurtma','Kvartira tozalash · 1,2 km','180 000']},
- catsK:'Kategoriyalar', catsH:'Ikkitadan boshlaymiz — shu yetarli',
- catsP:'Ilovada boshida ikkita kategoriya bor. Ular birgalikda uydagi koʻpchilik vazifalarni qamrab oladi.',
- cat1H:'Tozalash', cat1P:'Kvartira, uy va ofislar — bir martalikdan muntazamgacha, sizning jadvalingiz boʻyicha.',
- cat2H:'Har qanday buyurtma', cat2P:'Qolgan hammasi: mayda taʼmir, mebel yigʻish, elektrika, santexnika, koʻchish, uy yumushlari.',
- howK:'Bu qanday ishlaydi', howH:'Bitta akkaunt — ikkita rol',
- howP:'Rollarni istalgan vaqtda, qayta roʻyxatdan oʻtmasdan almashtiring.',
- steps:{customer:[['Vazifani tasvirlang','Kategoriya, xaritada manzil, foto va istaklar — bir necha qadamda.'],
-                  ['Ijrochini tanlang','Xaritada, yaqin roʻyxatdan — yoki buyurtmani hammaga birdan yuboring.'],
-                  ['Narxni kelishing','Usta stavkasi boʻyicha soatbay yoki oʻz summangizni ayting.'],
-                  ['Ishga baho bering','Bajarilgach, fikr va reyting qoldiring.']],
-        executor:[['Anketani toʻldiring','Foto, xizmatlar, ish hududi va narxlaringiz.'],
-                  ['Buyurtma qabulini yoqing','Hudud, radius va kategoriyalarni sozlang — buyurtmalar oʻzi topadi.'],
-                  ['Mos kelganini oling','Narx va vaqt tasdiqlashdan oldin koʻrinadi.'],
-                  ['Toʻlovni oling','Mijozdan toʻgʻridan-toʻgʻri, platforma komissiyasisiz.']]},
- whyK:'Nima uchun TASK BOR', whyH:'Ovora kam — ish koʻp',
- perks:['Ustani tanish orqali izlash shart emas','Oʻnlab qoʻngʻiroqqa vaqt ketmaydi','Yaqin atrofdagi haqiqiy ijrochilar','Toʻgʻridan-toʻgʻri toʻlov, komissiyasiz'],
- faqK:'Savollar', faqH:'Qisqacha asosiy narsalar',
- faq:[['Ilova qachon chiqadi?','App Store va Google Play’da eʼlon qilishga tayyorlanmoqdamiz. Aniq sana maʼlum boʻlishi bilan shu sahifada paydo boʻladi.'],
-      ['Platforma komissiya oladimi?','Yoʻq. Buyurtmachi va ijrochi bevosita hisob-kitob qiladi — naqd yoki oʻtkazma orqali. Platforma bunda ishtirok etmaydi.'],
-      ['Xizmat qayerda ishlaydi?','Boshida — Toshkent. Keyingisi talabga qarab.'],
-      ['Ham buyurtmachi, ham ijrochi boʻlsa boʻladimi?','Ha. Bu ikkita rolli bitta akkaunt, almashtirish — bir tegishda.']],
- finH:'Tez orada telefoningizda', finP:'Ilova eʼlon qilinishga tayyorlanmoqda. Birozdan keyin qarab turing — yoki yuqoridagi QR orqali sahifani saqlang.',
- foot:'TASK BOR · Toshkent, Oʻzbekiston'
+uz:{
+ title:'TASK BOR — Toshkentda maishiy xizmatlar: yaqin atrofdagi usta bir necha daqiqada',
+ desc:'TASK BOR — Toshkentdagi maishiy xizmatlar ilovasi. Tozalash, taʼmir, bir soatlik usta, koʻchish. Yaqin ustalar, chat va ovozli xabarlar, komissiyasiz toʻgʻridan-toʻgʻri toʻlov.',
+ navServices:'Xizmatlar',navHow:'Qanday ishlaydi',navMasters:'Ustalarga',navFaq:'Savollar',navCta:'Yuklab olish',
+ heroKicker:'Toshkent · maishiy xizmatlar',h1a:'Vazifa bor —',h1b:'usta topiladi',
+ heroLead:'Tozalash, taʼmir, bir soatlik usta, koʻchish va uydagi har qanday yordam. Vazifani yozing — yaqin atrofdagi ustalar bir necha daqiqada javob beradi. Toʻlov toʻgʻridan-toʻgʻri, platforma komissiyasisiz.',
+ chip1:'0% komissiya',chip2:'Ustalar yaqinda',
+ fl1a:'Usta yoʻlda',fl1b:'20 daqiqada yetib keladi',fl2b:'87 ta bajarilgan buyurtma',fl3a:'Yaqinda yangi buyurtma',fl3b:'Bir soatlik usta · 1,2 km',
+ st1:'platforma komissiyasi',st2:'xizmat turi',st3:'akkaunt — ikki rol',st4:'interfeys tili',
+ soon:'Tez orada',on:'Yuklab oling',onSoon:'Tez orada',
+ catK:'Xizmatlar',catH:'Uy uchun hammasi — bitta ilovada',catP:'Kategoriyani tanlang yoki vazifani oʻz soʻzlaringiz bilan yozing — mos ustalar uni darhol koʻradi.',
+ c1h:'Tozalash',c1p:'Kvartira, uy va ofislar — bir martalik yoki muntazam.',
+ c2h:'Bir soatlik usta',c2p:'Javon, qandil, parda ilgichi, rozetka va mayda taʼmir.',
+ c3h:'Taʼmir',c3p:'Santexnika, elektrika, pardozlash, maishiy texnika.',
+ c4h:'Yuk tashish',c4p:'Koʻchish, yuk tashuvchilar, mebelni qavatga koʻtarish.',
+ c5h:'Bogʻ va hovli',c5p:'Bogʻni parvarish qilish, oʻt oʻrish, hovlini tozalash.',
+ c6h:'Har qanday ish',c6p:'Kategoriya topilmadimi? Vazifani yozing — usta topiladi.',
+ howK:'Qanday ishlaydi',howH:'Uch qadam — va vazifa hal',roleC:'Buyurtmachiga',roleM:'Ustaga',
+ stepsC:[['Vazifani yozing','Kategoriya, manzil, vaqt va byudjet. Foto yoki ovozli xabar qoʻshing — usta uchun tushunish osonroq.'],
+         ['Ustani tanlang','Oʻzingiz — hozir yaqinda onlayn boʻlganlar orasidan, reyting va sharhlar boʻyicha. Yoki hammaga yuboring: birinchi boʻsh usta qabul qiladi.'],
+         ['Kuzating va baholang','Holat real vaqtda yangilanadi, tafsilotlar — chatda. Ishdan keyin sharh qoldiring.']],
+ stepsM:[['Usta rolini yoqing','Profilda «Ijrochi»ni tanlang, xizmatlar, tumanlar va soatlik narxni belgilang.'],
+         ['Buyurtmalarni oling','Shaxsiy buyurtmalar — «Menga» boʻlimida, yaqindagi umumiylari — «Doska»da. Bildirishnomalar Telegramga ham keladi.'],
+         ['Ishlang va oʻsing','Mijoz sizga toʻgʻridan-toʻgʻri toʻlaydi, komissiyasiz. Yaxshi sharhlar yangi mijozlar olib keladi.']],
+ featK:'Imkoniyatlar',featH:'Buyurtmadan sharhgacha — hammasi qoʻl ostida',
+ f1h:'Usta bilan chat',f1p:'Matn, ovozli xabarlar va reaksiyalar. Buyurtma kartasi tepada mahkamlangan — butun muhokama bir joyda.',
+ f2h:'Real vaqtdagi holat',f2p:'Usta buyurtmani qachon qabul qilgani, yoʻlga chiqqani va ishni boshlagani koʻrinadi.',
+ fs1:'Yaratildi',fs2:'Qabul qilindi',fs3:'Yoʻlda',fs4:'Ishda',fs5:'Yakunlandi',
+ f3h:'Halol sharhlar',f3p:'Sharhni faqat bajarilgan buyurtmadan keyin qoldirish mumkin — reytingga ishonsa boʻladi.',
+ f4h:'Yaqindagi ustalar',f4p:'Tumaningizda onlayn boʻlganlardan oʻzingiz tanlang yoki buyurtmani hammaga birdan yuboring.',
+ f5h:'Raqam orqali kirish',f5p:'SMS-kod — va siz ichkaridasiz. Parollar va uzun anketalarsiz.',
+ mK:'Ustalarga',mH:'Buyurtmalar sizni oʻzi topadi',mP:'Qulay vaqtda ishlang va mijozdan butun summani oling — platforma komissiya olmaydi.',
+ m1h:'«Menga» va «Doska»',m1p:'Mijozlardan shaxsiy buyurtmalar va yaqiningizdagi umumiy vazifalar.',
+ m2h:'Telegramda bildirishnomalar',m2p:'Yangi buyurtmalar haqida darhol biling, ilova yopiq boʻlsa ham.',
+ m3h:'Xohlaganingizda onlayn',m3p:'Bitta tugma — va siz mijozlarga koʻrinasiz yoki dam olasiz.',
+ m4h:'Oʻz hududingiz va narxingiz',m4p:'Tumanlar, radius, xizmatlar va soatlik narx — oʻzingiz sozlaysiz.',
+ mCta:'Usta boʻlish',
+ faqK:'Savollar',faqH:'Qisqacha asosiysi',faqP:'Javob topmadingizmi? Bizga yozing — bir kun ichida javob beramiz.',faqBtn:'Qoʻllab-quvvatlashga yozish',
+ faq:[['Ilova App Store va Google Playʼda qachon chiqadi?','Ilova doʻkonlarda yakuniy tekshiruvdan oʻtmoqda. U mavjud boʻlishi bilan shu sahifadagi tugmalar ishlay boshlaydi.'],
+      ['TASK BORdan foydalanish qancha turadi?','Ilova bepul. Platforma komissiya olmaydi: buyurtmachi va usta toʻgʻridan-toʻgʻri hisob-kitob qiladi — naqd yoki oʻtkazma orqali.'],
+      ['Narx qanday belgilanadi?','Usta stavkasi boʻyicha soatbay yoki kelishilgan qatʼiy summa. Summani buyurtmani tasdiqlashdan oldin koʻrasiz.'],
+      ['Xizmat qayerda ishlaydi?','Hozir — Toshkentda. Keyin — Oʻzbekiston va Markaziy Osiyoning boshqa shaharlari.'],
+      ['Qanday qilib usta boʻlish mumkin?','Telefon raqami orqali kiring, profilda «Ijrochi» rolini tanlang, xizmatlar, tumanlar va narxni belgilang. Rollarni istalgan vaqtda almashtirish mumkin.'],
+      ['Akkaunt va maʼlumotlarni qanday oʻchirish mumkin?','Ilovada: Profil → Akkauntni oʻchirish. Yoki <a href="delete-account.html">«Akkauntni oʻchirish»</a> sahifasidagi yoʻriqnoma boʻyicha.']],
+ ctaH:'Vazifa bormi? TASK BORni yuklab oling',ctaP:'Buyurtmachilar va ustalar uchun bepul. Telefon raqami orqali roʻyxatdan oʻtish — bir daqiqadan kam.',
+ qr:'Saytni ochish uchun telefon kamerasini tuting',
+ fLegal:'Shartlar va maxfiylik',fDel:'Akkauntni oʻchirish',fCity:'Toshkent, Oʻzbekiston'
 },
-EN:{
- legal:'Terms & Privacy',
- deleteAccountLink:'Delete account',
- reelK:'See it in motion',
- reelH:'30 seconds and it clicks',
- reelP:'A short clip showing how an order travels from the customer to the provider.',
- reelNotes:['A task is posted in a couple of steps','Nearby providers see it right away','The first to respond takes the order'],
- eyebrow:'Tashkent · home services',
- h1:['There’s a task — ','there’s someone for it'],
- lede:'TASK BOR connects customers and service providers directly: no middlemen, no platform commission, no dozen phone calls to friends.',
- roleC:'I’m a customer', roleE:'I’m a provider',
- soon:'Soon', soonOn:'Soon on',
- qr:'Point your camera to open this page on your phone',
- panel:{customer:['Providers nearby','Yunusabad · 3 km radius','5 online'],
-        executor:['New order nearby','Apartment cleaning · 1.2 km','180,000']},
- catsK:'Categories', catsH:'Starting with two — and that’s enough',
- catsP:'The app launches with two categories. Together they cover most everyday jobs around the home.',
- cat1H:'Cleaning', cat1P:'Apartments, houses and offices — one-off or on a regular schedule that suits you.',
- cat2H:'Any task', cat2P:'Everything else: small repairs, furniture assembly, electrics, plumbing, moving, help around the house.',
- howK:'How it works', howH:'One account — two roles',
- howP:'Switch between roles anytime, no need to register again.',
- steps:{customer:[['Describe the task','Category, address on the map, a photo and any notes — in a few steps.'],
-                  ['Choose a provider','On the map, from the nearby list — or send the order to everyone available at once.'],
-                  ['Agree on the price','Hourly at the provider’s rate, or name your own amount.'],
-                  ['Rate the work','Once it’s done, leave a review and a rating.']],
-        executor:[['Fill out your profile','Photo, services, work area and your rates.'],
-                  ['Turn on order intake','Set your zone, radius and categories — orders find you.'],
-                  ['Take what fits','Price and time are visible upfront, before you confirm.'],
-                  ['Get paid','Directly by the client, with no platform commission.']]},
- whyK:'Why TASK BOR', whyH:'Less hassle — more done',
- perks:['No hunting for a specialist through friends','No time lost to dozens of calls','Real providers close to you','Direct payment, no commission'],
- faqK:'Questions', faqH:'The short version',
- faq:[['When does the app launch?','We’re preparing to publish on the App Store and Google Play. The exact date will appear here once it’s confirmed.'],
-      ['Does the platform take a commission?','No. Customer and provider settle up directly — cash or transfer. The platform isn’t part of the payment.'],
-      ['Where does it operate?','Tashkent at launch. Where we go next depends on demand.'],
-      ['Can I be both customer and provider?','Yes. It’s one account with two roles, and switching takes a tap.']],
- finH:'Coming soon to your phone', finP:'The app is getting ready for release. Check back a little later — or save this page with the QR code above.',
- foot:'TASK BOR · Tashkent, Uzbekistan'
+en:{
+ title:'TASK BOR — home services in Tashkent: a pro nearby in minutes',
+ desc:'TASK BOR is a home services app in Tashkent. Cleaning, repairs, handyman, moving. Pros nearby, chat with voice messages, direct payment with no commission.',
+ navServices:'Services',navHow:'How it works',navMasters:'For pros',navFaq:'FAQ',navCta:'Get the app',
+ heroKicker:'Tashkent · home services',h1a:'Got a task?',h1b:'We’ll find a pro',
+ heroLead:'Cleaning, repairs, handyman jobs, moving and any help around the house. Describe the task — pros nearby respond within minutes. Pay them directly, with no platform commission.',
+ chip1:'0% commission',chip2:'Pros nearby',
+ fl1a:'Pro on the way',fl1b:'arriving in 20 minutes',fl2b:'87 completed orders',fl3a:'New order nearby',fl3b:'Handyman · 1.2 km',
+ st1:'platform commission',st2:'service categories',st3:'account, two roles',st4:'app languages',
+ soon:'Soon',on:'Download on',onSoon:'Soon on',
+ catK:'Services',catH:'Everything for your home — in one app',catP:'Pick a category or describe the task in your own words — the right pros see it right away.',
+ c1h:'Cleaning',c1p:'Apartments, houses and offices — one-off or regular.',
+ c2h:'Handyman',c2p:'Shelves, chandeliers, curtain rails, sockets and small fixes.',
+ c3h:'Repairs',c3p:'Plumbing, electrics, finishing, home appliances.',
+ c4h:'Moving',c4p:'Relocation, movers, carrying furniture upstairs.',
+ c5h:'Garden & yard',c5p:'Garden care, mowing, yard and plot clean-up.',
+ c6h:'Any task',c6p:'Can’t find a category? Describe the task — a pro will turn up.',
+ howK:'How it works',howH:'Three steps and it’s done',roleC:'For customers',roleM:'For pros',
+ stepsC:[['Describe the task','Category, address, time and budget. Add a photo or a voice note so the pro gets it right.'],
+         ['Choose a pro','Pick one yourself from those online nearby, by rating and reviews. Or send it to everyone — the first free pro takes it.'],
+         ['Track and rate','The status updates in real time, details are in the chat. Leave a review when the job is done.']],
+ stepsM:[['Turn on the pro role','In your profile choose “Provider”, then pick services, districts and your hourly rate.'],
+         ['Get orders','Personal orders land in “Mine”, open jobs nearby on the “Board”. Alerts also come to Telegram.'],
+         ['Work and grow','Clients pay you directly, no commission. Good reviews bring new clients.']],
+ featK:'Features',featH:'Everything at hand — from order to review',
+ f1h:'Chat with your pro',f1p:'Text, voice messages and reactions. The order card stays pinned on top — the whole conversation in one place.',
+ f2h:'Real-time status',f2p:'See when the pro accepts the order, heads out and starts the job.',
+ fs1:'Created',fs2:'Accepted',fs3:'On the way',fs4:'In progress',fs5:'Done',
+ f3h:'Honest reviews',f3p:'Reviews can only be left after a completed order — so ratings can be trusted.',
+ f4h:'Pros nearby',f4p:'Choose from pros online in your area, or send the order to all of them at once.',
+ f5h:'Phone sign-in',f5p:'An SMS code and you’re in. No passwords, no long forms.',
+ mK:'For pros',mH:'Orders come to you',mP:'Work when it suits you and keep the full amount — the platform takes no commission.',
+ m1h:'“Mine” and “Board”',m1p:'Personal orders from clients and open jobs near you.',
+ m2h:'Telegram alerts',m2p:'Hear about new orders instantly, even with the app closed.',
+ m3h:'Online when you want',m3p:'One switch — visible to clients, or off duty.',
+ m4h:'Your area, your rate',m4p:'Districts, radius, services and hourly price — you set them.',
+ mCta:'Become a pro',
+ faqK:'FAQ',faqH:'The short version',faqP:'Didn’t find your answer? Write to us — we reply within a day.',faqBtn:'Contact support',
+ faq:[['When will the app be on the App Store and Google Play?','The app is going through final store review. As soon as it’s available, the buttons on this page will start working.'],
+      ['How much does TASK BOR cost?','The app is free. The platform takes no commission: customers and pros settle directly — in cash or by transfer.'],
+      ['How is the price set?','Hourly at the pro’s rate, or a fixed amount you agree on. You see the price upfront, before confirming.'],
+      ['Where does it work?','Tashkent for now. Next — other cities in Uzbekistan and Central Asia.'],
+      ['How do I become a pro?','Sign in with your phone number, choose the “Provider” role in your profile, then set services, districts and rate. You can switch roles anytime.'],
+      ['How do I delete my account and data?','In the app: Profile → Delete account. Or follow the steps on the <a href="delete-account.html">Delete account</a> page.']],
+ ctaH:'Got a task? Get TASK BOR',ctaP:'Free for customers and pros. Sign up with your phone number in under a minute.',
+ qr:'Point your phone camera to open the site',
+ fLegal:'Terms & Privacy',fDel:'Delete account',fCity:'Tashkent, Uzbekistan'
 }};
 
-let lang='RU', role='customer';
-
-function render(){
-  const t=T[lang];
-  document.documentElement.lang=lang.toLowerCase();
-  document.querySelectorAll('[data-t]').forEach(el=>{
-    const v=t[el.dataset.t];
-    if(typeof v==='string') el.textContent=v;
-  });
-  document.querySelector('h1').innerHTML=t.h1[0]+'<em>'+t.h1[1]+'</em>';
-
-  const p=t.panel[role];
-  document.querySelector('[data-t="panelT"]').textContent=p[0];
-  document.querySelector('[data-t="panelS"]').textContent=p[1];
-  document.querySelector('[data-t="panelP"]').textContent=p[2];
-
-  document.getElementById('steps').innerHTML=t.steps[role]
-    .map((s,i)=>`<div class="step"><div class="n">0${i+1}</div><h4>${s[0]}</h4><p>${s[1]}</p></div>`).join('');
-  document.getElementById('perks').innerHTML=t.perks
-    .map(x=>`<div class="perk"><div class="ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M5 13l4.5 4.5L19 7" stroke="var(--accent)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div><p>${x}</p></div>`).join('');
-  document.getElementById('reelNotes').innerHTML=t.reelNotes
-    .map(x=>`<li><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M5 13l4.5 4.5L19 7" stroke="var(--accent)" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>${x}</li>`).join('');
-  document.getElementById('faq').innerHTML=t.faq
-    .map(f=>`<details><summary>${f[0]}<svg width="17" height="17" viewBox="0 0 24 24" fill="none"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></summary><p>${f[1]}</p></details>`).join('');
+var lang='ru', role='c';
+function store(){try{return window.localStorage}catch(e){return null}}
+function pickLang(){
+  var q=(location.search.match(/[?&]lang=(ru|uz|en)/)||[])[1]; if(q) return q;
+  var s=store(); var v=s&&(function(){try{return s.getItem('taskbor_lang')}catch(e){return null}})(); if(v&&T[v]) return v;
+  var n=(navigator.language||'ru').slice(0,2).toLowerCase(); return n==='uz'?'uz':n==='en'?'en':'ru';
 }
+function shot(name){return 'img/'+(lang==='en'?'en':'ru')+'_'+name+'.webp'}
+function esc(s){return s.replace(/&/g,'&amp;').replace(/</g,'&lt;')}
+function renderStores(){
+  var t=T[lang];
+  var items=[['ios','i-apple','App Store'],['android','i-play','Google Play']];
+  document.querySelectorAll('[data-stores]').forEach(function(box){
+    box.innerHTML=items.map(function(it){
+      var url=STORES[it[0]], live=!!url;
+      var inner='<svg aria-hidden="true"><use href="#'+it[1]+'"/></svg><span><small>'+esc(live?t.on:t.onSoon)+'</small><b>'+it[2]+'</b></span>'+(live?'':'<span class="tag">'+esc(t.soon)+'</span>');
+      return live?'<a class="store" href="'+url+'" target="_blank" rel="noopener">'+inner+'</a>':'<div class="store soon" aria-label="'+it[2]+' — '+esc(t.soon)+'">'+inner+'</div>';
+    }).join('');
+  });
+}
+function renderSteps(){
+  var t=T[lang], list=role==='c'?t.stepsC:t.stepsM;
+  document.getElementById('steps').innerHTML=list.map(function(s,i){
+    return '<li class="step"><div class="n">'+(i+1)+'</div><div><h3>'+esc(s[0])+'</h3><p>'+esc(s[1])+'</p></div></li>';
+  }).join('');
+  var img=document.querySelector('#howPhone img');
+  img.dataset.shot=role==='c'?'cdetail':'tasks'; img.src=shot(img.dataset.shot);
+}
+function renderFaq(){
+  document.getElementById('faqList').innerHTML=T[lang].faq.map(function(f,i){
+    return '<details'+(i===0?' open':'')+'><summary>'+esc(f[0])+'</summary><div class="a">'+f[1]+'</div></details>';
+  }).join('');
+}
+function apply(l){
+  lang=l; var t=T[l];
+  document.documentElement.lang=l;
+  document.title=t.title;
+  document.querySelector('meta[name=description]').setAttribute('content',t.desc);
+  document.querySelectorAll('[data-i]').forEach(function(el){var k=el.getAttribute('data-i'); if(t[k]!=null) el.textContent=t[k];});
+  document.querySelectorAll('img[data-shot]').forEach(function(img){img.src=shot(img.dataset.shot)});
+  document.querySelectorAll('.langs button').forEach(function(b){b.setAttribute('aria-pressed',b.dataset.lang===l)});
+  renderStores(); renderSteps(); renderFaq();
+  var s=store(); try{s&&s.setItem('taskbor_lang',l)}catch(e){}
+}
+document.querySelectorAll('.langs button').forEach(function(b){b.addEventListener('click',function(){apply(b.dataset.lang)})});
+document.querySelectorAll('.seg button').forEach(function(b){b.addEventListener('click',function(){
+  if(role===b.dataset.role) return; role=b.dataset.role;
+  document.querySelectorAll('.seg button').forEach(function(x){x.setAttribute('aria-pressed',x===b)});
+  var els=[document.getElementById('steps'),document.getElementById('howPhone')];
+  els.forEach(function(e){e.classList.add('out')});
+  setTimeout(function(){renderSteps();els.forEach(function(e){e.classList.remove('out')})},200);
+})});
+apply(pickLang());
+document.getElementById('yr').textContent=new Date().getFullYear();
 
-document.querySelectorAll('.langs button').forEach(b=>b.onclick=()=>{
-  lang=b.dataset.lang;
-  document.querySelectorAll('.langs button').forEach(x=>x.classList.toggle('on',x===b));
-  render();
-});
-document.querySelectorAll('.roles button').forEach(b=>b.onclick=()=>{
-  role=b.dataset.r;
-  document.body.dataset.role=role;
-  document.querySelectorAll('.roles button').forEach(x=>x.classList.toggle('on',x===b));
-  render();
-});
+var hdr=document.querySelector('header');
+addEventListener('scroll',function(){hdr.classList.toggle('scrolled',scrollY>8)},{passive:true});
 
-// QR всегда указывает на текущий адрес страницы — работает и на временном домене, и после переезда
-document.getElementById('qr').src='https://api.qrserver.com/v1/create-qr-code/?size=190x190&margin=0&data='+
-  encodeURIComponent(location.href.split('#')[0].split('?')[0]);
-
-// ——— промо-ролик: масштаб под контейнер + зацикленный повтор ———
-(function(){
-  const frame=document.querySelector('.promo-reel .frame');
-  const stage=document.querySelector('.promo-reel .stage');
-  if(!frame||!stage) return;
-  function fit(){ const k=frame.clientWidth/1080; if(k>0) stage.style.transform='scale('+k+')'; }
-  function play(){ stage.classList.remove('play'); void stage.offsetWidth; stage.classList.add('play'); }
-  window.addEventListener('resize',fit); fit(); play();
-  setInterval(play,31000);
-})();
-
-const io=new IntersectionObserver(es=>es.forEach(e=>{
-  if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}
-}),{threshold:.1,rootMargin:'0px 0px -50px 0px'});
-document.querySelectorAll('.rv').forEach(el=>io.observe(el));
-
-render();
 </script>
 </body>
 </html>
