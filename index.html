@@ -216,6 +216,81 @@ footer{padding:48px 0 calc(40px + env(safe-area-inset-bottom))}
 }
 @media (prefers-reduced-motion:reduce){.float,.dot-live{animation:none}html{scroll-behavior:auto}}
 
+/* ===== lobby: 3D revolving door (one door, two roles) ===== */
+:root{--hdr:68px}
+.lobby{position:relative;height:400svh;padding:0}
+.lb-pin{position:sticky;top:var(--hdr);height:calc(100svh - var(--hdr));overflow:hidden;--t:0;background:#E6F1EA}
+.lb-sky{position:absolute;inset:0;pointer-events:none}
+.lb-sky i{position:absolute;inset:0}
+.lb-day{background:radial-gradient(55% 45% at 50% 58%,rgba(198,240,107,.38),transparent 70%),linear-gradient(180deg,#F2F8F4 0%,#E3EFE7 60%,#D6E8DC 100%)}
+.lb-eve{opacity:var(--t);background:radial-gradient(50% 42% at 50% 56%,rgba(245,179,1,.30),transparent 70%),radial-gradient(70% 50% at 50% 0%,rgba(19,112,73,.55),transparent 70%),linear-gradient(180deg,#0D4630 0%,#0A3423 60%,#06231A 100%)}
+.lb-scene{position:relative;height:100%;max-width:var(--max);margin:0 auto;padding:16px var(--side) 18px;display:grid;grid-template-rows:auto minmax(0,1fr) auto;gap:6px;justify-items:center}
+.lb-copy{position:relative;width:100%;max-width:560px;text-align:center;min-height:9.4em;pointer-events:none}
+.lb-say{position:absolute;inset:0 0 auto 0;will-change:opacity,transform}
+.lb-say .k{display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;padding:6px 12px;border-radius:999px}
+.lb-say h2{margin:12px 0 6px;font-size:clamp(28px,7.4vw,56px);line-height:1.04;letter-spacing:-.025em;font-weight:800;text-wrap:balance}
+.lb-say p{margin:0 auto;max-width:34ch;font-size:clamp(15px,3.8vw,18px);text-wrap:balance}
+.lb-say.c .k{background:#fff;color:var(--green);box-shadow:0 2px 10px rgba(13,38,25,.08)}
+.lb-say.c h2{color:var(--ink)} .lb-say.c h2 em{font-style:normal;color:var(--green)}
+.lb-say.c p{color:var(--muted)}
+.lb-say.m .k{background:rgba(245,179,1,.16);color:#FFCE4A}
+.lb-say.m h2{color:#fff} .lb-say.m h2 em{font-style:normal;color:#F5B301}
+.lb-say.m p{color:rgba(255,255,255,.74)}
+.lb-say.x .k{background:rgba(255,255,255,.18);color:#fff;border:1px solid rgba(255,255,255,.35)}
+.lb-say.x h2{color:#fff;text-shadow:0 2px 18px rgba(6,40,26,.35)}
+.lb-say.x p{color:rgba(255,255,255,.86)}
+.lb-stage{position:relative;width:100%;min-height:0;height:100%;touch-action:pan-y;cursor:grab;user-select:none;-webkit-user-select:none}
+.lb-stage.drag{cursor:grabbing}
+#lbGl{position:absolute;inset:0;width:100%;height:100%;display:block;opacity:0;transition:opacity .9s ease}
+.lb-ready #lbGl{opacity:1}
+.lb-fallback{position:absolute;inset:0;display:none;align-items:center;justify-content:center;gap:16px}
+.lb-fallback img{height:min(70%,440px);width:auto;border-radius:28px;border:6px solid #0c1612;box-shadow:0 20px 50px -14px rgba(0,0,0,.45)}
+.lb-no3d .lb-fallback{display:flex} .lb-no3d #lbGl,.lb-no3d .lb-loading,.lb-no3d .lb-chip{display:none}
+.lb-loading{position:absolute;inset:0;display:grid;place-items:center;transition:opacity .6s;pointer-events:none}
+.lb-loading i{width:42px;height:42px;border-radius:50%;border:3px solid rgba(15,91,58,.18);border-top-color:var(--green);animation:lbspin 1s linear infinite}
+.lb-ready .lb-loading{opacity:0}
+@keyframes lbspin{to{transform:rotate(360deg)}}
+.lb-chip{position:absolute;left:0;top:0;z-index:7;display:flex;align-items:center;gap:10px;padding:9px 14px 9px 9px;border-radius:16px;background:rgba(255,255,255,.94);box-shadow:0 14px 34px -12px rgba(6,40,26,.45);opacity:0;pointer-events:none;will-change:transform,opacity;white-space:nowrap}
+.lb-chip .ic{width:34px;height:34px;border-radius:11px;display:grid;place-items:center;background:var(--green);color:#fff;flex:none}
+.lb-chip.m .ic{background:#F5B301;color:#2b1d00}
+.lb-chip svg{width:18px;height:18px}
+.lb-chip b{display:block;font-size:14px;line-height:1.2;color:var(--ink)}
+.lb-chip small{display:block;font-size:12.5px;color:var(--muted);line-height:1.3}
+.lb-hint{position:absolute;z-index:8;bottom:6px;left:50%;transform:translateX(-50%);display:flex;align-items:center;gap:6px;font-size:13px;font-weight:700;color:var(--green-d);background:rgba(255,255,255,.9);padding:7px 13px;border-radius:999px;box-shadow:0 4px 14px rgba(13,38,25,.14);transition:opacity .5s;white-space:nowrap;pointer-events:none}
+.lb-hint svg{width:18px;height:18px;animation:lbnudge 1.8s ease-in-out infinite}
+.lb-hint.gone{opacity:0}
+@keyframes lbnudge{0%,100%{transform:translateX(-3px)}50%{transform:translateX(3px)}}
+.lb-switch{position:relative;display:grid;grid-template-columns:1fr 1fr;width:min(380px,100%);padding:4px;border-radius:999px;background:#fff;box-shadow:0 10px 30px -10px rgba(6,40,26,.35)}
+.lb-thumb{position:absolute;top:4px;bottom:4px;left:4px;width:calc(50% - 4px);border-radius:999px;transform:translateX(calc(var(--t) * 100%));background:linear-gradient(90deg,var(--green),var(--green-2))}
+.lb-pin.is-m .lb-thumb{background:linear-gradient(90deg,#F5B301,#FFCE4A)}
+.lb-switch button{position:relative;z-index:1;height:46px;border-radius:999px;font-weight:800;font-size:15px;color:var(--muted);transition:color .25s;white-space:nowrap;padding:0 8px}
+.lb-switch button[aria-pressed="true"]{color:#fff}
+.lb-pin.is-m .lb-switch button[aria-pressed="true"]{color:#2b1d00}
+.lb-switch button:focus-visible,.langs button:focus-visible{outline:3px solid #F5B301;outline-offset:2px}
+@media (min-width:900px){
+  .lb-day{background:radial-gradient(40% 50% at 72% 55%,rgba(198,240,107,.4),transparent 70%),linear-gradient(180deg,#F2F8F4 0%,#E3EFE7 60%,#D6E8DC 100%)}
+  .lb-eve{background:radial-gradient(38% 46% at 72% 54%,rgba(245,179,1,.30),transparent 70%),radial-gradient(70% 50% at 50% 0%,rgba(19,112,73,.55),transparent 70%),linear-gradient(180deg,#0D4630 0%,#0A3423 60%,#06231A 100%)}
+  .lb-scene{grid-template-columns:5fr 6fr;grid-template-rows:1fr 1fr;column-gap:32px;row-gap:28px;padding:24px var(--side)}
+  .lb-copy{grid-column:1;grid-row:1;text-align:left;min-height:13em;align-self:end}
+  .lb-say{top:auto;bottom:0}
+  .lb-say p{margin:0}
+  .lb-stage{grid-column:2;grid-row:1 / span 2}
+  .lb-switch{grid-column:1;grid-row:2;justify-self:start;align-self:start}
+}
+@media (max-width:720px){.lb-hint{top:4px;bottom:auto}}
+@media (max-width:640px){:root{--hdr:60px}.lb-scene{padding:12px var(--side) 14px}.lb-copy{min-height:11.6em}.lb-say h2{margin:10px 0 6px}}
+@media (prefers-reduced-motion:reduce){
+  .lobby{height:auto}
+  .lb-pin{position:relative;top:0;height:calc(100svh - var(--hdr));min-height:620px}
+  .lb-hint svg{animation:none}
+}
+/* hero below the door: slogan + downloads, centered */
+.hero.solo{padding-top:clamp(48px,7vw,88px)}
+.hero.solo .hero-grid{grid-template-columns:minmax(0,1fr);text-align:center;justify-items:center}
+.hero.solo .lead{margin:0 auto}
+.hero.solo .stores,.hero.solo .chips{justify-content:center}
+.hero.solo .stats{margin-top:clamp(40px,6vw,64px)}
+
 /* responsive */
 @media (max-width:1020px){
   nav.links{display:none}
@@ -315,8 +390,49 @@ footer{padding:48px 0 calc(40px + env(safe-area-inset-bottom))}
 </header>
 
 <main>
+<!-- LOBBY: 3D revolving door -->
+<section class="lobby" id="lobby" aria-label="TASK BOR">
+  <div class="lb-pin" id="lbPin">
+    <div class="lb-sky" aria-hidden="true"><i class="lb-day"></i><i class="lb-eve"></i></div>
+    <div class="lb-scene">
+      <div class="lb-copy" aria-live="polite">
+        <div class="lb-say c" id="lbSayC">
+          <span class="k" data-i="lbKc">Для заказчика</span>
+          <h2><span data-i="lbHc1">Нужна помощь</span> <em data-i="lbHc2">по дому?</em></h2>
+          <p data-i="lbPc">Опишите задачу, и мастера рядом откликнутся за минуты.</p>
+        </div>
+        <div class="lb-say x" id="lbSayX" style="opacity:0">
+          <span class="k" data-i="lbKx">Один аккаунт</span>
+          <h2 data-i="lbHx">Одна дверь. Два входа.</h2>
+          <p data-i="lbPx">Роль переключается в профиле, без второй регистрации.</p>
+        </div>
+        <div class="lb-say m" id="lbSayM" style="opacity:0">
+          <span class="k" data-i="lbKm">Для мастера</span>
+          <h2><span data-i="lbHm1">Умеете работать</span> <em data-i="lbHm2">руками?</em></h2>
+          <p data-i="lbPm">Берите заказы рядом с домом. Без комиссии: всё заработанное ваше.</p>
+        </div>
+      </div>
+
+      <div class="lb-stage" id="lbStage" role="img" aria-label="TASK BOR">
+        <canvas id="lbGl"></canvas>
+        <div class="lb-fallback"><img data-shot="home" src="img/ru_home.webp" alt="" width="600" height="1300" loading="lazy"><img data-shot="tasks" src="img/ru_tasks.webp" alt="" width="600" height="1300" loading="lazy"></div>
+        <div class="lb-loading"><i></i></div>
+        <div class="lb-chip" id="lbChipC"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg></span><div><b data-i="lbC1">Мастер найден за 5 минут</b><small data-i="lbC2">Муж на час · сегодня 18:00</small></div></div>
+        <div class="lb-chip m" id="lbChipM"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></svg></span><div><b data-i="lbM1">Новый заказ рядом</b><small data-i="lbM2">160 000 сум · 1,2 км</small></div></div>
+        <div class="lb-hint" id="lbHint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 8 3 12l4 4M17 8l4 4-4 4M3 12h18"/></svg><span data-i="lbHint">Покрутите дверь</span></div>
+      </div>
+
+      <div class="lb-switch" role="group" aria-label="Role">
+        <span class="lb-thumb"></span>
+        <button id="lbBC" aria-pressed="true" data-i="lbBc">Я заказчик</button>
+        <button id="lbBM" aria-pressed="false" data-i="lbBm">Я мастер</button>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- HERO -->
-<section class="hero">
+<section class="hero solo">
   <div class="wrap hero-grid">
     <div>
       <span class="kicker" data-i="heroKicker">Ташкент · бытовые услуги</span>
@@ -328,13 +444,6 @@ footer{padding:48px 0 calc(40px + env(safe-area-inset-bottom))}
         <span><svg><use href="#i-check"/></svg><b data-i="chip2">Мастера рядом</b></span>
         <span><svg><use href="#i-check"/></svg><b>RU · UZ · EN</b></span>
       </div>
-    </div>
-    <div class="stage" aria-hidden="true">
-      <div class="phone p-back"><img data-shot="chat" src="img/ru_chat.webp" alt="" width="600" height="1300" loading="eager"></div>
-      <div class="phone p-front"><img data-shot="home" src="img/ru_home.webp" alt="" width="600" height="1300" fetchpriority="high"></div>
-      <div class="float f1"><span class="dot-live"></span><div><b data-i="fl1a">Мастер в пути</b><small data-i="fl1b">будет через 20 минут</small></div></div>
-      <div class="float f2"><div class="ic"><svg><use href="#i-star"/></svg></div><div><b><span class="stars">★★★★★</span> 4.9</b><small data-i="fl2b">87 выполненных заказов</small></div></div>
-      <div class="float f3"><div class="ic"><svg><use href="#i-bolt"/></svg></div><div><b data-i="fl3a">Новый заказ рядом</b><small data-i="fl3b">Муж на час · 1,2 км</small></div></div>
     </div>
   </div>
   <div class="wrap">
@@ -496,6 +605,7 @@ var STORES={ios:'',android:''};
 
 var T={
 ru:{
+ lbKc:'Для заказчика',lbHc1:'Нужна помощь',lbHc2:'по дому?',lbPc:'Опишите задачу, и мастера рядом откликнутся за минуты.',lbKm:'Для мастера',lbHm1:'Умеете работать',lbHm2:'руками?',lbPm:'Берите заказы рядом с домом. Без комиссии: всё заработанное ваше.',lbKx:'Один аккаунт',lbHx:'Одна дверь. Два входа.',lbPx:'Роль переключается в профиле, без второй регистрации.',lbBc:'Я заказчик',lbBm:'Я мастер',lbHint:'Покрутите дверь',lbC1:'Мастер найден за 5 минут',lbC2:'Муж на час · сегодня 18:00',lbM1:'Новый заказ рядом',lbM2:'160 000 сум · 1,2 км',
  title:'TASK BOR — бытовые услуги в Ташкенте: мастер рядом за минуты',
  desc:'TASK BOR — приложение бытовых услуг в Ташкенте. Уборка, ремонт, муж на час, переезд. Мастера рядом, чат и голосовые, оплата напрямую без комиссии.',
  navServices:'Услуги',navHow:'Как это работает',navMasters:'Мастерам',navFaq:'Вопросы',navCta:'Скачать',
@@ -544,6 +654,7 @@ ru:{
  fLegal:'Условия и конфиденциальность',fDel:'Удаление аккаунта',fCity:'Ташкент, Узбекистан'
 },
 uz:{
+ lbKc:'Buyurtmachi uchun',lbHc1:'Uyda yordam',lbHc2:'kerakmi?',lbPc:'Vazifani yozing, yaqin atrofdagi ustalar bir necha daqiqada javob beradi.',lbKm:'Usta uchun',lbHm1:'Qoʻlingizdan',lbHm2:'ish keladimi?',lbPm:'Uyingiz yaqinidagi buyurtmalarni oling. Komissiyasiz: ishlab topganingiz oʻzingizniki.',lbKx:'Bitta akkaunt',lbHx:'Bitta eshik. Ikki kirish.',lbPx:'Rol profilda almashtiriladi, qayta roʻyxatdan oʻtmasdan.',lbBc:'Men buyurtmachi',lbBm:'Men usta',lbHint:'Eshikni aylantiring',lbC1:'Usta 5 daqiqada topildi',lbC2:'Bir soatlik usta · bugun 18:00',lbM1:'Yaqinda yangi buyurtma',lbM2:'160 000 soʻm · 1,2 km',
  title:'TASK BOR — Toshkentda maishiy xizmatlar: yaqin atrofdagi usta bir necha daqiqada',
  desc:'TASK BOR — Toshkentdagi maishiy xizmatlar ilovasi. Tozalash, taʼmir, bir soatlik usta, koʻchish. Yaqin ustalar, chat va ovozli xabarlar, komissiyasiz toʻgʻridan-toʻgʻri toʻlov.',
  navServices:'Xizmatlar',navHow:'Qanday ishlaydi',navMasters:'Ustalarga',navFaq:'Savollar',navCta:'Yuklab olish',
@@ -592,6 +703,7 @@ uz:{
  fLegal:'Shartlar va maxfiylik',fDel:'Akkauntni oʻchirish',fCity:'Toshkent, Oʻzbekiston'
 },
 en:{
+ lbKc:'For customers',lbHc1:'Need help',lbHc2:'at home?',lbPc:'Describe the task and pros nearby respond within minutes.',lbKm:'For pros',lbHm1:'Good with',lbHm2:'your hands?',lbPm:'Take jobs near home. No commission: you keep everything you earn.',lbKx:'One account',lbHx:'One door. Two ways in.',lbPx:'Switch roles in your profile, no second sign-up.',lbBc:'I need help',lbBm:'I’m a pro',lbHint:'Spin the door',lbC1:'Pro found in 5 minutes',lbC2:'Handyman · today 6:00 PM',lbM1:'New order nearby',lbM2:'160,000 UZS · 1.2 km',
  title:'TASK BOR — home services in Tashkent: a pro nearby in minutes',
  desc:'TASK BOR is a home services app in Tashkent. Cleaning, repairs, handyman, moving. Pros nearby, chat with voice messages, direct payment with no commission.',
  navServices:'Services',navHow:'How it works',navMasters:'For pros',navFaq:'FAQ',navCta:'Get the app',
@@ -682,6 +794,7 @@ function apply(l){
   document.querySelectorAll('img[data-shot]').forEach(function(img){img.src=shot(img.dataset.shot)});
   document.querySelectorAll('.langs button').forEach(function(b){b.setAttribute('aria-pressed',b.dataset.lang===l)});
   renderStores(); renderSteps(); renderFaq();
+  try{document.dispatchEvent(new CustomEvent('taskbor:lang',{detail:l}))}catch(e){}
   var s=store(); try{s&&s.setItem('taskbor_lang',l)}catch(e){}
 }
 document.querySelectorAll('.langs button').forEach(function(b){b.addEventListener('click',function(){apply(b.dataset.lang)})});
@@ -698,6 +811,454 @@ document.getElementById('yr').textContent=new Date().getFullYear();
 var hdr=document.querySelector('header');
 addEventListener('scroll',function(){hdr.classList.toggle('scrolled',scrollY>8)},{passive:true});
 
+</script>
+<script type="importmap">
+{"imports":{
+  "three":"https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+  "three/addons/":"https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
+}}
+</script>
+<script>
+/* ---------- UI + motion model (works without WebGL) ---------- */
+window.DOOR=(function(){
+  var pin=document.getElementById('lbPin'), lobby=document.getElementById('lobby'), stage=document.getElementById('lbStage'),
+      hint=document.getElementById('lbHint'), sayC=document.getElementById('lbSayC'), sayM=document.getElementById('lbSayM'), sayX=document.getElementById('lbSayX'),
+      bC=document.getElementById('lbBC'), bM=document.getElementById('lbBM');
+  var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function clamp(x,a,b){return Math.max(a,Math.min(b,x))}
+  function sstep(x){x=clamp(x,0,1);return x*x*x*(x*(x*6-15)+10)}
+  function mod(a,n){return ((a%n)+n)%n}
+
+  /* Scroll → target angle with rest stops at 0°, 90° and 180°. */
+  function scrollTarget(){
+    if(reduce) return 0;
+    var r=lobby.getBoundingClientRect(), span=r.height-pin.offsetHeight;
+    var p=clamp(-r.top/Math.max(span,1),0,1);
+    if(p<.10) return 0;
+    if(p<.42) return 90*sstep((p-.10)/.32);
+    if(p<.56) return 90;
+    if(p<.88) return 90+90*sstep((p-.56)/.32);
+    return 180;
+  }
+
+  /* Damped spring: the door has weight, glides and never whips around. */
+  var S={angle:0,vel:0,scrollT:0,offT:0,dragging:false,interacted:false};
+  var K=14, C=2*Math.sqrt(K), VMAX=140;
+  function step(dt){
+    S.scrollT=scrollTarget();
+    var target=S.scrollT+S.offT;
+    if(reduce){ S.angle=target; S.vel=0; return; }
+    var k=S.dragging?70:K, c=2*Math.sqrt(k), vmax=S.dragging?600:VMAX;
+    var acc=k*(target-S.angle)-c*S.vel;
+    S.vel=clamp(S.vel+acc*dt,-vmax,vmax);
+    S.angle+=S.vel*dt;
+  }
+
+  function facing(c,a){return Math.cos((c+a)*Math.PI/180)}
+  function ui(){
+    var a=S.angle, fc=facing(0,a), fm=facing(180,a), side=Math.max(facing(90,a),facing(270,a));
+    var t=clamp((1-fc)/2,0,1);
+    pin.style.setProperty('--t',t.toFixed(3));
+    var lift=function(o){return 'translateY('+((1-o)*12).toFixed(1)+'px)'};
+    var oc=clamp((fc-.6)/.35,0,1), om=clamp((fm-.6)/.35,0,1), ox=clamp((side-.75)/.22,0,1);
+    sayC.style.opacity=oc; sayC.style.transform=lift(oc);
+    sayM.style.opacity=om; sayM.style.transform=lift(om);
+    sayX.style.opacity=ox; sayX.style.transform=lift(ox);
+    if(S.scrollT>2) done();
+    var isM=fm>fc;
+    pin.classList.toggle('is-m',isM);
+    bC.setAttribute('aria-pressed',String(!isM)); bM.setAttribute('aria-pressed',String(isM));
+    return t;
+  }
+  function done(){ if(!S.interacted){ S.interacted=true; hint.classList.add('gone'); } }
+
+  /* drag: 1 screen width ≈ 110°, release projects momentum and snaps to the nearest quarter turn */
+  var lastX=0,lastT=0,pv=0,downX=0;
+  stage.addEventListener('pointerdown',function(e){
+    S.dragging=true; downX=lastX=e.clientX; lastT=performance.now(); pv=0;
+    stage.classList.add('drag'); try{stage.setPointerCapture(e.pointerId)}catch(_){}
+  });
+  stage.addEventListener('pointermove',function(e){
+    if(!S.dragging) return;
+    var now=performance.now(), dx=e.clientX-lastX, dt=Math.max(now-lastT,1)/1000;
+    var degPerPx=110/Math.max(stage.offsetWidth,260);
+    S.offT+=dx*degPerPx; pv=pv*.7+(dx*degPerPx/dt)*.3; lastX=e.clientX; lastT=now;
+    if(Math.abs(e.clientX-downX)>4) done();
+  });
+  function up(){
+    if(!S.dragging) return; S.dragging=false; stage.classList.remove('drag');
+    if(performance.now()-lastT>90) pv=0;
+    var proj=S.scrollT+S.offT+clamp(pv,-400,400)*.18;
+    S.offT=Math.round(proj/90)*90-S.scrollT;
+  }
+  stage.addEventListener('pointerup',up); stage.addEventListener('pointercancel',up);
+
+  function goSide(m){
+    done();
+    var tot=S.scrollT+S.offT, want=m?180:0;
+    var delta=mod(want-tot,360); if(delta>180) delta-=360;
+    if(Math.abs(delta)<1) return;
+    S.offT+=delta;
+  }
+  bC.addEventListener('click',function(){goSide(false)});
+  bM.addEventListener('click',function(){goSide(true)});
+
+  function invite(){
+    if(reduce) return;
+    setTimeout(function(){ if(S.interacted||S.scrollT>1) return; S.offT=24;
+      setTimeout(function(){ if(!S.interacted) S.offT=Math.round((S.scrollT+S.offT)/90)*90-S.scrollT; },1200); },800);
+  }
+  return {S:S,step:step,ui:ui,invite:invite,reduce:reduce,stage:stage};
+})();
+</script>
+<script type="module">
+import * as THREE from 'three';
+import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
+import { RoundedBoxGeometry } from 'three/addons/geometries/RoundedBoxGeometry.js';
+
+const D = window.DOOR, stage = D.stage, canvas = document.getElementById('lbGl');
+const chipC = document.getElementById('lbChipC'), chipM = document.getElementById('lbChipM');
+let renderer;
+try {
+  renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true, powerPreference: 'high-performance' });
+} catch (e) { stage.classList.add('lb-no3d'); throw e; }
+
+renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+renderer.outputColorSpace = THREE.SRGBColorSpace;
+renderer.toneMapping = THREE.ACESFilmicToneMapping;
+renderer.toneMappingExposure = 1.05;
+renderer.shadowMap.enabled = true;
+renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+
+const scene = new THREE.Scene();
+const pmrem = new THREE.PMREMGenerator(renderer);
+scene.environment = pmrem.fromScene(new RoomEnvironment(renderer), 0.04).texture;
+
+const camera = new THREE.PerspectiveCamera(30, 1, 0.1, 60);
+const LOOK = new THREE.Vector3(0, 1.36, 0);
+const deg = THREE.MathUtils.degToRad;
+
+/* ---------- dimensions ---------- */
+const R = 1.0, H = 2.35, WING = 0.98;
+const maxAniso = renderer.capabilities.getMaxAnisotropy();
+
+/* ---------- helpers ---------- */
+const FONT = '"Manrope", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif';
+function canvasTex(w, h, draw) {
+  const c = document.createElement('canvas'); c.width = w; c.height = h;
+  draw(c.getContext('2d'), w, h);
+  const t = new THREE.CanvasTexture(c); t.colorSpace = THREE.SRGBColorSpace; t.anisotropy = maxAniso; return t;
+}
+function rr(ctx, x, y, w, h, r) { ctx.beginPath(); ctx.moveTo(x + r, y); ctx.arcTo(x + w, y, x + w, y + h, r); ctx.arcTo(x + w, y + h, x, y + h, r); ctx.arcTo(x, y + h, x, y, r); ctx.arcTo(x, y, x + w, y, r); ctx.closePath(); }
+function loadImg(src) { return new Promise((res, rej) => { const i = new Image(); i.onload = () => res(i); i.onerror = rej; i.src = src; }); }
+
+/* ---------- materials ---------- */
+const chrome = new THREE.MeshStandardMaterial({ color: 0xeef3f0, metalness: 1, roughness: 0.14, envMapIntensity: 1.25 });
+const brushed = new THREE.MeshStandardMaterial({ color: 0xbcc7c0, metalness: 1, roughness: 0.36 });
+const frameMat = new THREE.MeshStandardMaterial({ color: 0x1c2b24, metalness: 0.75, roughness: 0.3, side: THREE.DoubleSide });
+const canopyMat = new THREE.MeshPhysicalMaterial({ color: 0x0d2a1d, metalness: 0.55, roughness: 0.28, clearcoat: 1, clearcoatRoughness: 0.1 });
+const glassMat = new THREE.MeshPhysicalMaterial({ color: 0xf2fbf5, metalness: 0, roughness: 0.03, transparent: true, opacity: 0.2,
+  envMapIntensity: 2.4, clearcoat: 1, clearcoatRoughness: 0.03, side: THREE.DoubleSide, depthWrite: false });
+const glassEdge = new THREE.MeshPhysicalMaterial({ color: 0x9fd6b6, metalness: 0, roughness: 0.1, transparent: true, opacity: 0.6, depthWrite: false });
+
+/* ---------- floor: shadow catcher + soft contact glow (blends into the page backdrop, no edges) ---------- */
+const floorMat = new THREE.ShadowMaterial({ opacity: 0.18 });
+const floor = new THREE.Mesh(new THREE.CircleGeometry(6, 64), floorMat);
+floor.rotation.x = -Math.PI / 2; floor.receiveShadow = true; scene.add(floor);
+const blobTex = canvasTex(512, 512, (x, w, h) => {
+  const g = x.createRadialGradient(w / 2, h / 2, 0, w / 2, h / 2, w / 2);
+  g.addColorStop(0, 'rgba(6,40,26,.5)'); g.addColorStop(.55, 'rgba(6,40,26,.3)'); g.addColorStop(.8, 'rgba(6,40,26,.08)'); g.addColorStop(1, 'rgba(6,40,26,0)');
+  x.fillStyle = g; x.fillRect(0, 0, w, h);
+});
+const blob = new THREE.Mesh(new THREE.PlaneGeometry(2.75, 2.75), new THREE.MeshBasicMaterial({ map: blobTex, transparent: true, depthWrite: false }));
+blob.rotation.x = -Math.PI / 2; blob.position.y = 0.002; scene.add(blob);
+const glowTex = canvasTex(512, 512, (x, w, h) => {
+  const g = x.createRadialGradient(w / 2, h / 2, 0, w / 2, h / 2, w / 2);
+  g.addColorStop(0, 'rgba(255,255,255,1)'); g.addColorStop(.5, 'rgba(255,255,255,.35)'); g.addColorStop(1, 'rgba(255,255,255,0)');
+  x.fillStyle = g; x.fillRect(0, 0, w, h);
+});
+const glow = new THREE.Mesh(new THREE.PlaneGeometry(2.4, 2.4), new THREE.MeshBasicMaterial({ map: glowTex, transparent: true, depthWrite: false, blending: THREE.AdditiveBlending, color: 0xd9ff9a, opacity: .35 }));
+glow.rotation.x = -Math.PI / 2; glow.position.y = 0.04; scene.add(glow);
+
+const base = new THREE.Mesh(new THREE.CylinderGeometry(R + 0.1, R + 0.13, 0.035, 96), brushed);
+base.position.y = 0.0175; base.receiveShadow = true; scene.add(base);
+const inlay = new THREE.Mesh(new THREE.RingGeometry(R * 0.32, R * 0.345, 96), new THREE.MeshStandardMaterial({ color: 0x0f5b3a, metalness: .4, roughness: .3 }));
+inlay.rotation.x = -Math.PI / 2; inlay.position.y = 0.036; scene.add(inlay);
+
+/* ---------- static drum: curved side glass + posts ---------- */
+for (const [start, len] of [[52, 76], [232, 76]]) {
+  const m = new THREE.Mesh(new THREE.CylinderGeometry(R + 0.06, R + 0.06, H, 64, 1, true, deg(start), deg(len)), glassMat);
+  m.position.y = H / 2 + 0.035; m.renderOrder = 2; scene.add(m);
+  for (const y of [0.07, H + 0.0]) {
+    const band = new THREE.Mesh(new THREE.CylinderGeometry(R + 0.065, R + 0.065, 0.05, 48, 1, true, deg(start), deg(len)), frameMat);
+    band.position.y = y; scene.add(band);
+  }
+}
+for (const a of [52, 128, 232, 308]) {
+  const post = new THREE.Mesh(new THREE.CylinderGeometry(0.03, 0.03, H + 0.02, 20), chrome);
+  post.position.set((R + 0.06) * Math.sin(deg(a)), H / 2 + 0.03, (R + 0.06) * Math.cos(deg(a))); post.castShadow = true; scene.add(post);
+}
+
+/* ---------- canopy ---------- */
+const CAN_H = 0.36, CAN_Y = H + 0.04 + CAN_H / 2;
+const canopy = new THREE.Mesh(new THREE.CylinderGeometry(R + 0.16, R + 0.16, CAN_H, 96), canopyMat);
+canopy.position.y = CAN_Y; canopy.castShadow = true; scene.add(canopy);
+const lip = new THREE.Mesh(new THREE.TorusGeometry(R + 0.16, 0.022, 12, 96), chrome);
+lip.rotation.x = Math.PI / 2; lip.position.y = CAN_Y + CAN_H / 2; scene.add(lip);
+const led = new THREE.Mesh(new THREE.TorusGeometry(R + 0.163, 0.012, 8, 128), new THREE.MeshBasicMaterial({ color: 0xc6f06b, toneMapped: false }));
+led.rotation.x = Math.PI / 2; led.position.y = CAN_Y - CAN_H / 2 + 0.008; scene.add(led);
+const under = new THREE.Mesh(new THREE.CircleGeometry(R + 0.15, 96), new THREE.MeshStandardMaterial({ color: 0x0a1f15, roughness: .6, metalness: .3, side: THREE.DoubleSide }));
+under.rotation.x = Math.PI / 2; under.position.y = CAN_Y - CAN_H / 2; scene.add(under);
+for (let i = 0; i < 6; i++) {
+  const a = i / 6 * Math.PI * 2 + Math.PI / 6, r = 0.62;
+  const dl = new THREE.Mesh(new THREE.CircleGeometry(0.045, 24), new THREE.MeshBasicMaterial({ color: 0xfff6dc, toneMapped: false, side: THREE.DoubleSide }));
+  dl.rotation.x = Math.PI / 2; dl.position.set(r * Math.sin(a), CAN_Y - CAN_H / 2 - 0.003, r * Math.cos(a)); scene.add(dl);
+}
+
+/* ---------- soft light cone from the canopy ---------- */
+const coneMat = new THREE.ShaderMaterial({
+  transparent: true, depthWrite: false, blending: THREE.AdditiveBlending, side: THREE.DoubleSide,
+  uniforms: { uColor: { value: new THREE.Color(0xd9ff9a) }, uStrength: { value: 0.18 } },
+  vertexShader: `varying float vY; varying vec3 vN; varying vec3 vV;
+    void main(){ vY = uv.y; vec4 mv = modelViewMatrix*vec4(position,1.); vN = normalize(normalMatrix*normal); vV = normalize(-mv.xyz); gl_Position = projectionMatrix*mv; }`,
+  fragmentShader: `uniform vec3 uColor; uniform float uStrength; varying float vY; varying vec3 vN; varying vec3 vV;
+    void main(){ float facing = abs(dot(vN,vV)); float fade = smoothstep(0.0,0.9,vY);
+      gl_FragColor = vec4(uColor, pow(facing,1.5)*fade*uStrength); }`
+});
+const cone = new THREE.Mesh(new THREE.CylinderGeometry(0.66, R * 0.97, H, 64, 1, true), coneMat);
+cone.position.y = H / 2 + 0.04; cone.renderOrder = 1; scene.add(cone);
+
+/* ---------- rotor ---------- */
+const rotor = new THREE.Group(); scene.add(rotor);
+const axis = new THREE.Mesh(new THREE.CylinderGeometry(0.055, 0.055, H, 32), chrome);
+axis.position.y = H / 2 + 0.035; axis.castShadow = true; rotor.add(axis);
+const hubTop = new THREE.Mesh(new THREE.CylinderGeometry(0.09, 0.09, 0.05, 32), frameMat); hubTop.position.y = H; rotor.add(hubTop);
+const hubBot = hubTop.clone(); hubBot.position.y = 0.07; rotor.add(hubBot);
+
+function makeWing(angleDeg) {
+  const g = new THREE.Group(); g.rotation.y = deg(angleDeg);
+  const L = WING, zc = 0.05 + L / 2;
+  const glass = new THREE.Mesh(new THREE.BoxGeometry(0.014, H - 0.24, L - 0.06), glassMat);
+  glass.position.set(0, H / 2 + 0.08, zc); glass.renderOrder = 3; g.add(glass);
+  const edge = new THREE.Mesh(new THREE.BoxGeometry(0.016, H - 0.24, 0.006), glassEdge); edge.position.set(0, H / 2 + 0.08, 0.05 + L - 0.03); g.add(edge);
+  const top = new THREE.Mesh(new THREE.BoxGeometry(0.05, 0.06, L), frameMat); top.position.set(0, H, zc); top.castShadow = true; g.add(top);
+  const kick = new THREE.Mesh(new THREE.BoxGeometry(0.05, 0.17, L), brushed); kick.position.set(0, 0.13, zc); kick.castShadow = true; g.add(kick);
+  const stile = new THREE.Mesh(new THREE.BoxGeometry(0.05, H - 0.02, 0.05), frameMat); stile.position.set(0, H / 2 + 0.035, 0.05 + L - 0.02); stile.castShadow = true; g.add(stile);
+  const seal = new THREE.Mesh(new THREE.BoxGeometry(0.03, H - 0.06, 0.02), new THREE.MeshStandardMaterial({ color: 0x111915, roughness: .9 }));
+  seal.position.set(0, H / 2 + 0.035, 0.05 + L + 0.008); g.add(seal);
+  for (const s of [-1, 1]) {
+    const bar = new THREE.Mesh(new THREE.CylinderGeometry(0.016, 0.016, 0.42, 16), chrome);
+    bar.rotation.x = Math.PI / 2; bar.position.set(s * 0.06, 1.08, 0.05 + L * 0.68); bar.castShadow = true; g.add(bar);
+    for (const dz of [-0.17, 0.17]) {
+      const st = new THREE.Mesh(new THREE.CylinderGeometry(0.008, 0.008, 0.06, 8), chrome);
+      st.rotation.z = Math.PI / 2; st.position.set(s * 0.032, 1.08, 0.05 + L * 0.68 + dz); g.add(st);
+    }
+  }
+  rotor.add(g);
+}
+[45, 135, 225, 315].forEach(makeWing);
+
+/* ---------- phones & cards inside the compartments ---------- */
+const PH_W = 0.76, PH_H = PH_W * 1300 / 600, PH_D = 0.055, PH_Y = 1.24, PH_R = 0.64;
+const items = [];
+const _v = new THREE.Vector3();
+function screenTexture(img) {
+  return canvasTex(900, 1950, (x, w, h) => {
+    x.fillStyle = '#0b120f'; x.fillRect(0, 0, w, h);
+    x.save(); rr(x, 0, 0, w, h, 96); x.clip(); x.drawImage(img, 0, 0, w, h);
+    const g = x.createLinearGradient(0, 0, w, h * .55); g.addColorStop(0, 'rgba(255,255,255,.16)'); g.addColorStop(.45, 'rgba(255,255,255,0)'); x.fillStyle = g; x.fillRect(0, 0, w, h);
+    x.restore();
+  });
+}
+function pillTex(text, bg, fg) {
+  return canvasTex(512, 128, (x, w, h) => {
+    x.shadowColor = 'rgba(0,0,0,.25)'; x.shadowBlur = 10; x.shadowOffsetY = 3;
+    rr(x, 10, 10, w - 20, h - 20, (h - 20) / 2); x.fillStyle = bg; x.fill(); x.shadowColor = 'transparent';
+    x.fillStyle = fg; x.textAlign = 'center'; x.textBaseline = 'middle';
+    try { x.letterSpacing = '6px'; } catch (_) {}
+    let fs = 50; do { x.font = `800 ${fs}px ${FONT}`; fs -= 2; } while (x.measureText(text).width > w - 70 && fs > 24);
+    x.fillText(text, w / 2, h / 2 + 3);
+  });
+}
+function cardTex(title, sub, toggle) {
+  return canvasTex(640, 720, (x, w, h) => {
+    x.shadowColor = 'rgba(0,0,0,.25)'; x.shadowBlur = 30; x.shadowOffsetY = 10;
+    rr(x, 30, 30, w - 60, h - 60, 56); x.fillStyle = '#fff'; x.fill(); x.shadowColor = 'transparent';
+    x.fillStyle = '#0D2619'; x.textAlign = 'center'; x.font = `800 64px ${FONT}`; x.fillText(title, w / 2, 190);
+    x.fillStyle = '#5B6F64'; x.font = `600 38px ${FONT}`;
+    sub.forEach((s, i) => x.fillText(s, w / 2, 270 + i * 50));
+    rr(x, w / 2 - 110, 420, 220, 116, 58); x.fillStyle = '#0F5B3A'; x.fill();
+    x.beginPath(); x.arc(w / 2 + 52, 478, 44, 0, Math.PI * 2); x.fillStyle = '#fff'; x.fill();
+    x.fillStyle = '#0F5B3A'; x.font = `800 30px ${FONT}`; x.fillText(toggle, w / 2, 612);
+  });
+}
+function addPhone(compDeg) {
+  const holder = new THREE.Group(); holder.rotation.y = deg(compDeg); rotor.add(holder);
+  const g = new THREE.Group(); g.position.set(0, PH_Y, PH_R); holder.add(g);
+  const body = new THREE.Mesh(new RoundedBoxGeometry(PH_W + 0.035, PH_H + 0.035, PH_D, 6, 0.075),
+    new THREE.MeshPhysicalMaterial({ color: 0x16211c, metalness: .7, roughness: .22, clearcoat: 1, clearcoatRoughness: .06 }));
+  body.castShadow = true; g.add(body);
+  const island = new THREE.Mesh(new THREE.CapsuleGeometry(0.018, 0.07, 4, 12), new THREE.MeshBasicMaterial({ color: 0x050807 }));
+  island.rotation.z = Math.PI / 2; island.position.set(0, PH_H / 2 - 0.045, PH_D / 2 + 0.004); g.add(island);
+  for (const [y, l] of [[0.32, 0.14], [0.12, 0.09]]) { const b = new THREE.Mesh(new THREE.BoxGeometry(0.012, l, 0.02), chrome); b.position.set(-(PH_W / 2 + 0.022), y, 0); g.add(b); }
+  const scr = new THREE.Mesh(new THREE.PlaneGeometry(PH_W, PH_H), new THREE.MeshBasicMaterial({ color: 0xffffff, toneMapped: false, transparent: true }));
+  scr.position.z = PH_D / 2 + 0.002; g.add(scr);
+  const pill = new THREE.Mesh(new THREE.PlaneGeometry(0.5, 0.125), new THREE.MeshBasicMaterial({ transparent: true, toneMapped: false, opacity: 0 }));
+  pill.position.set(0, -PH_H / 2 - 0.02, PH_D / 2 + 0.03); g.add(pill);
+  const anchor = new THREE.Object3D(); anchor.position.set(compDeg === 0 ? 0.62 : -0.62, compDeg === 0 ? 0.62 : 0.15, 0.1); g.add(anchor);
+  const anchorM = new THREE.Object3D(); anchorM.position.set(0, -PH_H / 2 - 0.13, 0.1); g.add(anchorM);
+  const it = { g, comp: compDeg, scr, pill, anchor, anchorM }; items.push(it); return it;
+}
+function addCard(compDeg) {
+  const holder = new THREE.Group(); holder.rotation.y = deg(compDeg); rotor.add(holder);
+  const m = new THREE.Mesh(new THREE.PlaneGeometry(0.62, 0.7), new THREE.MeshBasicMaterial({ transparent: true, toneMapped: false, opacity: 0 }));
+  m.position.set(0, 1.34, 0.62); holder.add(m);
+  const it = { g: m, comp: compDeg, card: true }; items.push(it); return it;
+}
+
+/* ---------- lights ---------- */
+const hemi = new THREE.HemisphereLight(0xffffff, 0x88a596, 0.6); scene.add(hemi);
+const key = new THREE.DirectionalLight(0xffffff, 1.6);
+key.position.set(-0.9, 8, 1.6); key.castShadow = true;
+key.shadow.mapSize.set(1024, 1024);
+Object.assign(key.shadow.camera, { left: -2.2, right: 2.2, top: 2.2, bottom: -2.2, near: 2, far: 14 });
+key.shadow.radius = 10; key.shadow.bias = -0.0006; scene.add(key);
+const rim = new THREE.PointLight(0xc6f06b, 5, 7, 1.6); rim.position.set(0, 2.2, -2.2); scene.add(rim);
+const spot = new THREE.SpotLight(0xfff3d6, 7, 5, deg(38), 0.7, 1.2); spot.position.set(0, CAN_Y - 0.2, 0); spot.target.position.set(0, 0, 0.3);
+scene.add(spot, spot.target);
+
+/* ---------- sizing ---------- */
+function fit() {
+  const w = stage.clientWidth, h = stage.clientHeight; if (!w || !h) return;
+  renderer.setSize(w, h, false);
+  camera.aspect = w / h;
+  const needH = 3.05, needW = 2.6, vfov = deg(camera.fov);
+  const distH = (needH / 2) / Math.tan(vfov / 2);
+  const hfov = 2 * Math.atan(Math.tan(vfov / 2) * camera.aspect);
+  const distW = (needW / 2) / Math.tan(hfov / 2);
+  camera.userData.dist = Math.max(distH, distW) * 1.04;
+  camera.updateProjectionMatrix();
+  kick();
+}
+
+/* ---------- day → evening palette ---------- */
+const DAY = { led: new THREE.Color(0xc6f06b), rim: new THREE.Color(0xc6f06b), cone: new THREE.Color(0xd9ff9a), hemiG: new THREE.Color(0x88a596) };
+const EVE = { led: new THREE.Color(0xffb51e), rim: new THREE.Color(0xffb020), cone: new THREE.Color(0xffd27a), hemiG: new THREE.Color(0x0b2c1f) };
+
+/* ---------- loop (one rAF chain, paused off-screen) ---------- */
+let visible = true, ready = false, rafId = 0, last = 0, mouseX = 0, mouseY = 0, mX = 0, mY = 0;
+function kick() { if (ready && visible && !rafId) rafId = requestAnimationFrame(loop); }
+new IntersectionObserver(es => { visible = es[0].isIntersecting; last = 0; kick(); }).observe(stage);
+window.addEventListener('pointermove', e => { if (e.pointerType === 'mouse') { mouseX = e.clientX / innerWidth - .5; mouseY = e.clientY / innerHeight - .5; } }, { passive: true });
+
+function loop(now) {
+  rafId = 0;
+  if (!visible) return;
+  const dt = last ? Math.min((now - last) / 1000, 1 / 20) : 1 / 60; last = now;
+  D.step(dt);
+  const t = D.ui();
+  const ar = deg(D.S.angle);
+  rotor.rotation.y = ar;
+
+  mX += (mouseX - mX) * Math.min(dt * 3, 1); mY += (mouseY - mY) * Math.min(dt * 3, 1);
+  const mid = Math.abs(Math.sin(ar));
+  const dist = camera.userData.dist * (1 - 0.04 * mid);
+  const orbit = -0.15 * Math.sin(ar) + mX * 0.24;
+  camera.position.set(Math.sin(orbit) * dist, 2.02 - mY * 0.3, Math.cos(orbit) * dist);
+  camera.lookAt(LOOK);
+
+  const time = now / 1000;
+  for (const p of items) {
+    const f = Math.cos(deg(p.comp) + ar);
+    const o = THREE.MathUtils.clamp((f - 0.15) / 0.55, 0, 1);
+    if (p.card) { p.g.material.opacity = o; p.g.visible = o > 0.01; continue; }
+    p.g.visible = f > -0.25;
+    p.scr.material.opacity = 0.3 + 0.7 * o; p.pill.material.opacity = o;
+    // when it faces you, the phone glides forward out of its compartment and grows a little: readable, and it feels alive
+    const pop = THREE.MathUtils.smoothstep(f, 0.82, 1.0);
+    p.g.position.z = PH_R + pop * 0.42;
+    p.g.position.y = PH_Y + pop * 0.04 + Math.sin(time * 1.1 + p.comp) * 0.012;
+    p.g.scale.setScalar(1 + pop * 0.12);
+    p.g.rotation.y = Math.sin(time * 0.6 + p.comp) * 0.035 * (1 - pop * 0.5);
+    p.g.rotation.x = -0.03 * pop;
+    const chip = p.comp === 0 ? chipC : chipM;
+    const co = THREE.MathUtils.clamp((f - 0.9) / 0.09, 0, 1);
+    if (co > 0.001) {
+      (stage.clientWidth < 560 ? p.anchorM : p.anchor).getWorldPosition(_v).project(camera);
+      const W = stage.clientWidth, Hh = stage.clientHeight, cw = chip.offsetWidth, ch = chip.offsetHeight;
+      let x = (_v.x * 0.5 + 0.5) * W - cw / 2, y = (-_v.y * 0.5 + 0.5) * Hh - ch / 2;
+      x = Math.max(4, Math.min(W - cw - 4, x)); y = Math.max(4, Math.min(Hh - ch - 4, y));
+      chip.style.transform = `translate(${x.toFixed(1)}px,${(y + (1 - co) * 10).toFixed(1)}px)`;
+    }
+    chip.style.opacity = co.toFixed(3);
+  }
+
+  floorMat.opacity = 0.18 + 0.14 * t;
+  glow.material.color.copy(DAY.cone).lerp(EVE.cone, t); glow.material.opacity = 0.3 + 0.25 * t;
+  led.material.color.copy(DAY.led).lerp(EVE.led, t);
+  rim.color.copy(DAY.rim).lerp(EVE.rim, t);
+  coneMat.uniforms.uColor.value.copy(DAY.cone).lerp(EVE.cone, t);
+  coneMat.uniforms.uStrength.value = 0.15 + 0.12 * t;
+  hemi.groundColor.copy(DAY.hemiG).lerp(EVE.hemiG, t);
+  hemi.intensity = 0.6 - 0.25 * t; key.intensity = 1.6 - 0.6 * t; spot.intensity = 7 + 5 * t;
+
+  renderer.render(scene, camera);
+  kick();
+}
+
+/* ---------- language: 3D labels and app screens follow the site language ---------- */
+const T3 = {
+  ru: { c: 'ЗАКАЗЧИК', m: 'МАСТЕР', k1: ['Одна дверь', ['Два входа:', 'заказать или заработать']], k2: ['Один аккаунт', ['Роль переключается', 'в профиле']], tg: 'ЗАКАЗЧИК  ⇄  МАСТЕР' },
+  uz: { c: 'BUYURTMACHI', m: 'USTA', k1: ['Bitta eshik', ['Ikki kirish:', 'buyurtma yoki daromad']], k2: ['Bitta akkaunt', ['Rol profilda', 'almashtiriladi']], tg: 'BUYURTMACHI  ⇄  USTA' },
+  en: { c: 'CUSTOMER', m: 'PRO', k1: ['One door', ['Two ways in:', 'order or earn']], k2: ['One account', ['Switch roles', 'in your profile']], tg: 'CUSTOMER  ⇄  PRO' }
+};
+const P3 = {};
+let curLang = null;
+function swapMap(mat, tex) { const old = mat.map; mat.map = tex; mat.needsUpdate = true; if (old) old.dispose(); }
+async function setLang(l) {
+  if (!T3[l]) l = 'ru';
+  if (l === curLang) return; curLang = l;
+  const pre = l === 'en' ? 'en' : 'ru';
+  const [home, tasks] = await Promise.all([loadImg(`img/${pre}_home.webp`), loadImg(`img/${pre}_tasks.webp`)]);
+  if (curLang !== l) return;
+  const t = T3[l];
+  swapMap(P3.c.scr.material, screenTexture(home));
+  swapMap(P3.m.scr.material, screenTexture(tasks));
+  swapMap(P3.c.pill.material, pillTex(t.c, '#0F5B3A', '#ffffff'));
+  swapMap(P3.m.pill.material, pillTex(t.m, '#F5B301', '#2b1d00'));
+  swapMap(P3.k1.g.material, cardTex(t.k1[0], t.k1[1], t.tg));
+  swapMap(P3.k2.g.material, cardTex(t.k2[0], t.k2[1], t.tg));
+  kick();
+}
+
+/* ---------- assets, then start ---------- */
+(async () => {
+  try { await Promise.race([document.fonts.ready, new Promise(r => setTimeout(r, 1500))]); } catch (_) {}
+  const logo = await loadImg('img/logo.png');
+  P3.c = addPhone(0); P3.m = addPhone(180); P3.k1 = addCard(90); P3.k2 = addCard(270);
+  await setLang(document.documentElement.lang);
+  document.addEventListener('taskbor:lang', e => { setLang(e.detail).catch(() => {}); });
+  // sign around the canopy, front and back (u=0 sits at the right side, so centers land at back and front)
+  const signTex = canvasTex(4096, 256, (x, w, h) => {
+    for (const cx of [w * 0.25, w * 0.75]) {
+      x.font = `800 104px ${FONT}`; x.textBaseline = 'middle'; x.fillStyle = '#ffffff';
+      try { x.letterSpacing = '14px'; } catch (_) {}
+      const tw = x.measureText('TASK BOR').width, lg = 128, gap = 36, total = lg + gap + tw;
+      x.drawImage(logo, cx - total / 2, h / 2 - lg / 2, lg, lg);
+      x.textAlign = 'left'; x.fillText('TASK BOR', cx - total / 2 + lg + gap, h / 2 + 6);
+    }
+  });
+  const sign = new THREE.Mesh(new THREE.CylinderGeometry(R + 0.163, R + 0.163, CAN_H * 0.62, 128, 1, true, Math.PI / 2, Math.PI * 2),
+    new THREE.MeshBasicMaterial({ map: signTex, transparent: true, toneMapped: false }));
+  sign.position.y = CAN_Y; scene.add(sign);
+
+  new ResizeObserver(fit).observe(stage);
+  ready = true; fit();
+  renderer.render(scene, camera);
+  stage.classList.add('lb-ready');
+  kick();
+  D.invite();
+})().catch(err => { console.error(err); stage.classList.add('lb-no3d'); });
 </script>
 </body>
 </html>
