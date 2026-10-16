@@ -164,20 +164,30 @@ a.store:hover{transform:translateY(-2px);box-shadow:0 12px 24px -10px rgba(13,38
 .flow span.on{background:var(--green);color:#fff}
 
 /* masters */
-.masters{background:var(--green-dd);color:#fff;border-radius:40px;margin:0 12px;position:relative;overflow:hidden}
-.masters::before{content:"";position:absolute;right:-200px;top:-200px;width:700px;height:700px;background:radial-gradient(closest-side,rgba(198,240,107,.18),transparent 70%)}
-.masters .kicker{color:var(--lime)}
-.masters .kicker::before{background:var(--lime);box-shadow:0 0 0 4px rgba(198,240,107,.2)}
-.masters .lead{color:rgba(255,255,255,.72)}
+.masters{background:linear-gradient(160deg,#FFF7DD 0%,#FFEDB5 100%);color:var(--ink);border-radius:40px;margin:0 12px;position:relative;overflow:hidden}
+.masters::before{content:"";position:absolute;right:-200px;top:-200px;width:700px;height:700px;background:radial-gradient(closest-side,rgba(245,179,1,.32),transparent 70%)}
+.masters .kicker{color:#C98A00}
+.masters .kicker::before{background:#F5B301;box-shadow:0 0 0 4px rgba(245,179,1,.25)}
+.masters h2{color:#1A1300}
+.masters .lead{color:rgba(26,19,0,.68)}
 .m-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center;position:relative}
 .m-list{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:36px}
-.m-item{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:20px;padding:20px}
-.m-item svg{width:26px;height:26px;color:var(--lime);margin-bottom:12px}
-.m-item b{display:block;font-size:17px;letter-spacing:-.01em}
-.m-item p{color:rgba(255,255,255,.65);font-size:14.5px;margin-top:4px}
+.m-item{background:rgba(255,255,255,.72);border:1px solid rgba(201,138,0,.18);border-radius:20px;padding:20px;box-shadow:0 8px 20px -14px rgba(120,80,0,.35)}
+.m-item svg{width:26px;height:26px;color:#C98A00;margin-bottom:12px}
+.m-item b{display:block;font-size:17px;letter-spacing:-.01em;color:#1A1300}
+.m-item p{color:rgba(26,19,0,.62);font-size:14.5px;margin-top:4px}
 .m-phones{display:flex;justify-content:center;align-items:flex-start;gap:20px;position:relative}
 .m-phones .phone{width:min(250px,40vw)}
 .m-phones .phone:nth-child(2){margin-top:70px}
+.btn-gold{background:#F5B301;color:#1A1300;margin-top:32px;box-shadow:0 10px 24px -10px rgba(201,138,0,.75)}
+.btn-gold:hover{background:#FFC21A}
+/* how it works: executor tab uses the executor gold, like the app */
+.how .seg button[aria-pressed="true"]{transition:background .25s,color .25s,box-shadow .25s}
+.how.is-m .seg button[aria-pressed="true"]{background:#F5B301;color:#1A1300;box-shadow:0 6px 16px -6px rgba(201,138,0,.7)}
+.how .step .n{transition:background .25s,color .25s}
+.how.is-m .step .n{background:#F5B301;color:#1A1300}
+.how.is-m .kicker{color:#C98A00}
+.how.is-m .kicker::before{background:#F5B301;box-shadow:0 0 0 4px #FFF4D1}
 .btn-lime{background:var(--lime);color:var(--green-dd);margin-top:32px}
 .btn-lime:hover{background:#d4f58a}
 
@@ -541,7 +551,7 @@ footer{padding:48px 0 calc(40px + env(safe-area-inset-bottom))}
         <div class="m-item"><svg><use href="#i-power"/></svg><b data-i="m3h">Онлайн, когда хотите</b><p data-i="m3p">Один переключатель — и вы видны клиентам или на отдыхе.</p></div>
         <div class="m-item"><svg><use href="#i-sliders"/></svg><b data-i="m4h">Своя зона и ставка</b><p data-i="m4p">Районы, радиус, услуги и цена за час — настраиваете сами.</p></div>
       </div>
-      <a class="btn btn-lime" href="#download" data-i="mCta">Стать исполнителем</a>
+      <a class="btn btn-gold" href="#download" data-i="mCta">Стать исполнителем</a>
     </div>
     <div class="m-phones rv" aria-hidden="true">
       <div class="phone"><img data-shot="receive" src="img/ru_receive.webp" alt="" loading="lazy" width="600" height="1300"></div>
@@ -795,6 +805,7 @@ function apply(l){
 document.querySelectorAll('.langs button').forEach(function(b){b.addEventListener('click',function(){apply(b.dataset.lang)})});
 document.querySelectorAll('.seg button').forEach(function(b){b.addEventListener('click',function(){
   if(role===b.dataset.role) return; role=b.dataset.role;
+  document.getElementById('how').classList.toggle('is-m',role==='m');
   document.querySelectorAll('.seg button').forEach(function(x){x.setAttribute('aria-pressed',x===b)});
   var els=[document.getElementById('steps'),document.getElementById('howPhone')];
   els.forEach(function(e){e.classList.add('out')});
