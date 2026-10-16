@@ -286,8 +286,9 @@ function setRole(r,anim){
   if(anim&&!reduce){sw.classList.add('out');setTimeout(function(){texts();sw.classList.remove('out')},260)} else texts();
 }
 
+var tok=0;
 function scene(){
-  clearTimers();
+  clearTimers(); var my=++tok;
   var sc=SCENES[step%SCENES.length], code=sc[0];
   setRole(userRole||sc[1],true);
   var dn=DN[code], li=lang==='ru'?3:lang==='uz'?4:5;
@@ -295,7 +296,7 @@ function scene(){
   $('toast').classList.remove('show');
   gs.querySelectorAll('.it,.home,.zg').forEach(function(n){n.style.transition='opacity .3s';n.style.opacity=0});
   later(function(){gs.innerHTML='';zoomTo(code)},320);
-  later(function(){build(code)},reduce?400:2600);
+  later(function(){if(my===tok)build(code)},reduce?400:2600);
 }
 function build(code){
   var t=T[lang], b=box(); ov.setAttribute('viewBox','0 0 '+b.W+' '+b.H);
@@ -372,8 +373,8 @@ document.querySelectorAll('.langs button').forEach(function(b){b.addEventListene
 (function(){var q=(location.search.match(/[?&]lang=(ru|uz|en)/)||[])[1];var s=store(),v=null;try{v=s&&s.getItem('taskbor_lang')}catch(e){}
   var n=(navigator.language||'ru').slice(0,2).toLowerCase(); applyLang(q||(v&&T[v]?v:(n==='uz'?'uz':n==='en'?'en':'ru')));})();
 // pause when tab hidden
-document.addEventListener('visibilitychange',function(){if(document.hidden)clearTimers();else scene()});
-var rz;window.addEventListener('resize',function(){clearTimeout(rz);rz=setTimeout(function(){if(map)map.resize();scene()},250)});
+document.addEventListener('visibilitychange',function(){if(document.hidden){clearTimers();tok++}else scene()});
+var rz,lastW=window.innerWidth;window.addEventListener('resize',function(){if(Math.abs(window.innerWidth-lastW)<2)return;lastW=window.innerWidth;clearTimeout(rz);rz=setTimeout(function(){if(map)map.resize();scene()},250)});
 var sc=document.createElement('script');sc.src='vendor/maplibre/maplibre-gl.js';sc.onload=function(){initMap();scene()};sc.onerror=function(){scene()};
 document.head.appendChild(sc);
 </script>
