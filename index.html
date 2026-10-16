@@ -25,7 +25,6 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="preload" as="image" href="img/ru_home.webp">
 <link rel="stylesheet" href="vendor/maplibre/maplibre-gl.css">
 <link rel="preconnect" href="https://tiles.openfreemap.org" crossorigin>
 <script type="application/ld+json">
@@ -764,7 +763,7 @@ function pickLang(){
   var s=store(); var v=s&&(function(){try{return s.getItem('taskbor_lang')}catch(e){return null}})(); if(v&&T[v]) return v;
   var n=(navigator.language||'ru').slice(0,2).toLowerCase(); return n==='uz'?'uz':n==='en'?'en':'ru';
 }
-function shot(name){return 'img/'+(lang==='en'?'en':'ru')+'_'+name+'.webp'}
+function shot(name){return 'img/'+(lang==='en'||lang==='uz'?lang:'ru')+'_'+name+'.webp'}
 function esc(s){return s.replace(/&/g,'&amp;').replace(/</g,'&lt;')}
 function renderStores(){
   var t=T[lang];

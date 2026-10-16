@@ -169,7 +169,7 @@ let lang='RU', doc='terms';
 
 function render(){
   const t=L[lang];
-  document.documentElement.lang=lang.toLowerCase();
+  document.documentElement.lang=lang.toLowerCase(); document.title=TITLES[lang];
   kicker.textContent=t.kicker; title.textContent=t.title; lede.textContent=t.lede;
   document.getElementById('tab-terms').textContent=t.terms;
   document.getElementById('tab-privacy').textContent=t.privacy;
@@ -177,8 +177,19 @@ function render(){
   document.getElementById('docs').innerHTML='<article>'+DOCS[lang+'|'+doc]+'</article>';
 }
 
+
+/* язык: ?lang=, затем выбор на сайте (taskbor_lang), затем язык браузера */
+const TITLES={"RU": "TASK BOR — условия использования и политика конфиденциальности", "UZ": "TASK BOR — foydalanish shartlari va maxfiylik siyosati", "EN": "TASK BOR — terms of use and privacy policy"};
+function pickLang(){
+  const q=(location.search.match(/[?&]lang=(ru|uz|en)/i)||[])[1]; if(q) return q.toUpperCase();
+  try{const v=localStorage.getItem('taskbor_lang'); if(v&&/^(ru|uz|en)$/.test(v)) return v.toUpperCase();}catch(e){}
+  const n=(navigator.language||'ru').slice(0,2).toLowerCase(); return n==='uz'?'UZ':n==='en'?'EN':'RU';
+}
+function saveLang(){try{localStorage.setItem('taskbor_lang',lang.toLowerCase())}catch(e){}}
+lang=pickLang();
+document.querySelectorAll('.langs button').forEach(x=>x.classList.toggle('on',x.dataset.lang===lang));
 document.querySelectorAll('.langs button').forEach(b=>b.onclick=()=>{
-  lang=b.dataset.lang;
+  lang=b.dataset.lang; saveLang();
   document.querySelectorAll('.langs button').forEach(x=>x.classList.toggle('on',x===b));
   render();
 });
