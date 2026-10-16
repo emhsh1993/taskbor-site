@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>TASK BOR — превью: реальная карта</title>
+<link rel="stylesheet" href="vendor/maplibre/maplibre-gl.css">
+<link rel="icon" type="image/png" href="img/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --green:#0F5B3A; --green-2:#137049; --green-d:#0B3D28; --mint:#E7F2EB; --mint-2:#D4EADB; --lime:#C6F06B;
+  --gold:#F5B301; --gold-d:#C98A00; --gold-soft:#FFF4D1; --gold-ink:#1A1300;
+  --bg:#F5F7F4; --card:#fff; --ink:#0D2619; --muted:#5B6F64; --line:rgba(13,38,25,.09);
+  --side:20px; --max:1180px;
+  --acc:var(--green); --acc-soft:var(--mint); --acc-ink:#fff;
+}
+body.m{--acc:var(--gold); --acc-soft:var(--gold-soft); --acc-ink:var(--gold-ink)}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{font-family:Manrope,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;background:var(--bg);color:var(--ink);font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 var(--side)}
+.note{background:var(--ink);color:#fff;font-size:13px;text-align:center;padding:8px 16px}
+header{position:sticky;top:0;z-index:50;background:rgba(245,247,244,.86);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
+.bar{display:flex;align-items:center;justify-content:space-between;height:64px;gap:12px}
+.brand{display:flex;align-items:center;gap:10px;font-weight:800;font-size:18px;letter-spacing:-.02em}
+.brand img{width:34px;height:34px;border-radius:10px}
+.langs{display:flex;background:#fff;border:1px solid var(--line);border-radius:999px;padding:3px}
+.langs button{min-width:38px;height:32px;padding:0 10px;border-radius:999px;font-size:13px;font-weight:700;color:var(--muted)}
+.langs button[aria-pressed="true"]{background:var(--green);color:#fff}
+
+.mh{padding:clamp(20px,4vw,56px) 0 clamp(40px,6vw,80px);position:relative;overflow:hidden}
+.mh::before{content:"";position:absolute;right:-20%;top:-30%;width:900px;height:900px;background:radial-gradient(closest-side,rgba(198,240,107,.32),transparent 70%);z-index:-1;pointer-events:none}
+.grid{display:grid;grid-template-columns:1fr 1.05fr;gap:clamp(24px,4vw,56px);align-items:center;grid-template-areas:"copy map" "stores map"}
+.copy{grid-area:copy;align-self:end}
+.stores-wrap{grid-area:stores;align-self:start}
+.mapcard{grid-area:map}
+
+.sw{position:relative;display:inline-grid;grid-template-columns:1fr 1fr;background:#fff;border:1px solid var(--line);border-radius:999px;padding:4px;box-shadow:0 6px 18px -10px rgba(13,38,25,.25)}
+.sw button{position:relative;z-index:1;height:42px;padding:0 18px;border-radius:999px;font-weight:800;font-size:15px;color:var(--muted);transition:color .3s;white-space:nowrap}
+.sw button[aria-pressed="true"]{color:var(--acc-ink)}
+.sw .th{position:absolute;top:4px;bottom:4px;left:4px;width:calc(50% - 4px);border-radius:999px;background:var(--acc);transition:transform .45s cubic-bezier(.2,.8,.2,1),background .45s}
+body.m .sw .th{transform:translateX(100%)}
+
+.kicker{display:inline-flex;align-items:center;gap:8px;margin-top:26px;font-size:13px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--green);transition:color .4s}
+body.m .kicker{color:var(--gold-d)}
+.kicker::before{content:"";width:8px;height:8px;border-radius:50%;background:currentColor;box-shadow:0 0 0 4px var(--acc-soft)}
+h1{font-size:clamp(38px,5.6vw,68px);letter-spacing:-.035em;line-height:1.04;font-weight:800;margin:14px 0 16px}
+h1 em{font-style:normal;position:relative;white-space:nowrap;color:var(--green);transition:color .4s}
+body.m h1 em{color:var(--gold-ink)}
+h1 em::after{content:"";position:absolute;left:0;right:0;bottom:.06em;height:.24em;background:var(--lime);z-index:-1;border-radius:4px;transition:background .4s}
+body.m h1 em::after{background:var(--gold)}
+.lead{font-size:clamp(17px,1.6vw,19px);color:var(--muted);max-width:520px}
+.swap{transition:opacity .28s,transform .28s}
+.swap.out{opacity:0;transform:translateY(6px)}
+
+.stores{display:flex;flex-wrap:wrap;gap:12px}
+.store{display:flex;align-items:center;gap:12px;height:58px;padding:0 20px 0 16px;border-radius:16px;background:var(--ink);color:#fff;min-width:190px;position:relative}
+.store svg{width:26px;height:26px;flex:none}
+.store small{display:block;font-size:11px;opacity:.7;line-height:1.1}
+.store b{display:block;font-size:17px;line-height:1.15}
+.store .tag{position:absolute;top:-8px;right:-6px;background:var(--lime);color:var(--ink);font-size:11px;font-weight:800;padding:3px 8px;border-radius:999px}
+
+.mapcard{position:relative;border-radius:28px;background:linear-gradient(160deg,#EEF6F0,#E3EFE7);box-shadow:0 30px 80px -24px rgba(6,40,26,.35),0 12px 30px -12px rgba(6,40,26,.18);overflow:hidden;aspect-ratio:1/1.02;isolation:isolate}
+.mapcard::before{content:"";position:absolute;inset:0;background-image:radial-gradient(rgba(15,91,58,.10) 1px,transparent 1.2px);background-size:16px 16px;z-index:-1}
+#map{position:absolute;inset:0}
+#map .maplibregl-canvas{outline:none}
+#ov{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:2}
+.mapcard .top,.mapcard .toast,.mapcard .attr{z-index:3}
+.lmk{display:flex;align-items:center;gap:5px;font:700 11px Manrope,sans-serif;color:#0B3D28;white-space:nowrap;pointer-events:none}
+.lmk i{width:24px;height:24px;border-radius:50%;background:#fff;border:1.6px solid #0F5B3A;display:grid;place-items:center;box-shadow:0 2px 6px rgba(13,38,25,.18)}
+.lmk i svg{width:16px;height:16px;overflow:visible}
+.lmk span{background:rgba(255,255,255,.88);padding:1px 6px;border-radius:6px}
+.zone{fill:var(--acc);opacity:.10;transition:fill .5s}
+.zone2{fill:none;stroke:var(--acc);stroke-width:1.5;stroke-dasharray:4 5;opacity:.5}
+.top{position:absolute;left:14px;right:14px;top:14px;display:flex;align-items:center;gap:10px;background:rgba(255,255,255,.92);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border-radius:16px;padding:10px 14px;box-shadow:0 6px 18px -10px rgba(13,38,25,.3)}
+.top .dot{width:10px;height:10px;border-radius:50%;background:var(--acc);box-shadow:0 0 0 0 var(--acc);animation:live 1.8s infinite;flex:none}
+@keyframes live{0%{box-shadow:0 0 0 0 rgba(15,91,58,.45)}70%{box-shadow:0 0 0 10px rgba(15,91,58,0)}100%{box-shadow:0 0 0 0 rgba(15,91,58,0)}}
+body.m .top .dot{animation-name:liveg}
+@keyframes liveg{0%{box-shadow:0 0 0 0 rgba(245,179,1,.5)}70%{box-shadow:0 0 0 10px rgba(245,179,1,0)}100%{box-shadow:0 0 0 0 rgba(245,179,1,0)}}
+.top b{font-size:14px;line-height:1.2}
+.top small{display:block;font-size:12px;color:var(--muted);line-height:1.2}
+
+.toast{position:absolute;left:14px;right:14px;bottom:30px;display:flex;align-items:center;gap:12px;background:#fff;border-radius:18px;padding:12px 14px;box-shadow:0 18px 40px -14px rgba(6,40,26,.4);transform:translateY(130%);opacity:0;transition:transform .5s cubic-bezier(.2,.9,.2,1.1),opacity .35s}
+.toast.show{transform:none;opacity:1}
+.toast .ti{width:38px;height:38px;border-radius:12px;background:var(--acc);color:var(--acc-ink);display:grid;place-items:center;flex:none}
+.toast .ti svg{width:20px;height:20px}
+.toast b{display:block;font-size:15px;line-height:1.25}
+.toast small{display:block;font-size:13px;color:var(--muted);line-height:1.3}
+.attr{position:absolute;right:10px;bottom:6px;font-size:9.5px;color:rgba(13,38,25,.55)}
+.attr a{text-decoration:underline}
+
+/* scene items */
+.it{opacity:0;transform:scale(.4);transform-box:fill-box;transform-origin:center;transition:opacity .35s,transform .45s cubic-bezier(.2,.9,.25,1.35)}
+.it.in{opacity:1;transform:none}
+.it.dim{opacity:.35}
+.it.hl{transform:scale(1.18)}
+.av{stroke:#fff;stroke-width:3}
+.avt{font:800 14px Manrope,sans-serif;fill:#fff;text-anchor:middle;dominant-baseline:central}
+.pill{fill:#fff;stroke:var(--line);stroke-width:1}
+.pt{font:700 12px Manrope,sans-serif;fill:var(--ink);dominant-baseline:central}
+.pt .s{fill:#E39A00}
+.ord{fill:var(--gold);stroke:#fff;stroke-width:2.5}
+.ordt{font:800 12px Manrope,sans-serif;fill:var(--gold-ink);dominant-baseline:central}
+.route{fill:none;stroke:var(--acc);stroke-width:3;stroke-linecap:round;stroke-dasharray:6 7}
+.ring{fill:none;stroke:var(--acc);stroke-width:2;transform-box:fill-box;transform-origin:center;animation:ring 2.4s ease-out infinite;opacity:0}
+.ring.r2{animation-delay:.8s}.ring.r3{animation-delay:1.6s}
+@keyframes ring{0%{transform:scale(.3);opacity:.6}100%{transform:scale(3.2);opacity:0}}
+.home{transform-box:fill-box;transform-origin:50% 100%;animation:drop .6s cubic-bezier(.2,.9,.25,1.4) both}
+@keyframes drop{0%{transform:translateY(-40px) scale(.6);opacity:0}100%{transform:none;opacity:1}}
+
+@media (max-width:860px){
+  .grid{grid-template-columns:1fr;grid-template-areas:"copy" "map" "stores";gap:22px}
+  .copy{text-align:left}
+  .mapcard{aspect-ratio:1/1.3}
+  .toast{bottom:24px;padding:10px 12px}.toast b{font-size:14px}.toast small{font-size:12px}
+  .store{flex:1 1 100%;min-width:0}
+  h1{margin:10px 0 10px}
+  .kicker{margin-top:18px}
+}
+@media (prefers-reduced-motion:reduce){.ring,.top .dot{animation:none}.it,.toast,.swap{transition:none}}
+</style>
+</head>
+<body>
+<div class="note" id="note">Превью для согласования · не опубликовано на главной</div>
+<header>
+  <div class="wrap bar">
+    <a class="brand" href="./"><img src="img/logo.png" alt="" width="34" height="34"><span>TASK BOR</span></a>
+    <div class="langs" role="group" aria-label="Language">
+      <button data-lang="ru" aria-pressed="true">RU</button>
+      <button data-lang="uz" aria-pressed="false">UZ</button>
+      <button data-lang="en" aria-pressed="false">EN</button>
+    </div>
+  </div>
+</header>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-apple" viewBox="0 0 24 24"><path fill="currentColor" d="M16.37 12.6c-.02-2.2 1.8-3.26 1.88-3.31-1.03-1.5-2.62-1.7-3.19-1.73-1.36-.14-2.65.8-3.34.8-.69 0-1.75-.78-2.88-.76-1.48.02-2.85.86-3.61 2.19-1.540 2.67-.39 6.62 1.11 8.79.73 1.06 1.6 2.25 2.75 2.2 1.1-.04 1.52-.71 2.85-.71 1.33 0 1.71.71 2.88.69 1.19-.02 1.94-1.08 2.66-2.14.84-1.23 1.19-2.42 1.21-2.48-.03-.01-2.32-.89-2.34-3.53zM14.18 6.13c.61-.74 1.02-1.76.91-2.78-.88.04-1.94.59-2.57 1.32-.56.65-1.06 1.690-.93 2.69.98.08 1.98-.5 2.590-1.23z"/></symbol>
+  <symbol id="i-play" viewBox="0 0 24 24"><path fill="#34A853" d="M3.6 2.3 13.4 12 3.6 21.7c-.36-.2-.6-.6-.6-1.07V3.37c0-.47.24-.87.6-1.07z"/><path fill="#FBBC04" d="m16.8 8.6-3.4 3.4 3.4 3.4 3.9-2.2c.8-.46.8-1.94 0-2.4l-3.9-2.2z"/><path fill="#4285F4" d="M3.6 2.3c.3-.17.68-.18 1.04.03L16.8 8.6 13.4 12 3.6 2.3z"/><path fill="#EA4335" d="M13.4 12l3.4 3.4-12.16 6.27c-.36.21-.74.2-1.04.03L13.4 12z"/></symbol>
+</svg>
+
+<main>
+<section class="mh">
+  <div class="wrap grid">
+    <div class="copy">
+      <div class="sw" role="group" aria-label="Role">
+        <span class="th"></span>
+        <button id="bC" aria-pressed="true"></button>
+        <button id="bM" aria-pressed="false"></button>
+      </div>
+      <div class="swap" id="swap">
+        <span class="kicker" id="k"></span>
+        <h1><span id="h1"></span> <em id="h2"></em></h1>
+        <p class="lead" id="p"></p>
+      </div>
+    </div>
+    <div class="mapcard" id="card">
+      <div id="map"></div>
+      <svg id="ov" aria-hidden="true"><g id="gs"></g></svg>
+      <div class="top"><span class="dot"></span><div><b id="cap"></b><small id="where"></small></div></div>
+      <div class="toast" id="toast"><span class="ti" id="ti"></span><div><b id="tb"></b><small id="ts"></small></div></div>
+      <div class="attr">© <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a> · OpenMapTiles · OpenFreeMap</div>
+    </div>
+    <div class="stores-wrap"><div class="stores" id="stores"></div></div>
+  </div>
+</section>
+</main>
+
+<script>
+var SCN={YUNUSABAD:[69.2870,41.3640],CHILANZAR:[69.2040,41.2760],MIRABAD:[69.2790,41.2965],'MIRZO-ULUGBEK':[69.3350,41.3380],SERGELI:[69.2230,41.2270],ALMAZAR:[69.2150,41.3500],YASHNOBOD:[69.3320,41.2950],SHAYKHANTOKHUR:[69.2400,41.3250],YAKKASARAY:[69.2550,41.2870],UCHTEPA:[69.1700,41.3000]};
+var DN={YUNUSABAD:['Юнусабад','Yunusobod','Yunusabad','в Юнусабаде','Yunusobodda','in Yunusabad'],CHILANZAR:['Чиланзар','Chilonzor','Chilanzar','в Чиланзаре','Chilonzorda','in Chilanzar'],MIRABAD:['Мирабад','Mirobod','Mirabad','в Мирабаде','Mirobodda','in Mirabad'],'MIRZO-ULUGBEK':['Мирзо Улугбек','Mirzo Ulugʻbek','Mirzo Ulugbek','в Мирзо Улугбеке','Mirzo Ulugʻbekda','in Mirzo Ulugbek'],SERGELI:['Сергели','Sirgʻali','Sergeli','в Сергели','Sirgʻalida','in Sergeli'],ALMAZAR:['Алмазар','Olmazor','Almazar','в Алмазаре','Olmazorda','in Almazar'],YASHNOBOD:['Яшнабад','Yashnobod','Yashnabad','в Яшнабаде','Yashnobodda','in Yashnabad'],SHAYKHANTOKHUR:['Шайхантахур','Shayxontohur','Shaykhantakhur','в Шайхантахуре','Shayxontohurda','in Shaykhantakhur'],YAKKASARAY:['Яккасарай','Yakkasaroy','Yakkasaray','в Яккасарае','Yakkasaroyda','in Yakkasaray'],UCHTEPA:['Учтепа','Uchtepa','Uchtepa','в Учтепе','Uchtepada','in Uchtepa']};
+var LMS={tv:[69.2856,41.3456],temur:[69.2797,41.3113],minor:[69.2793,41.3399],chorsu:[69.2359,41.3268]};
+var T={
+ ru:{bC:'Я заказчик',bM:'Я исполнитель',
+  c:{k:'Для заказчика',h1:'Нужна помощь',h2:'по дому?',p:'Опишите задачу, и исполнители рядом откликнутся за минуты.',cap:'Исполнители рядом с вами',tb:'Исполнитель найден за 5 минут'},
+  m:{k:'Для исполнителя',h1:'Умеете работать',h2:'руками?',p:'Берите заказы рядом с домом. Без комиссии: всё заработанное ваше.',cap:'Заказы рядом с вами',tb:'Новый заказ рядом'},
+  names:['Дилноза','Жасур','Сардор','Малика','Бекзод','Нодира'],
+  cats:['Уборка','Муж на час','Ремонт','Перенос вещей','Сад и двор'],
+  sum:function(n){return fmt(n,' ')+' сум'},km:function(x){return String(x).replace('.',',')+' км'},
+  soon:'Скоро',onSoon:'Скоро в',note:'Превью для согласования · не опубликовано на главной',
+  lm:{tv:'Телебашня',temur:'Сквер Амира Темура',minor:'Мечеть Минор',chorsu:'Чорсу'}},
+ uz:{bC:'Men mijozman',bM:'Men ijrochiman',
+  c:{k:'Mijoz uchun',h1:'Uyda yordam',h2:'kerakmi?',p:'Vazifani yozing, yaqin atrofdagi ijrochilar bir necha daqiqada javob beradi.',cap:'Yaqiningizdagi ijrochilar',tb:'Ijrochi 5 daqiqada topildi'},
+  m:{k:'Ijrochi uchun',h1:'Qoʻlingizdan',h2:'ish keladimi?',p:'Uyingiz yaqinidagi buyurtmalarni oling. Komissiyasiz: ishlab topganingiz oʻzingizniki.',cap:'Yaqiningizdagi buyurtmalar',tb:'Yaqinda yangi buyurtma'},
+  names:['Dilnoza','Jasur','Sardor','Malika','Bekzod','Nodira'],
+  cats:['Tozalash','Usta chaqirish','Taʼmir','Yuk tashish','Bogʻ va hovli'],
+  sum:function(n){return fmt(n,' ')+' soʻm'},km:function(x){return String(x).replace('.',',')+' km'},
+  soon:'Tez orada',onSoon:'Tez orada',note:'Kelishish uchun koʻrinish · bosh sahifada eʼlon qilinmagan',
+  lm:{tv:'Teleminora',temur:'Amir Temur xiyoboni',minor:'Minor masjidi',chorsu:'Chorsu'}},
+ en:{bC:'I’m a client',bM:'I’m an executor',
+  c:{k:'For clients',h1:'Need help',h2:'at home?',p:'Describe the task and executors nearby respond within minutes.',cap:'Executors near you',tb:'Executor found in 5 minutes'},
+  m:{k:'For executors',h1:'Good with',h2:'your hands?',p:'Take jobs near home. No commission: you keep everything you earn.',cap:'Orders near you',tb:'New order nearby'},
+  names:['Dilnoza','Jasur','Sardor','Malika','Bekzod','Nodira'],
+  cats:['Cleaning','Handyman','Repair','Moving help','Garden & yard'],
+  sum:function(n){return fmt(n,',')+' UZS'},km:function(x){return x+' km'},
+  soon:'Soon',onSoon:'Soon on',note:'Preview for approval · not published on the home page',
+  lm:{tv:'TV Tower',temur:'Amir Temur Square',minor:'Minor Mosque',chorsu:'Chorsu Bazaar'}}
+};
+function fmt(n,sep){return String(n).replace(/\B(?=(\d{3})+(?!\d))/g,sep)}
+var NS='http://www.w3.org/2000/svg';
+function el(tag,attrs,parent){var e=document.createElementNS(NS,tag);for(var k in attrs)e.setAttribute(k,attrs[k]);if(parent)parent.appendChild(e);return e}
+function $(id){return document.getElementById(id)}
+var reduce=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+var lang='ru', role='c', userRole=null, step=0, timers=[];
+var SCENES=[['YUNUSABAD','c'],['CHILANZAR','m'],['MIRABAD','c'],['MIRZO-ULUGBEK','m'],['SERGELI','c'],['ALMAZAR','m'],['YASHNOBOD','c'],['SHAYKHANTOKHUR','m'],['YAKKASARAY','c'],['UCHTEPA','m']];
+var AVC=['#0F5B3A','#2F6B8A','#7A4FB5','#C2410C','#0E7490','#B45309'];
+var RAT=['4.9','4.8','5.0','4.7','4.9','4.8'];
+var ORD=[[0,150000,1.2],[1,200000,2.5],[2,300000,3.1],[3,250000,1.8],[4,180000,2.2]];
+var ov=$('ov'), gs=$('gs'), card=$('card');
+var LMI={
+ tv:'<path d="M0-9v15M-3 6h6M-4.5-2h9"/><circle cx="0" cy="-3.5" r="2.2" fill="#0F5B3A" stroke="none"/>',
+ temur:'<path d="M-5 6h10M-3.5 6V2h7v4M-2-1l2-6 2 6M0 2v-3"/>',
+ minor:'<path d="M-6 6h9M-5 6V1a3.5 3.5 0 0 1 7 0v5M5 6V-7M4-7h2"/>',
+ chorsu:'<path d="M-7 6h14M-6 6V2a6 6 0 0 1 12 0v4M0-4v-3"/>'};
+var lmEls={};
+function box(){var r=card.getBoundingClientRect();return {W:r.width,H:r.height,top:96,bot:card.clientWidth<520?118:112}}
+var map=null, mapOK=false;
+function L(){return lang}
+function nameExpr(){var k=lang==='en'?'name:en':lang==='uz'?'name:uz':'name:ru';
+  return ['coalesce',['get',k],['get',lang==='en'?'name_en':'name'],['get','name']]}
+function tint(){
+  if(!map)return;
+  map.getStyle().layers.forEach(function(ly){var id=ly.id, t=ly.type;
+    try{
+      if(t==='background')map.setPaintProperty(id,'background-color','#F2F5F0');
+      else if(t==='fill'){
+        if(/water/.test(id))map.setPaintProperty(id,'fill-color','#C7E3EC');
+        else if(/park|grass|wood|landcover|forest|garden|cemetery/.test(id))map.setPaintProperty(id,'fill-color','#D9EDD6');
+        else if(/building/.test(id))map.setPaintProperty(id,'fill-color','#E5EBE5');
+        else if(/landuse|residential/.test(id))map.setPaintProperty(id,'fill-color','#EEF2ED');
+      } else if(t==='line'&&/water|river|canal/.test(id))map.setPaintProperty(id,'line-color','#B4D9E5');
+      else if(t==='symbol'&&ly.layout&&ly.layout['text-field']){
+        map.setLayoutProperty(id,'text-field',nameExpr());
+        if(!/water/.test(id))map.setPaintProperty(id,'text-color',/road|street|highway/.test(id)?'#6F8277':'#3E5448');
+      }
+    }catch(e){}
+  });
+}
+function initMap(){
+  if(!window.maplibregl||!maplibregl.supported||!maplibregl.supported())return;
+  var c=SCN[SCENES[step%SCENES.length][0]], b=box();
+  map=new maplibregl.Map({container:'map',style:'https://tiles.openfreemap.org/styles/positron',center:c,zoom:14.2,
+    interactive:false,attributionControl:false,fadeDuration:0,pitchWithRotate:false});
+  map.setPadding({top:b.top,bottom:b.bot,left:0,right:0});
+  map.on('style.load',function(){mapOK=true;tint()});
+  Object.keys(LMS).forEach(function(k){var d=document.createElement('div');d.className='lmk';
+    d.innerHTML='<i><svg viewBox="-9 -9 18 18" fill="none" stroke="#0F5B3A" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">'+LMI[k]+'</svg></i><span></span>';
+    lmEls[k]=d.querySelector('span');
+    new maplibregl.Marker({element:d,anchor:'left',offset:[-12,0]}).setLngLat(LMS[k]).addTo(map);});
+  texts();
+}
+function zoomTo(code){
+  if(!map)return; var b=box(); map.setPadding({top:b.top,bottom:b.bot,left:0,right:0});
+  var c=SCN[code];
+  if(reduce)map.jumpTo({center:c,zoom:14.2});else map.flyTo({center:c,zoom:14.2,duration:2400,curve:1.35,essential:true});
+}
+function later(fn,ms){timers.push(setTimeout(fn,reduce?Math.min(ms,50):ms))}
+function clearTimers(){timers.forEach(clearTimeout);timers=[]}
+
+var ICON={c:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg>',
+          m:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></svg>'};
+
+function texts(){
+  var t=T[lang], r=t[role];
+  $('bC').textContent=t.bC; $('bM').textContent=t.bM;
+  $('k').textContent=r.k; $('h1').textContent=r.h1; $('h2').textContent=r.h2; $('p').textContent=r.p;
+  $('cap').textContent=r.cap; $('note').textContent=t.note;
+  if(map&&mapOK)tint();
+  Object.keys(lmEls).forEach(function(k){if(lmEls[k])lmEls[k].textContent=t.lm[k]});
+  var items=[['i-apple','App Store'],['i-play','Google Play']];
+  $('stores').innerHTML=items.map(function(it){return '<div class="store"><svg aria-hidden="true"><use href="#'+it[0]+'"/></svg><span><small>'+t.onSoon+'</small><b>'+it[1]+'</b></span><span class="tag">'+t.soon+'</span></div>'}).join('');
+}
+
+function setRole(r,anim){
+  if(r===role&&anim)return;
+  role=r; document.body.classList.toggle('m',r==='m');
+  $('bC').setAttribute('aria-pressed',r==='c'); $('bM').setAttribute('aria-pressed',r==='m');
+  var sw=$('swap');
+  if(anim&&!reduce){sw.classList.add('out');setTimeout(function(){texts();sw.classList.remove('out')},260)} else texts();
+}
+
+function scene(){
+  clearTimers();
+  var sc=SCENES[step%SCENES.length], code=sc[0];
+  setRole(userRole||sc[1],true);
+  var dn=DN[code], li=lang==='ru'?3:lang==='uz'?4:5;
+  $('where').textContent=dn[li];
+  $('toast').classList.remove('show');
+  gs.querySelectorAll('.it,.home,.zg').forEach(function(n){n.style.transition='opacity .3s';n.style.opacity=0});
+  later(function(){gs.innerHTML='';zoomTo(code)},320);
+  later(function(){build(code)},reduce?400:2600);
+}
+function build(code){
+  var t=T[lang], b=box(); ov.setAttribute('viewBox','0 0 '+b.W+' '+b.H);
+  var vbT=[0,0,b.W,b.H], cx=b.W/2, cy=(b.top+(b.H-b.bot))/2+14;
+  var dn=DN[code], li=lang==='ru'?3:lang==='uz'?4:5, d={'in':{}}; d['in'][lang]=dn[li];
+  var zg=el('g',{'class':'zg'},gs); el('circle',{cx:cx,cy:cy-14,r:Math.min(b.W,b.H)*0.36,'class':'zone'},zg); el('circle',{cx:cx,cy:cy-14,r:Math.min(b.W,b.H)*0.36,'class':'zone2'},zg);
+  // home / you pin + rings
+  var rings=el('g',{},gs);
+  ['','r2','r3'].forEach(function(c){el('circle',{cx:cx,cy:cy,r:22,'class':'ring '+c},rings)});
+  var home=el('g',{'class':'home'},gs);
+  el('path',{d:'M'+cx+','+(cy+2)+'c-10-12-17-18-17-27a17 17 0 0 1 34 0c0 9-7 15-17 27z',fill:role==='c'?'#0F5B3A':'#F5B301',stroke:'#fff','stroke-width':3},home);
+  if(role==='c') el('path',{d:'M'+(cx-7)+','+(cy-22)+'l7-6 7 6v8h-14z',fill:'#fff'},home);
+  else el('circle',{cx:cx,cy:cy-25,r:5.5,fill:'#1A1300'},home);
+
+  var narrow=b.W<520, n=narrow?4:5, items=[];
+  var X0=10, X1=b.W-10, Y0=b.top+22, Y1=b.H-b.bot-18;
+  function cl(v,a,b){return Math.max(a,Math.min(b,v))}
+  var up=Math.ceil(n/2), dn=n-up, ys=[];
+  for(var u=0;u<up;u++) ys.push(up===1?(Y0+cy-60)/2:Y0+(cy-60-Y0)*u/(up-1));
+  for(var v=0;v<dn;v++) ys.push(dn===1?(cy+30+Y1)/2:cy+30+(Y1-cy-30)*v/(dn-1));
+  for(var i=0;i<n;i++){
+    var side=((i+step)%2)?1:-1, off=26+((i*53+step*17)%Math.max(30,b.W*0.14));
+    var x=cx+side*off, y=ys[i], a=side>0?0:Math.PI;
+    var g=el('g',{'class':'it'},gs), right=side>0;
+    if(role==='c'){
+      var ni=(i+step)%6, name=t.names[ni];
+      var label=name+'  ★'+RAT[ni];
+      var w=label.length*7.2+18; x=cl(x,X0+19,X1-19); right=side>0?(x+22+w<=X1):(x-22-w<X0); var lx=right?x+22:x-22-w;
+      el('circle',{cx:x,cy:y,r:17,fill:AVC[ni],'class':'av'},g);
+      el('text',{x:x,y:y+0.5,'class':'avt'},g).textContent=name.charAt(0);
+      el('rect',{x:lx,y:y-12,width:w,height:24,rx:12,'class':'pill'},g);
+      var tx=el('text',{x:lx+9,y:y+0.5,'class':'pt'},g);
+      tx.appendChild(document.createTextNode(name+'  '));
+      var s=el('tspan',{'class':'s'},tx); s.textContent='★ '+RAT[ni];
+      items.push({g:g,x:x,y:y,name:name,ni:ni});
+    } else {
+      var o=ORD[(i+step)%ORD.length], txt=t.cats[o[0]]+' · '+t.sum(o[1]);
+      var w2=txt.length*6.9+30, lx2=cl(right?x-12:x-w2+12,X0,X1-w2); x=right?lx2+12:lx2+w2-12;
+      el('rect',{x:lx2,y:y-13,width:w2,height:26,rx:13,'class':'ord'},g);
+      el('circle',{cx:right?lx2+13:lx2+w2-13,cy:y,r:4,fill:'#1A1300'},g);
+      el('text',{x:right?lx2+23:lx2+11,y:y+0.5,'class':'ordt'},g).textContent=txt;
+      items.push({g:g,x:x,y:y,o:o});
+    }
+  }
+  items.forEach(function(it,i){later(function(){it.g.classList.add('in')},250+i*220)});
+  // pick nearest
+  var best=items.slice().sort(function(a,b){return Math.hypot(a.x-cx,a.y-cy)-Math.hypot(b.x-cx,b.y-cy)})[0];
+  later(function(){
+    items.forEach(function(it){if(it!==best)it.g.classList.add('dim')});
+    best.g.classList.add('hl');
+    var path=el('path',{d:'M'+best.x+','+best.y+' Q'+((best.x+cx)/2+30)+','+((best.y+cy)/2-30)+' '+cx+','+(cy-20),'class':'route'},gs);
+    gs.insertBefore(path,zg.nextSibling);
+    if(!reduce&&path.getTotalLength){var L=path.getTotalLength();path.style.strokeDasharray=L;path.style.strokeDashoffset=L;path.getBoundingClientRect();path.style.transition='stroke-dashoffset .9s ease';path.style.strokeDashoffset=0;
+      setTimeout(function(){path.style.transition='';path.style.strokeDasharray='6 7';path.style.strokeDashoffset=0},950)}
+  },2200);
+  later(function(){
+    var r=T[lang][role];
+    $('ti').innerHTML=ICON[role]; $('tb').textContent=r.tb;
+    if(role==='c') $('ts').textContent=best.name+' ★'+RAT[best.ni]+' · '+T[lang].cats[step%5]+' · '+d['in'][lang];
+    else $('ts').textContent=T[lang].cats[best.o[0]]+' · '+T[lang].sum(best.o[1])+' · '+T[lang].km(best.o[2]);
+    $('toast').classList.add('show');
+  },3000);
+  later(function(){step++;scene()},6200);
+}
+
+$('bC').addEventListener('click',function(){userRole='c';step++;scene()});
+$('bM').addEventListener('click',function(){userRole='m';step++;scene()});
+function store(){try{return window.localStorage}catch(e){return null}}
+function applyLang(l){lang=l;document.documentElement.lang=l;
+  document.querySelectorAll('.langs button').forEach(function(b){b.setAttribute('aria-pressed',b.dataset.lang===l)});
+  texts(); var s=store();try{s&&s.setItem('taskbor_lang',l)}catch(e){}
+  var dn=DN[SCENES[step%SCENES.length][0]]; $('where').textContent=dn[l==='ru'?3:l==='uz'?4:5]; }
+document.querySelectorAll('.langs button').forEach(function(b){b.addEventListener('click',function(){applyLang(b.dataset.lang)})});
+(function(){var q=(location.search.match(/[?&]lang=(ru|uz|en)/)||[])[1];var s=store(),v=null;try{v=s&&s.getItem('taskbor_lang')}catch(e){}
+  var n=(navigator.language||'ru').slice(0,2).toLowerCase(); applyLang(q||(v&&T[v]?v:(n==='uz'?'uz':n==='en'?'en':'ru')));})();
+// pause when tab hidden
+document.addEventListener('visibilitychange',function(){if(document.hidden)clearTimers();else scene()});
+var rz;window.addEventListener('resize',function(){clearTimeout(rz);rz=setTimeout(function(){if(map)map.resize();scene()},250)});
+var sc=document.createElement('script');sc.src='vendor/maplibre/maplibre-gl.js';sc.onload=function(){initMap();scene()};sc.onerror=function(){scene()};
+document.head.appendChild(sc);
+</script>
+</body>
+</html>
