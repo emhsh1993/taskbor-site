@@ -227,6 +227,32 @@ footer{padding:48px 0 calc(40px + env(safe-area-inset-bottom))}
 }
 @media (prefers-reduced-motion:reduce){.float,.dot-live{animation:none}html{scroll-behavior:auto}}
 
+
+/* ===== support dialog (правка 16.10.2026) ===== */
+.sp-dlg{margin:auto;border:0;padding:0;border-radius:28px;width:min(480px,calc(100vw - 32px));max-height:calc(100dvh - 32px);box-shadow:0 30px 80px -20px rgba(6,40,26,.45);background:#fff;color:var(--ink)}
+.sp-dlg::backdrop{background:rgba(13,38,25,.45);backdrop-filter:blur(3px)}
+.sp-in{padding:26px 24px 24px;position:relative}
+.sp-x{position:absolute;top:14px;right:14px;width:36px;height:36px;border-radius:50%;display:grid;place-items:center;color:var(--muted);background:var(--bg)}
+.sp-x:hover{color:var(--ink)}
+.sp-dlg h3{font-size:22px;letter-spacing:-.02em;margin:0 40px 6px 0}
+.sp-sub{color:var(--muted);font-size:15px;margin:0 0 18px}
+.sp-tg{display:flex;align-items:center;gap:12px;width:100%;padding:14px 16px;border-radius:18px;background:#229ED9;color:#fff;font-weight:700;text-decoration:none}
+.sp-tg:hover{background:#1B8BC0}
+.sp-tg svg{width:26px;height:26px;flex:none}
+.sp-tg small{display:block;font-weight:500;opacity:.85;font-size:13px}
+.sp-or{display:flex;align-items:center;gap:10px;color:var(--muted);font-size:13px;margin:18px 0 12px}
+.sp-or::before,.sp-or::after{content:"";flex:1;height:1px;background:var(--line)}
+.sp-f label{display:block;font-size:13px;font-weight:700;margin:10px 0 6px}
+.sp-f input,.sp-f textarea{width:100%;border:1.5px solid var(--line);border-radius:14px;padding:12px 14px;font:inherit;font-size:16px;color:var(--ink);background:#fff}
+.sp-f textarea{min-height:110px;resize:vertical}
+.sp-f input:focus,.sp-f textarea:focus{outline:none;border-color:var(--green);box-shadow:0 0 0 3px var(--mint)}
+.sp-hp{position:absolute;left:-9999px;width:1px;height:1px;opacity:0}
+.sp-f .btn{width:100%;margin-top:16px}
+.sp-err{color:#B42318;font-size:14px;margin-top:10px;display:none}
+.sp-ok{display:none;text-align:center;padding:10px 0 4px}
+.sp-ok .ic{width:56px;height:56px;border-radius:50%;background:var(--mint);color:var(--green);display:grid;place-items:center;margin:0 auto 12px}
+.sp-dlg.done .sp-f,.sp-dlg.done .sp-or,.sp-dlg.done .sp-tg,.sp-dlg.done .sp-sub{display:none}
+.sp-dlg.done .sp-ok{display:block}
 /* ===== map hero: live Tashkent map + role switch ===== */
 .mh{--acc:var(--green);--acc-soft:var(--mint);--acc-ink:#fff;--gold:#F5B301;--gold-d:#C98A00;--gold-soft:#FFF4D1;--gold-ink:#1A1300;padding:clamp(20px,4vw,56px) 0 clamp(32px,5vw,64px);position:relative;overflow:hidden;isolation:isolate}
 .mh.is-m{--acc:var(--gold);--acc-soft:var(--gold-soft);--acc-ink:var(--gold-ink)}
@@ -566,7 +592,7 @@ footer{padding:48px 0 calc(40px + env(safe-area-inset-bottom))}
       <span class="kicker" data-i="faqK">Вопросы</span>
       <h2 data-i="faqH">Коротко о главном</h2>
       <p class="lead" data-i="faqP">Не нашли ответ? Напишите нам — ответим в течение дня.</p>
-      <a class="btn btn-primary" href="mailto:emhsh1993@gmail.com" data-i="faqBtn" style="justify-self:start">Написать в поддержку</a>
+      <a class="btn btn-primary" href="#support" data-support data-i="faqBtn" style="justify-self:start">Написать в поддержку</a>
     </div>
     <div class="faq" id="faqList"></div>
   </div>
@@ -587,6 +613,36 @@ footer{padding:48px 0 calc(40px + env(safe-area-inset-bottom))}
 </section>
 </main>
 
+<dialog class="sp-dlg" id="spDlg" aria-labelledby="spTitle">
+  <div class="sp-in">
+    <button class="sp-x" type="button" data-close aria-label="Close"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+    <h3 id="spTitle" data-i="spTitle">Написать в поддержку</h3>
+    <p class="sp-sub" data-i="spSub">Быстрее всего — в Telegram. Ответим там же.</p>
+    <a class="sp-tg" href="https://t.me/helptaskbor_bot" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M21.5 3.6 2.9 10.8c-1.3.5-1.3 1.2-.2 1.6l4.8 1.5 1.8 5.6c.2.6.1.9.8.9.5 0 .7-.2 1-.5l2.4-2.3 4.9 3.6c.9.5 1.5.2 1.8-.8l3.3-15.5c.3-1.4-.5-2-1.5-1.3ZM8.5 13.6l9.6-6c.5-.3.9-.1.5.2l-8.2 7.4-.3 3.4-1.6-5Z"/></svg>
+      <span><span data-i="spTg">Написать в Telegram</span><small>@helptaskbor_bot</small></span>
+    </a>
+    <div class="sp-or" data-i="spOr">или оставьте сообщение здесь</div>
+    <form class="sp-f" id="spForm" novalidate>
+      <label for="spName" data-i="spName">Имя</label>
+      <input id="spName" name="name" autocomplete="name" maxlength="80" required>
+      <label for="spPhone" data-i="spPhone">Телефон для связи</label>
+      <input id="spPhone" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="+998 90 123 45 67" maxlength="24" required>
+      <label for="spText" data-i="spText">Сообщение</label>
+      <textarea id="spText" name="text" maxlength="2000" required></textarea>
+      <input class="sp-hp" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <button class="btn btn-primary" type="submit" id="spSend" data-i="spSend">Отправить</button>
+      <p class="sp-err" id="spErr" role="alert"></p>
+    </form>
+    <div class="sp-ok">
+      <div class="ic"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg></div>
+      <h3 style="margin:0 0 6px" data-i="spOkH">Сообщение отправлено</h3>
+      <p class="sp-sub" style="display:block" data-i="spOkP">Спасибо! Мы свяжемся с вами по указанному телефону.</p>
+      <button class="btn btn-primary" type="button" data-close data-i="spClose" style="margin-top:8px">Закрыть</button>
+    </div>
+  </div>
+</dialog>
+
 <footer>
   <div class="wrap">
     <div class="f-row">
@@ -594,8 +650,8 @@ footer{padding:48px 0 calc(40px + env(safe-area-inset-bottom))}
       <nav class="f-links">
         <a href="legal.html" data-i="fLegal">Условия и конфиденциальность</a>
         <a href="delete-account.html" data-i="fDel">Удаление аккаунта</a>
-        <a href="https://t.me/taskborbot" target="_blank" rel="noopener">Telegram</a>
-        <a href="mailto:emhsh1993@gmail.com">emhsh1993@gmail.com</a>
+        <a href="#support" data-support data-i="fSupport">Поддержка</a>
+        <a href="https://t.me/helptaskbor_bot" target="_blank" rel="noopener">Telegram</a>
       </nav>
     </div>
     <p class="copy">© <span id="yr">2026</span> TASK BOR · <span data-i="fCity">Ташкент, Узбекистан</span></p>
@@ -655,6 +711,7 @@ ru:{
       ['Как удалить аккаунт и данные?','В приложении: Профиль → Удалить аккаунт. Или по инструкции на странице <a href="delete-account.html">«Удаление аккаунта»</a>.']],
  ctaH:'Задача есть? Скачайте TASK BOR',ctaP:'Бесплатно для заказчиков и исполнителей. Регистрация по номеру телефона — меньше минуты.',
  qr:'Наведите камеру телефона, чтобы открыть сайт',
+ fSupport:'Поддержка',spTitle:'Написать в поддержку',spSub:'Быстрее всего — в Telegram. Ответим там же.',spTg:'Написать в Telegram',spOr:'или оставьте сообщение здесь',spName:'Имя',spPhone:'Телефон для связи',spText:'Сообщение',spSend:'Отправить',spOkH:'Сообщение отправлено',spOkP:'Спасибо! Мы свяжемся с вами по указанному телефону.',spClose:'Закрыть',spErrFill:'Заполните имя, телефон и сообщение.',spErrPhone:'Проверьте номер телефона.',spErrNet:'Не удалось отправить. Попробуйте ещё раз или напишите в Telegram.',spErrMany:'Слишком много сообщений. Попробуйте позже или напишите в Telegram.',spSending:'Отправляем…',
  fLegal:'Условия и конфиденциальность',fDel:'Удаление аккаунта',fCity:'Ташкент, Узбекистан'
 },
 uz:{
@@ -704,6 +761,7 @@ uz:{
       ['Akkaunt va maʼlumotlarni qanday oʻchirish mumkin?','Ilovada: Profil → Akkauntni oʻchirish. Yoki <a href="delete-account.html">«Akkauntni oʻchirish»</a> sahifasidagi yoʻriqnoma boʻyicha.']],
  ctaH:'Vazifa bormi? TASK BORni yuklab oling',ctaP:'Buyurtmachilar va ijrochilar uchun bepul. Telefon raqami orqali roʻyxatdan oʻtish — bir daqiqadan kam.',
  qr:'Saytni ochish uchun telefon kamerasini tuting',
+ fSupport:'Yordam',spTitle:'Yordamga yozish',spSub:'Eng tezi — Telegramda. Oʻsha yerda javob beramiz.',spTg:'Telegramda yozish',spOr:'yoki xabarni shu yerda qoldiring',spName:'Ism',spPhone:'Aloqa uchun telefon',spText:'Xabar',spSend:'Yuborish',spOkH:'Xabar yuborildi',spOkP:'Rahmat! Koʻrsatilgan telefon orqali siz bilan bogʻlanamiz.',spClose:'Yopish',spErrFill:'Ism, telefon va xabarni toʻldiring.',spErrPhone:'Telefon raqamini tekshiring.',spErrNet:'Yuborib boʻlmadi. Yana urinib koʻring yoki Telegramda yozing.',spErrMany:'Xabarlar juda koʻp. Keyinroq urinib koʻring yoki Telegramda yozing.',spSending:'Yuborilmoqda…',
  fLegal:'Shartlar va maxfiylik',fDel:'Akkauntni oʻchirish',fCity:'Toshkent, Oʻzbekiston'
 },
 en:{
@@ -753,6 +811,7 @@ en:{
       ['How do I delete my account and data?','In the app: Profile → Delete account. Or follow the steps on the <a href="delete-account.html">Delete account</a> page.']],
  ctaH:'Got a task? Get TASK BOR',ctaP:'Free for customers and pros. Sign up with your phone number in under a minute.',
  qr:'Point your phone camera to open the site',
+ fSupport:'Support',spTitle:'Contact support',spSub:'The fastest way is Telegram. We reply right there.',spTg:'Write on Telegram',spOr:'or leave a message here',spName:'Name',spPhone:'Phone to contact you',spText:'Message',spSend:'Send',spOkH:'Message sent',spOkP:'Thank you! We will contact you at the phone number you gave.',spClose:'Close',spErrFill:'Please fill in your name, phone and message.',spErrPhone:'Please check the phone number.',spErrNet:'Could not send. Try again or write to us on Telegram.',spErrMany:'Too many messages. Try later or write to us on Telegram.',spSending:'Sending…',
  fLegal:'Terms & Privacy',fDel:'Delete account',fCity:'Tashkent, Uzbekistan'
 }};
 
@@ -812,6 +871,36 @@ document.querySelectorAll('.seg button').forEach(function(b){b.addEventListener(
 })});
 apply(pickLang());
 document.getElementById('yr').textContent=new Date().getFullYear();
+
+/* Поддержка: окно с Telegram и формой (правка 16.10.2026) — всё попадает в админку */
+(function(){
+  var dlg=document.getElementById('spDlg'), form=document.getElementById('spForm'), err=document.getElementById('spErr'), btn=document.getElementById('spSend');
+  if(!dlg||!form) return;
+  var API='https://taskbor-backend.onrender.com';
+  function t(k){return (T[lang]&&T[lang][k])||T.ru[k]}
+  function open(e){ if(e) e.preventDefault(); dlg.classList.remove('done'); err.style.display='none';
+    if(dlg.showModal){ try{dlg.showModal()}catch(x){dlg.setAttribute('open','')} } else dlg.setAttribute('open','');
+    setTimeout(function(){var n=document.getElementById('spName'); n&&n.focus()},50); }
+  function close(){ if(dlg.close) dlg.close(); else dlg.removeAttribute('open'); }
+  document.querySelectorAll('[data-support]').forEach(function(a){a.addEventListener('click',open)});
+  dlg.querySelectorAll('[data-close]').forEach(function(b){b.addEventListener('click',close)});
+  dlg.addEventListener('click',function(e){ if(e.target===dlg) close(); });
+  if(location.hash==='#support') open();
+  function fail(msg){ err.textContent=msg; err.style.display='block'; }
+  form.addEventListener('submit',function(e){
+    e.preventDefault(); err.style.display='none';
+    var el=form.elements, name=el.namedItem('name').value.trim(), phone=el.namedItem('phone').value.trim(), text=el.namedItem('text').value.trim();
+    if(!name||!phone||text.length<3) return fail(t('spErrFill'));
+    var digits=phone.replace(/\D/g,''); if(digits.length<9||digits.length>15) return fail(t('spErrPhone'));
+    btn.disabled=true; btn.textContent=t('spSending');
+    fetch(API+'/public/support',{method:'POST',headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({name:name,phone:phone,text:text,lang:lang,website:el.namedItem('website').value})})
+      .then(function(r){ if(r.status===429) throw 'many'; if(!r.ok) throw 'net'; return r.json(); })
+      .then(function(){ dlg.classList.add('done'); form.reset(); })
+      .catch(function(x){ fail(x==='many'?t('spErrMany'):t('spErrNet')); })
+      .then(function(){ btn.disabled=false; btn.textContent=t('spSend'); });
+  });
+})();
 
 var hdr=document.querySelector('header');
 addEventListener('scroll',function(){hdr.classList.toggle('scrolled',scrollY>8)},{passive:true});
