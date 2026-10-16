@@ -243,10 +243,11 @@ function tint(){
   });
 }
 function initMap(){
-  if(!window.maplibregl||!maplibregl.supported||!maplibregl.supported())return;
+  if(!window.maplibregl)return;
+  try{var tc=document.createElement('canvas');if(!(tc.getContext('webgl2')||tc.getContext('webgl')))return}catch(e){return}
   var c=SCN[SCENES[step%SCENES.length][0]], b=box();
-  map=new maplibregl.Map({container:'map',style:'https://tiles.openfreemap.org/styles/positron',center:c,zoom:14.2,
-    interactive:false,attributionControl:false,fadeDuration:0,pitchWithRotate:false});
+  try{map=new maplibregl.Map({container:'map',style:'https://tiles.openfreemap.org/styles/positron',center:c,zoom:14.2,
+    interactive:false,attributionControl:false,fadeDuration:0,pitchWithRotate:false})}catch(e){map=null;return}
   map.setPadding({top:b.top,bottom:b.bot,left:0,right:0});
   map.on('style.load',function(){mapOK=true;tint()});
   Object.keys(LMS).forEach(function(k){var d=document.createElement('div');d.className='lmk';
