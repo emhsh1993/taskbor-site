@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="uz">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>TASK BOR — ilovani yuklab olish · скачать приложение</title>
+<meta name="description" content="TASK BOR — Toshkentda uy xizmatlari. Бытовые услуги в Ташкенте. App Store · Google Play">
+<meta property="og:title" content="TASK BOR — ilovani yuklab oling">
+<meta property="og:description" content="Uy xizmatlari · Бытовые услуги · Toshkent">
+<meta property="og:image" content="https://taskbor.uz/og.png">
+<meta name="robots" content="noindex">
+<!--
+  Правка 31.10.2026: короткая ссылка taskbor.uz/app для соцсетей.
+  iPhone/iPad → App Store, Android → Google Play, компьютер → главная сайта.
+  Переход считается в статистике сайта как нажатие App Store / Google Play.
+-->
+<script>
+(function () {
+  var IOS = 'https://apps.apple.com/app/id6797779666';
+  var AND = 'https://play.google.com/store/apps/details?id=uz.taskbor.app';
+  var ua = navigator.userAgent || '';
+  var isIOS = /iPhone|iPad|iPod/i.test(ua) || (/Macintosh/.test(ua) && navigator.maxTouchPoints > 1);
+  var isAnd = /Android/i.test(ua);
+  var target = isIOS ? IOS : isAnd ? AND : '/';
+  try {
+    var sid = Math.random().toString(36).slice(2, 12);
+    var utm = (location.search.match(/[?&]utm_source=([^&#]+)/) || [])[1];
+    var base = { s: sid, p: '/app', l: 'uz' };
+    var send = function (o) {
+      for (var k in base) o[k] = base[k];
+      var b = JSON.stringify(o);
+      if (!(navigator.sendBeacon && navigator.sendBeacon('https://taskbor-backend.onrender.com/public/site/event', new Blob([b], { type: 'text/plain' })))) {
+        fetch('https://taskbor-backend.onrender.com/public/site/event', { method: 'POST', body: b, headers: { 'Content-Type': 'text/plain' }, keepalive: true, mode: 'no-cors' });
+      }
+    };
+    send({ t: 'view', r: document.referrer || '', u: utm ? decodeURIComponent(utm) : '' });
+    if (isIOS || isAnd) send({ t: 'store', st: isIOS ? 'ios' : 'android' });
+  } catch (e) {}
+  setTimeout(function () { location.replace(target); }, 80);
+})();
+</script>
+<style>
+  body{margin:0;min-height:100vh;display:flex;align-items:center;justify-content:center;background:#F4F7F5;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;color:#0F2A1D}
+  .box{text-align:center;padding:24px}
+  img{width:88px;height:88px;border-radius:22px}
+  h1{font-size:22px;margin:16px 0 6px}
+  p{margin:0 0 22px;color:#5B6B62}
+  a{display:block;margin:10px auto;width:240px;padding:14px 0;border-radius:14px;background:#0F5B3A;color:#fff;text-decoration:none;font-weight:700}
+  a.alt{background:#fff;color:#0F5B3A;border:1.5px solid #0F5B3A}
+</style>
+</head>
+<body>
+<div class="box">
+  <img src="/img/apple-touch-icon.png" alt="TASK BOR" onerror="this.style.display='none'">
+  <h1>TASK BOR</h1>
+  <p>Ochilmoqda… · Открываем…</p>
+  <a href="https://apps.apple.com/app/id6797779666">App Store</a>
+  <a class="alt" href="https://play.google.com/store/apps/details?id=uz.taskbor.app">Google Play</a>
+</div>
+</body>
+</html>
