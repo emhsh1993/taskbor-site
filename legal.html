@@ -64,6 +64,8 @@
   .tabs{display:flex;gap:26px;border-bottom:1px solid var(--line);margin-top:34px}
   .tabs button{border:0;background:none;font:700 14.5px/1 'Manrope';color:var(--ink-dim);padding:0 0 15px;cursor:pointer;position:relative;transition:color .2s}
   .tabs button.on{color:var(--ink)}
+  .tabs .tablink{font:700 14.5px/1 'Manrope';color:var(--ink-dim);padding:0 0 15px;transition:color .2s}
+  .tabs .tablink:hover{color:var(--ink)}
   .tabs button.on::after{content:'';position:absolute;left:0;right:0;bottom:-1px;height:2px;background:var(--accent);border-radius:2px}
 
   main{padding:34px 0 90px}
@@ -87,7 +89,7 @@
     .wrap{padding:0 20px}
     article{padding:30px 20px;border-radius:18px}
     .tabs{gap:18px}
-    .tabs button{font-size:13.5px}
+    .tabs button,.tabs .tablink{font-size:13.5px}
   }
   @media (prefers-reduced-motion:reduce){*{transition:none!important}}
   article{box-shadow:0 1px 2px rgba(13,38,25,.04),0 8px 24px rgba(13,38,25,.06);border-color:transparent!important}
@@ -133,6 +135,7 @@
     <div class="tabs">
       <button data-doc="terms" class="on" id="tab-terms">Условия использования</button>
       <button data-doc="privacy" id="tab-privacy">Политика конфиденциальности</button>
+      <a class="tablink" id="tab-rules" href="rules/">Правила создания заказа</a>
     </div>
   </div>
 </div>
@@ -153,15 +156,15 @@ const DOCS = {"RU|terms": "<p>Редакция: 2.2<\/p>\n<p>Дата вступ
 const L = {
   RU:{kicker:'Правовая информация',title:'Условия использования и политика конфиденциальности',
       lede:'Документы платформы TASK BOR — маркетплейса бытовых услуг в Ташкенте.',
-      terms:'Условия использования',privacy:'Политика конфиденциальности',
+      terms:'Условия использования',privacy:'Политика конфиденциальности',rules:'Правила создания заказа',
       back:'На главную',foot:'TASK BOR · Ташкент, Узбекистан'},
   UZ:{kicker:'Huquqiy maʼlumot',title:'Foydalanish shartlari va maxfiylik siyosati',
       lede:'TASK BOR — Toshkentdagi maishiy xizmatlar marketpleysi hujjatlari.',
-      terms:'Foydalanish shartlari',privacy:'Maxfiylik siyosati',
+      terms:'Foydalanish shartlari',privacy:'Maxfiylik siyosati',rules:'Buyurtma berish qoidalari',
       back:'Bosh sahifa',foot:'TASK BOR · Toshkent, Oʻzbekiston'},
   EN:{kicker:'Legal',title:'Terms of use and privacy policy',
       lede:'Documents of TASK BOR — a home services marketplace in Tashkent.',
-      terms:'Terms of use',privacy:'Privacy policy',
+      terms:'Terms of use',privacy:'Privacy policy',rules:'Order rules',
       back:'Back to home',foot:'TASK BOR · Tashkent, Uzbekistan'}
 };
 
@@ -173,6 +176,7 @@ function render(){
   kicker.textContent=t.kicker; title.textContent=t.title; lede.textContent=t.lede;
   document.getElementById('tab-terms').textContent=t.terms;
   document.getElementById('tab-privacy').textContent=t.privacy;
+  const tr=document.getElementById('tab-rules'); tr.textContent=t.rules||'Правила создания заказа'; tr.href='rules/?lang='+lang.toLowerCase();
   back.textContent=t.back; foot.textContent=t.foot;
   document.getElementById('docs').innerHTML='<article>'+DOCS[lang+'|'+doc]+'</article>';
 }

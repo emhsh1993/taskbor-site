@@ -73,6 +73,7 @@ ul{margin:4px 0 0;padding-left:20px}li{line-height:1.5;font-size:15px}li::marker
 <article class="rule" id="en7" data-n="7"><div class="n">7</div><div><h2>Fair price, no prepayment</h2><p>Pay after the work, directly to the executor. Never transfer money in advance.</p></div></article>
 <article class="rule warn" id="en8" data-n="8"><div class="n">8</div><div><h2>What happens if rules are broken</h2><p>Order cancelled → warning → account blocked. For dangerous violations (intimate photos, threats, fraud) — immediate block.</p></div></article>
 <p class="foot">Details — Terms of Use, sections 11 and 12. Questions — contact Support.</p></section>
+<p class="foot"><a id="legal" href="../legal.html">Условия использования и политика конфиденциальности</a></p>
 <a class="cta" href="/app">📲 TASK BOR</a>
 </div>
 <script>
@@ -81,10 +82,13 @@ ul{margin:4px 0 0;padding-left:20px}li{line-height:1.5;font-size:15px}li::marker
   // на выбранном языке; язык — ?lang=uz|en|ru или язык браузера
   var q=(location.search.match(/[?&]lang=(ru|uz|en)/i)||[])[1];
   var nav=(navigator.language||'').slice(0,2).toLowerCase();
-  var L=(q||(nav==='uz'?'uz':nav==='en'?'en':'ru')).toUpperCase();
+  var saved=null;try{saved=localStorage.getItem('taskbor_lang')}catch(e){}
+  var L=(q||(/^(ru|uz|en)$/.test(saved||'')?saved:null)||(nav==='uz'?'uz':nav==='en'?'en':'ru')).toUpperCase();
   function show(l){L=l;document.querySelectorAll('.lang').forEach(function(s){s.hidden=s.getAttribute('data-l')!==l});
     document.querySelectorAll('.langs button').forEach(function(b){b.classList.toggle('on',b.getAttribute('data-l')===l)});
-    document.documentElement.lang=l.toLowerCase();mark();}
+    document.documentElement.lang=l.toLowerCase();try{localStorage.setItem('taskbor_lang',l.toLowerCase())}catch(e){}
+    var lg=document.getElementById('legal');if(lg){lg.textContent={RU:'Условия использования и политика конфиденциальности',UZ:'Foydalanish shartlari va maxfiylik siyosati',EN:'Terms of use and privacy policy'}[l];lg.href='../legal.html?lang='+l.toLowerCase();}
+    mark();}
   function mark(){var n=(location.hash.match(/^#(?:[a-z]{2})?(\d)$/)||[])[1];
     document.querySelectorAll('.rule').forEach(function(r){r.classList.remove('hl')});
     if(!n)return;var el=document.querySelector('.lang[data-l="'+L+'"] .rule[data-n="'+n+'"]');
