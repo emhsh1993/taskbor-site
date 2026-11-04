@@ -211,6 +211,19 @@ details .a a{color:var(--green);font-weight:700;text-decoration:underline;text-u
 .qr{background:#fff;border-radius:24px;padding:18px;width:200px;text-align:center;color:var(--muted);font-size:13px;font-weight:600;line-height:1.35;position:relative;z-index:1}
 .qr img{width:164px;height:164px;margin:0 auto 10px}
 
+/* соцсети (правка 04.11.2026) */
+.socials{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px;align-items:center}
+.socials .lbl{width:100%;font-size:13px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;opacity:.7;margin-bottom:2px}
+.soc{display:flex;align-items:center;gap:10px;height:52px;padding:0 18px 0 12px;border-radius:16px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.22);color:#fff;transition:transform .15s,background .15s}
+.soc:hover{transform:translateY(-2px);background:rgba(255,255,255,.2)}
+.soc svg{width:30px;height:30px;flex:none}
+.soc small{display:block;font-size:11px;font-weight:600;opacity:.75;line-height:1.1}
+.soc b{display:block;font-size:16px;line-height:1.2}
+.f-soc{display:flex;gap:10px}
+.f-soc a{width:42px;height:42px;border-radius:50%;display:grid;place-items:center;background:#fff;box-shadow:0 6px 16px -8px rgba(13,38,25,.35);transition:transform .15s}
+.f-soc a:hover{transform:translateY(-2px)}
+.f-soc svg{width:26px;height:26px}
+@media (max-width:560px){.soc{flex:1 1 100%;height:50px}}
 /* footer */
 footer{padding:48px 0 calc(40px + env(safe-area-inset-bottom))}
 .f-row{display:flex;flex-wrap:wrap;justify-content:space-between;gap:24px;align-items:center}
@@ -399,6 +412,9 @@ footer{padding:48px 0 calc(40px + env(safe-area-inset-bottom))}
   <defs>
     <symbol id="i-apple" viewBox="0 0 24 24"><path fill="currentColor" d="M16.37 12.6c-.02-2.2 1.8-3.26 1.88-3.31-1.03-1.5-2.62-1.7-3.19-1.73-1.36-.14-2.65.8-3.34.8-.69 0-1.75-.78-2.88-.76-1.48.02-2.85.86-3.61 2.19-1.54 2.67-.39 6.62 1.11 8.79.73 1.06 1.6 2.25 2.75 2.2 1.1-.04 1.52-.71 2.85-.71 1.33 0 1.71.71 2.88.69 1.19-.02 1.94-1.08 2.66-2.14.84-1.23 1.19-2.42 1.21-2.48-.03-.01-2.32-.89-2.34-3.53zM14.18 6.13c.61-.74 1.02-1.76.91-2.78-.88.04-1.94.59-2.57 1.32-.56.65-1.06 1.69-.93 2.69.98.08 1.98-.5 2.59-1.23z"/></symbol>
     <symbol id="i-play" viewBox="0 0 24 24"><path fill="#34A853" d="M3.6 2.3 13.4 12 3.6 21.7c-.36-.2-.6-.6-.6-1.07V3.37c0-.47.24-.87.6-1.07z"/><path fill="#FBBC04" d="m16.8 8.6-3.4 3.4 3.4 3.4 3.9-2.2c.8-.46.8-1.94 0-2.4l-3.9-2.2z"/><path fill="#4285F4" d="M3.6 2.3c.3-.17.68-.18 1.04.03L16.8 8.6 13.4 12 3.6 2.3z"/><path fill="#EA4335" d="M13.4 12l3.4 3.4-12.16 6.27c-.36.21-.74.2-1.04.03L13.4 12z"/></symbol>
+    <symbol id="i-ig" viewBox="0 0 24 24"><defs><radialGradient id="igG" cx="30%" cy="107%" r="150%"><stop offset="0" stop-color="#FDF497"/><stop offset=".05" stop-color="#FDF497"/><stop offset=".45" stop-color="#FD5949"/><stop offset=".6" stop-color="#D6249F"/><stop offset=".9" stop-color="#285AEB"/></radialGradient></defs><rect width="24" height="24" rx="6.5" fill="url(#igG)"/><rect x="5.5" y="5.5" width="13" height="13" rx="4" fill="none" stroke="#fff" stroke-width="1.8"/><circle cx="12" cy="12" r="3.1" fill="none" stroke="#fff" stroke-width="1.8"/><circle cx="16.1" cy="7.9" r="1" fill="#fff"/></symbol>
+    <symbol id="i-tg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="12" fill="#229ED9"/><path fill="#fff" d="M17.6 7.1 5.9 11.6c-.8.3-.8.8-.1 1l3 .9 1.1 3.5c.1.4.1.5.5.5.3 0 .4-.1.6-.3l1.5-1.4 3 2.2c.6.3.9.2 1.1-.5l2-9.6c.2-.9-.3-1.2-1-.8zm-7.7 7.4-.2 2.1-1-3.1 6-3.8c.3-.2.6-.1.3.1l-5.1 4.7z"/></symbol>
+    <symbol id="i-fb" viewBox="0 0 24 24"><circle cx="12" cy="12" r="12" fill="#1877F2"/><path fill="#fff" d="M13.4 24v-8.4h2.8l.4-3.3h-3.2v-2.1c0-.9.3-1.6 1.6-1.6h1.7V5.7c-.3 0-1.3-.1-2.5-.1-2.5 0-4.2 1.5-4.2 4.3v2.4H7.2v3.3H10V24h3.4z"/></symbol>
     <symbol id="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10" opacity=".25"/><path d="m7.5 12.5 3 3 6-6.5"/></symbol>
     <symbol id="i-chat" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a8 8 0 0 1-11.8 7L4 20l1.1-4.6A8 8 0 1 1 21 12z"/><path d="M9 11v2M12 9v6M15 11v2"/></symbol>
     <symbol id="i-route" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="19" r="2.5"/><circle cx="18" cy="5" r="2.5"/><path d="M8.5 19H16a3.5 3.5 0 0 0 0-7H8a3.5 3.5 0 0 1 0-7h7.5"/></symbol>
@@ -606,6 +622,12 @@ footer{padding:48px 0 calc(40px + env(safe-area-inset-bottom))}
         <h2 data-i="ctaH">Задача есть? Скачайте TASK BOR</h2>
         <p data-i="ctaP">Бесплатно для заказчиков и исполнителей. Регистрация по номеру телефона — меньше минуты.</p>
         <div class="stores" data-stores></div>
+        <div class="socials">
+          <span class="lbl" data-i="socH">Мы в соцсетях</span>
+          <a class="soc" href="https://www.instagram.com/taskbor.uz/" target="_blank" rel="noopener" data-social="instagram"><svg aria-hidden="true"><use href="#i-ig"/></svg><span><small data-i="socSub">Подписывайтесь</small><b>Instagram</b></span></a>
+          <a class="soc" href="https://t.me/taskboruz" target="_blank" rel="noopener" data-social="telegram"><svg aria-hidden="true"><use href="#i-tg"/></svg><span><small data-i="socSub2">Новости и видео</small><b data-i="socTg">Telegram-канал</b></span></a>
+          <a class="soc" href="https://www.facebook.com/taskbor.uz" target="_blank" rel="noopener" data-social="facebook"><svg aria-hidden="true"><use href="#i-fb"/></svg><span><small data-i="socSub">Подписывайтесь</small><b>Facebook</b></span></a>
+        </div>
       </div>
       <div class="qr"><img src="img/qr.svg" alt="QR" width="164" height="164"><span data-i="qr">Наведите камеру телефона, чтобы открыть сайт</span></div>
     </div>
@@ -646,13 +668,20 @@ footer{padding:48px 0 calc(40px + env(safe-area-inset-bottom))}
 <footer>
   <div class="wrap">
     <div class="f-row">
-      <a class="brand" href="/"><img src="img/logo.png" alt="" width="36" height="36"><span>TASK BOR</span></a>
+      <div style="display:flex;align-items:center;gap:20px;flex-wrap:wrap">
+        <a class="brand" href="/"><img src="img/logo.png" alt="" width="36" height="36"><span>TASK BOR</span></a>
+        <div class="f-soc">
+          <a href="https://www.instagram.com/taskbor.uz/" target="_blank" rel="noopener" aria-label="Instagram" data-social="instagram"><svg aria-hidden="true"><use href="#i-ig"/></svg></a>
+          <a href="https://t.me/taskboruz" target="_blank" rel="noopener" aria-label="Telegram" data-social="telegram"><svg aria-hidden="true"><use href="#i-tg"/></svg></a>
+          <a href="https://www.facebook.com/taskbor.uz" target="_blank" rel="noopener" aria-label="Facebook" data-social="facebook"><svg aria-hidden="true"><use href="#i-fb"/></svg></a>
+        </div>
+      </div>
       <nav class="f-links">
         <a href="legal.html" data-i="fLegal">Условия и конфиденциальность</a>
         <a href="rules/" data-i="fRules">Правила создания заказа</a>
         <a href="delete-account.html" data-i="fDel">Удаление аккаунта</a>
         <a href="#support" data-support data-i="fSupport">Поддержка</a>
-        <a href="https://t.me/helptaskbor_bot" target="_blank" rel="noopener">Telegram</a>
+        <a href="https://t.me/helptaskbor_bot" target="_blank" rel="noopener" data-i="fTgSup">Поддержка в Telegram</a>
       </nav>
     </div>
     <p class="copy">© <span id="yr">2026</span> TASK BOR · <span data-i="fCity">Ташкент, Узбекистан</span></p>
@@ -713,7 +742,7 @@ ru:{
  ctaH:'Задача есть? Скачайте TASK BOR',ctaP:'Бесплатно для заказчиков и исполнителей. Регистрация по номеру телефона — меньше минуты.',
  qr:'Наведите камеру телефона, чтобы открыть сайт',
  fSupport:'Поддержка',spTitle:'Написать в поддержку',spSub:'Быстрее всего — в Telegram. Ответим там же.',spTg:'Написать в Telegram',spOr:'или оставьте сообщение здесь',spName:'Имя',spPhone:'Телефон для связи',spText:'Сообщение',spSend:'Отправить',spOkH:'Сообщение отправлено',spOkP:'Спасибо! Мы свяжемся с вами по указанному телефону.',spClose:'Закрыть',spErrFill:'Заполните имя, телефон и сообщение.',spErrPhone:'Проверьте номер телефона.',spErrNet:'Не удалось отправить. Попробуйте ещё раз или напишите в Telegram.',spErrMany:'Слишком много сообщений. Попробуйте позже или напишите в Telegram.',spSending:'Отправляем…',
- fLegal:'Условия и конфиденциальность',fRules:'Правила создания заказа',fDel:'Удаление аккаунта',fCity:'Ташкент, Узбекистан'
+ fLegal:'Условия и конфиденциальность',fRules:'Правила создания заказа',fDel:'Удаление аккаунта',fCity:'Ташкент, Узбекистан',socH:'Мы в соцсетях',socSub:'Подписывайтесь',socSub2:'Новости и видео',socTg:'Telegram-канал',fTgSup:'Поддержка в Telegram'
 },
 uz:{
  lbKc:'Mijoz uchun',lbHc1:'Uyda yordam',lbHc2:'kerakmi?',lbPc:'Vazifani yozing, yaqin atrofdagi ijrochilar bir necha daqiqada javob beradi.',lbKm:'Ijrochi uchun',lbHm1:'Qoʻlingizdan',lbHm2:'ish keladimi?',lbPm:'Uyingiz yaqinidagi buyurtmalarni oling. Komissiyasiz: ishlab topganingiz oʻzingizniki.',lbKx:'Bitta akkaunt',lbHx:'Bitta eshik. Ikki kirish.',lbPx:'Rol profilda almashtiriladi, qayta roʻyxatdan oʻtmasdan.',lbBc:'Men mijozman',lbBm:'Men ijrochiman',lbHint:'Eshikni aylantiring',lbC1:'Ijrochi 5 daqiqada topildi',lbC2:'Bir soatlik usta · bugun 18:00',lbM1:'Yaqinda yangi buyurtma',lbM2:'160 000 soʻm · 1,2 km',
@@ -763,7 +792,7 @@ uz:{
  ctaH:'Vazifa bormi? TASK BORni yuklab oling',ctaP:'Buyurtmachilar va ijrochilar uchun bepul. Telefon raqami orqali roʻyxatdan oʻtish — bir daqiqadan kam.',
  qr:'Saytni ochish uchun telefon kamerasini tuting',
  fSupport:'Yordam',spTitle:'Yordamga yozish',spSub:'Eng tezi — Telegramda. Oʻsha yerda javob beramiz.',spTg:'Telegramda yozish',spOr:'yoki xabarni shu yerda qoldiring',spName:'Ism',spPhone:'Aloqa uchun telefon',spText:'Xabar',spSend:'Yuborish',spOkH:'Xabar yuborildi',spOkP:'Rahmat! Koʻrsatilgan telefon orqali siz bilan bogʻlanamiz.',spClose:'Yopish',spErrFill:'Ism, telefon va xabarni toʻldiring.',spErrPhone:'Telefon raqamini tekshiring.',spErrNet:'Yuborib boʻlmadi. Yana urinib koʻring yoki Telegramda yozing.',spErrMany:'Xabarlar juda koʻp. Keyinroq urinib koʻring yoki Telegramda yozing.',spSending:'Yuborilmoqda…',
- fLegal:'Shartlar va maxfiylik',fRules:'Buyurtma berish qoidalari',fDel:'Akkauntni oʻchirish',fCity:'Toshkent, Oʻzbekiston'
+ fLegal:'Shartlar va maxfiylik',fRules:'Buyurtma berish qoidalari',fDel:'Akkauntni oʻchirish',fCity:'Toshkent, Oʻzbekiston',socH:'Biz ijtimoiy tarmoqlarda',socSub:'Obuna boʻling',socSub2:'Yangiliklar va videolar',socTg:'Telegram kanal',fTgSup:'Telegramda yordam'
 },
 en:{
  lbKc:'For clients',lbHc1:'Need help',lbHc2:'at home?',lbPc:'Describe the task and executors nearby respond within minutes.',lbKm:'For executors',lbHm1:'Good with',lbHm2:'your hands?',lbPm:'Take jobs near home. No commission: you keep everything you earn.',lbKx:'One account',lbHx:'One door. Two ways in.',lbPx:'Switch roles in your profile, no second sign-up.',lbBc:'I’m a client',lbBm:'I’m an executor',lbHint:'Spin the door',lbC1:'Executor found in 5 minutes',lbC2:'Handyman · today 6:00 PM',lbM1:'New order nearby',lbM2:'160,000 UZS · 1.2 km',
@@ -813,7 +842,7 @@ en:{
  ctaH:'Got a task? Get TASK BOR',ctaP:'Free for customers and pros. Sign up with your phone number in under a minute.',
  qr:'Point your phone camera to open the site',
  fSupport:'Support',spTitle:'Contact support',spSub:'The fastest way is Telegram. We reply right there.',spTg:'Write on Telegram',spOr:'or leave a message here',spName:'Name',spPhone:'Phone to contact you',spText:'Message',spSend:'Send',spOkH:'Message sent',spOkP:'Thank you! We will contact you at the phone number you gave.',spClose:'Close',spErrFill:'Please fill in your name, phone and message.',spErrPhone:'Please check the phone number.',spErrNet:'Could not send. Try again or write to us on Telegram.',spErrMany:'Too many messages. Try later or write to us on Telegram.',spSending:'Sending…',
- fLegal:'Terms & Privacy',fRules:'Order rules',fDel:'Delete account',fCity:'Tashkent, Uzbekistan'
+ fLegal:'Terms & Privacy',fRules:'Order rules',fDel:'Delete account',fCity:'Tashkent, Uzbekistan',socH:'Follow us',socSub:'Follow',socSub2:'News and videos',socTg:'Telegram channel',fTgSup:'Support on Telegram'
 }};
 
 var lang='ru', role='c';
