@@ -122,7 +122,7 @@ a.store:hover{transform:translateY(-2px);box-shadow:0 12px 24px -10px rgba(13,38
 .stat span{display:block;margin-top:8px;color:var(--muted);font-weight:600;font-size:15px}
 
 /* categories */
-.cats{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.cats{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
 .cat{position:relative;border-radius:var(--r);overflow:hidden;background:var(--card);box-shadow:var(--shadow);display:flex;flex-direction:column;transition:transform .2s,box-shadow .2s}
 .cat:hover{transform:translateY(-4px);box-shadow:0 24px 50px -24px rgba(6,40,26,.35)}
 .cat .ph{aspect-ratio:16/10;overflow:hidden;background:var(--mint)}
@@ -495,7 +495,7 @@ footer{padding:48px 0 calc(40px + env(safe-area-inset-bottom))}
   <div class="wrap">
     <div class="stats rv">
       <div class="stat"><b>0%</b><span data-i="st1">комиссия платформы</span></div>
-      <div class="stat"><b>6</b><span data-i="st2">категорий услуг</span></div>
+      <div class="stat"><b>4</b><span data-i="st2">категорий услуг</span></div>
       <div class="stat"><b>1</b><span data-i="st3">аккаунт — две роли</span></div>
       <div class="stat"><b>3</b><span data-i="st4">языка интерфейса</span></div>
     </div>
@@ -511,12 +511,11 @@ footer{padding:48px 0 calc(40px + env(safe-area-inset-bottom))}
       <p class="lead" data-i="catP">Выберите категорию или опишите задачу своими словами — подходящие исполнители увидят её сразу.</p>
     </div>
     <div class="cats">
+      <!-- Правка 05.11.2026: 6 категорий → 4 (как в приложении) -->
+      <article class="cat rv"><div class="ph"><img src="img/cat_muj_na_chas.webp" alt="" loading="lazy" width="540" height="514"></div><div class="tx"><h3 data-i="c2h">Мастер на час</h3><p data-i="c2p">Розетки, люстры, смесители, полки, сборка мебели.</p></div></article>
       <article class="cat rv"><div class="ph"><img src="img/cat_uborka.webp" alt="" loading="lazy" width="540" height="514"></div><div class="tx"><h3 data-i="c1h">Уборка</h3><p data-i="c1p">Квартиры, дома и офисы — разово или регулярно.</p></div></article>
-      <article class="cat rv"><div class="ph"><img src="img/cat_muj_na_chas.webp" alt="" loading="lazy" width="540" height="514"></div><div class="tx"><h3 data-i="c2h">Муж на час</h3><p data-i="c2p">Полки, люстры, карнизы, розетки и мелкий ремонт.</p></div></article>
-      <article class="cat rv"><div class="ph"><img src="img/cat_remont.webp" alt="" loading="lazy" width="540" height="514"></div><div class="tx"><h3 data-i="c3h">Ремонт</h3><p data-i="c3p">Сантехника, электрика, отделка, бытовая техника.</p></div></article>
-      <article class="cat rv"><div class="ph"><img src="img/cat_perenos_vishey.webp" alt="" loading="lazy" width="540" height="514"></div><div class="tx"><h3 data-i="c4h">Перенос вещей</h3><p data-i="c4p">Переезд, грузчики, подъём мебели на этаж.</p></div></article>
-      <article class="cat rv"><div class="ph"><img src="img/cat_sad_i_dvor.webp" alt="" loading="lazy" width="540" height="514"></div><div class="tx"><h3 data-i="c5h">Сад и двор</h3><p data-i="c5p">Уход за садом, покос, уборка двора и участка.</p></div></article>
-      <article class="cat rv"><div class="ph"><img src="img/cat_lyubaya_rabota.webp" alt="" loading="lazy" width="540" height="514"></div><div class="tx"><h3 data-i="c6h">Любая работа</h3><p data-i="c6p">Не нашли категорию? Опишите задачу — исполнитель найдётся.</p></div></article>
+      <article class="cat rv"><div class="ph"><img src="img/cat_remont.webp" alt="" loading="lazy" width="540" height="514"></div><div class="tx"><h3 data-i="c3h">Ремонт</h3><p data-i="c3p">Покраска, обои, плитка, полы.</p></div></article>
+      <article class="cat rv"><div class="ph"><img src="img/cat_lyubaya_rabota.webp" alt="" loading="lazy" width="540" height="514"></div><div class="tx"><h3 data-i="c6h">Грузчики и разнорабочие</h3><p data-i="c6p">Переезд, подъём мебели, сад и двор, подсобные работы.</p></div></article>
     </div>
   </div>
 </section>
@@ -695,23 +694,23 @@ var STORES={ios:'https://apps.apple.com/app/id6797779666',android:'https://play.
 
 var T={
 ru:{
- lbKc:'Для заказчика',lbHc1:'Нужна помощь',lbHc2:'по дому?',lbPc:'Опишите задачу, и исполнители рядом откликнутся за минуты.',lbKm:'Для исполнителя',lbHm1:'Умеете работать',lbHm2:'руками?',lbPm:'Берите заказы рядом с домом. Без комиссии: всё заработанное ваше.',lbKx:'Один аккаунт',lbHx:'Одна дверь. Два входа.',lbPx:'Роль переключается в профиле, без второй регистрации.',lbBc:'Я заказчик',lbBm:'Я исполнитель',lbHint:'Покрутите дверь',lbC1:'Исполнитель найден за 5 минут',lbC2:'Муж на час · сегодня 18:00',lbM1:'Новый заказ рядом',lbM2:'160 000 сум · 1,2 км',
+ lbKc:'Для заказчика',lbHc1:'Нужна помощь',lbHc2:'по дому?',lbPc:'Опишите задачу, и исполнители рядом откликнутся за минуты.',lbKm:'Для исполнителя',lbHm1:'Умеете работать',lbHm2:'руками?',lbPm:'Берите заказы рядом с домом. Без комиссии: всё заработанное ваше.',lbKx:'Один аккаунт',lbHx:'Одна дверь. Два входа.',lbPx:'Роль переключается в профиле, без второй регистрации.',lbBc:'Я заказчик',lbBm:'Я исполнитель',lbHint:'Покрутите дверь',lbC1:'Исполнитель найден за 5 минут',lbC2:'Мастер на час · сегодня 18:00',lbM1:'Новый заказ рядом',lbM2:'160 000 сум · 1,2 км',
  title:'TASK BOR — бытовые услуги в Ташкенте: исполнитель рядом за минуты',
  desc:'TASK BOR — приложение бытовых услуг в Ташкенте. Уборка, ремонт, муж на час, переезд. Исполнители рядом, чат и голосовые, оплата напрямую без комиссии.',
  navServices:'Услуги',navHow:'Как это работает',navMasters:'Исполнителям',navFaq:'Вопросы',navCta:'Скачать',
  heroKicker:'Ташкент · бытовые услуги',h1a:'Задача есть —',h1b:'исполнитель найдётся',
  heroLead:'Уборка, ремонт, муж на час, переезд и любая помощь по дому. Опишите задачу — исполнители рядом откликнутся за минуты. Оплата напрямую, без комиссии платформы.',
  chip1:'0% комиссии',chip2:'Исполнители рядом',
- fl1a:'Исполнитель в пути',fl1b:'будет через 20 минут',fl2b:'87 выполненных заказов',fl3a:'Новый заказ рядом',fl3b:'Муж на час · 1,2 км',
+ fl1a:'Исполнитель в пути',fl1b:'будет через 20 минут',fl2b:'87 выполненных заказов',fl3a:'Новый заказ рядом',fl3b:'Мастер на час · 1,2 км',
  st1:'комиссия платформы',st2:'категорий услуг',st3:'аккаунт — две роли',st4:'языка интерфейса',
  soon:'Скоро',on:'Скачать в',onSoon:'Скоро в',
  catK:'Услуги',catH:'Всё для дома — в одном приложении',catP:'Выберите категорию или опишите задачу своими словами — подходящие исполнители увидят её сразу.',
  c1h:'Уборка',c1p:'Квартиры, дома и офисы — разово или регулярно.',
- c2h:'Муж на час',c2p:'Полки, люстры, карнизы, розетки и мелкий ремонт.',
- c3h:'Ремонт',c3p:'Сантехника, электрика, отделка, бытовая техника.',
+ c2h:'Мастер на час',c2p:'Розетки, люстры, смесители, полки, сборка мебели.',
+ c3h:'Ремонт',c3p:'Покраска, обои, плитка, полы.',
  c4h:'Перенос вещей',c4p:'Переезд, грузчики, подъём мебели на этаж.',
  c5h:'Сад и двор',c5p:'Уход за садом, покос, уборка двора и участка.',
- c6h:'Любая работа',c6p:'Не нашли категорию? Опишите задачу — исполнитель найдётся.',
+ c6h:'Грузчики и разнорабочие',c6p:'Переезд, подъём мебели, сад и двор, подсобные работы.',
  howK:'Как это работает',howH:'Три шага — и задача решена',roleC:'Заказчику',roleM:'Исполнителю',
  stepsC:[['Опишите задачу','Категория, адрес, время и бюджет. Добавьте фото или голосовое — так исполнителю проще понять задачу.'],
          ['Выберите исполнителя','Сами — из тех, кто сейчас онлайн рядом, по рейтингу и отзывам. Или отправьте заказ всем: первый свободный примет.'],
@@ -745,23 +744,23 @@ ru:{
  fLegal:'Условия и конфиденциальность',fRules:'Правила создания заказа',fDel:'Удаление аккаунта',fCity:'Ташкент, Узбекистан',socH:'Мы в соцсетях',socSub:'Подписывайтесь',socSub2:'Новости и видео',socTg:'Telegram-канал',fTgSup:'Поддержка в Telegram'
 },
 uz:{
- lbKc:'Mijoz uchun',lbHc1:'Uyda yordam',lbHc2:'kerakmi?',lbPc:'Vazifani yozing, yaqin atrofdagi ijrochilar bir necha daqiqada javob beradi.',lbKm:'Ijrochi uchun',lbHm1:'Qoʻlingizdan',lbHm2:'ish keladimi?',lbPm:'Uyingiz yaqinidagi buyurtmalarni oling. Komissiyasiz: ishlab topganingiz oʻzingizniki.',lbKx:'Bitta akkaunt',lbHx:'Bitta eshik. Ikki kirish.',lbPx:'Rol profilda almashtiriladi, qayta roʻyxatdan oʻtmasdan.',lbBc:'Men mijozman',lbBm:'Men ijrochiman',lbHint:'Eshikni aylantiring',lbC1:'Ijrochi 5 daqiqada topildi',lbC2:'Bir soatlik usta · bugun 18:00',lbM1:'Yaqinda yangi buyurtma',lbM2:'160 000 soʻm · 1,2 km',
+ lbKc:'Mijoz uchun',lbHc1:'Uyda yordam',lbHc2:'kerakmi?',lbPc:'Vazifani yozing, yaqin atrofdagi ijrochilar bir necha daqiqada javob beradi.',lbKm:'Ijrochi uchun',lbHm1:'Qoʻlingizdan',lbHm2:'ish keladimi?',lbPm:'Uyingiz yaqinidagi buyurtmalarni oling. Komissiyasiz: ishlab topganingiz oʻzingizniki.',lbKx:'Bitta akkaunt',lbHx:'Bitta eshik. Ikki kirish.',lbPx:'Rol profilda almashtiriladi, qayta roʻyxatdan oʻtmasdan.',lbBc:'Men mijozman',lbBm:'Men ijrochiman',lbHint:'Eshikni aylantiring',lbC1:'Ijrochi 5 daqiqada topildi',lbC2:'Har ishga usta · bugun 18:00',lbM1:'Yaqinda yangi buyurtma',lbM2:'160 000 soʻm · 1,2 km',
  title:'TASK BOR — Toshkentda maishiy xizmatlar: yaqin atrofdagi ijrochi bir necha daqiqada',
  desc:'TASK BOR — Toshkentdagi maishiy xizmatlar ilovasi. Tozalash, taʼmir, bir soatlik usta, koʻchish. Yaqin ijrochilar, chat va ovozli xabarlar, komissiyasiz toʻgʻridan-toʻgʻri toʻlov.',
  navServices:'Xizmatlar',navHow:'Qanday ishlaydi',navMasters:'Ijrochilarga',navFaq:'Savollar',navCta:'Yuklab olish',
  heroKicker:'Toshkent · maishiy xizmatlar',h1a:'Vazifa bor —',h1b:'ijrochi topiladi',
  heroLead:'Tozalash, taʼmir, bir soatlik usta, koʻchish va uydagi har qanday yordam. Vazifani yozing — yaqin atrofdagi ijrochilar bir necha daqiqada javob beradi. Toʻlov toʻgʻridan-toʻgʻri, platforma komissiyasisiz.',
  chip1:'0% komissiya',chip2:'Ijrochilar yaqinda',
- fl1a:'Ijrochi yoʻlda',fl1b:'20 daqiqada yetib keladi',fl2b:'87 ta bajarilgan buyurtma',fl3a:'Yaqinda yangi buyurtma',fl3b:'Bir soatlik usta · 1,2 km',
+ fl1a:'Ijrochi yoʻlda',fl1b:'20 daqiqada yetib keladi',fl2b:'87 ta bajarilgan buyurtma',fl3a:'Yaqinda yangi buyurtma',fl3b:'Har ishga usta · 1,2 km',
  st1:'platforma komissiyasi',st2:'xizmat turi',st3:'akkaunt — ikki rol',st4:'interfeys tili',
  soon:'Tez orada',on:'Yuklab oling',onSoon:'Tez orada',
  catK:'Xizmatlar',catH:'Uy uchun hammasi — bitta ilovada',catP:'Kategoriyani tanlang yoki vazifani oʻz soʻzlaringiz bilan yozing — mos ijrochilar uni darhol koʻradi.',
  c1h:'Tozalash',c1p:'Kvartira, uy va ofislar — bir martalik yoki muntazam.',
- c2h:'Bir soatlik usta',c2p:'Javon, qandil, parda ilgichi, rozetka va mayda taʼmir.',
- c3h:'Taʼmir',c3p:'Santexnika, elektrika, pardozlash, maishiy texnika.',
+ c2h:'Har ishga usta',c2p:'Rozetka, qandil, smesitel, javon, mebel yigʻish.',
+ c3h:'Taʼmirlash',c3p:'Boʻyash, gulqogʻoz, kafel, pol.',
  c4h:'Yuk tashish',c4p:'Koʻchish, yuk tashuvchilar, mebelni qavatga koʻtarish.',
  c5h:'Bogʻ va hovli',c5p:'Bogʻni parvarish qilish, oʻt oʻrish, hovlini tozalash.',
- c6h:'Har qanday ish',c6p:'Kategoriya topilmadimi? Vazifani yozing — ijrochi topiladi.',
+ c6h:'Mardikor va gruzchiklar',c6p:'Koʻchish, mebelni koʻtarish, bogʻ va hovli, yordamchi ishlar.',
  howK:'Qanday ishlaydi',howH:'Uch qadam — va vazifa hal',roleC:'Mijozga',roleM:'Ijrochiga',
  stepsC:[['Vazifani yozing','Kategoriya, manzil, vaqt va byudjet. Foto yoki ovozli xabar qoʻshing — ijrochi uchun tushunish osonroq.'],
          ['Ijrochini tanlang','Oʻzingiz — hozir yaqinda onlayn boʻlganlar orasidan, reyting va sharhlar boʻyicha. Yoki hammaga yuboring: birinchi boʻsh ijrochi qabul qiladi.'],
@@ -807,11 +806,11 @@ en:{
  soon:'Soon',on:'Download on',onSoon:'Soon on',
  catK:'Services',catH:'Everything for your home — in one app',catP:'Pick a category or describe the task in your own words — the right pros see it right away.',
  c1h:'Cleaning',c1p:'Apartments, houses and offices — one-off or regular.',
- c2h:'Handyman',c2p:'Shelves, chandeliers, curtain rails, sockets and small fixes.',
- c3h:'Repairs',c3p:'Plumbing, electrics, finishing, home appliances.',
+ c2h:'Handyman',c2p:'Sockets, lamps, faucets, shelves, furniture assembly.',
+ c3h:'Repairs',c3p:'Painting, wallpaper, tiles, flooring.',
  c4h:'Moving',c4p:'Relocation, movers, carrying furniture upstairs.',
  c5h:'Garden & yard',c5p:'Garden care, mowing, yard and plot clean-up.',
- c6h:'Any task',c6p:'Can’t find a category? Describe the task — a pro will turn up.',
+ c6h:'Movers & labourers',c6p:'Moving, carrying furniture, garden and yard, general labour.',
  howK:'How it works',howH:'Three steps and it’s done',roleC:'For clients',roleM:'For executors',
  stepsC:[['Describe the task','Category, address, time and budget. Add a photo or a voice note so the pro gets it right.'],
          ['Choose a pro','Pick one yourself from those online nearby, by rating and reviews. Or send it to everyone — the first free pro takes it.'],
@@ -948,17 +947,17 @@ var reduce=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').mat
 var MT={
  ru:{capC:'Исполнители рядом с вами',capM:'Заказы рядом с вами',
   names:['Дилноза','Жасур','Сардор','Малика','Бекзод','Нодира'],
-  cats:['Уборка','Муж на час','Ремонт','Перенос вещей','Сад и двор'],
+  cats:['Уборка','Мастер на час','Ремонт','Грузчики','Разнорабочие'],
   sum:function(n){return fmt(n,' ')+' сум'},km:function(x){return String(x).replace('.',',')+' км'},
   lm:{tv:'Телебашня',temur:'Сквер Амира Темура',minor:'Мечеть Минор',chorsu:'Чорсу'}},
  uz:{capC:'Yaqiningizdagi ijrochilar',capM:'Yaqiningizdagi buyurtmalar',
   names:['Dilnoza','Jasur','Sardor','Malika','Bekzod','Nodira'],
-  cats:['Tozalash','Usta chaqirish','Taʼmir','Yuk tashish','Bogʻ va hovli'],
+  cats:['Tozalash','Har ishga usta','Taʼmirlash','Gruzchiklar','Mardikorlar'],
   sum:function(n){return fmt(n,' ')+' soʻm'},km:function(x){return String(x).replace('.',',')+' km'},
   lm:{tv:'Teleminora',temur:'Amir Temur xiyoboni',minor:'Minor masjidi',chorsu:'Chorsu'}},
  en:{capC:'Executors near you',capM:'Orders near you',
   names:['Dilnoza','Jasur','Sardor','Malika','Bekzod','Nodira'],
-  cats:['Cleaning','Handyman','Repair','Moving help','Garden & yard'],
+  cats:['Cleaning','Handyman','Repair','Movers','Labourers'],
   sum:function(n){return fmt(n,',')+' UZS'},km:function(x){return x+' km'},
   lm:{tv:'TV Tower',temur:'Amir Temur Square',minor:'Minor Mosque',chorsu:'Chorsu Bazaar'}}
 };
