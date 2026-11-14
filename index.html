@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>TASK BOR — бытовые услуги в Ташкенте: исполнитель рядом за минуты</title>
-<meta name="description" content="TASK BOR — приложение бытовых услуг в Ташкенте. Уборка, ремонт, муж на час, переезд. Исполнители рядом, чат и голосовые, оплата напрямую без комиссии.">
+<meta name="description" content="TASK BOR — приложение бытовых услуг в Ташкенте: сантехника, электрика, мебель и двери, мелкий ремонт, кондиционеры, ремонт и отделка, уборка, переезд, двор и сад. Исполнители рядом, чат, оплата напрямую без комиссии.">
 <link rel="canonical" href="https://taskbor.uz/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="TASK BOR">
@@ -155,6 +155,7 @@ a.store:hover{transform:translateY(-2px);box-shadow:0 12px 24px -10px rgba(13,38
 .t-sm{grid-column:span 2}
 .t-big .shot{margin-top:auto;align-self:center;width:78%;max-width:340px;border-radius:28px 28px 0 0;overflow:hidden;box-shadow:0 -10px 40px -10px rgba(6,40,26,.25);margin-bottom:-28px;height:300px}
 .t-big .shot img{width:100%;object-position:top}
+.t-big .shot.bottom{display:flex;flex-direction:column;justify-content:flex-end} /* 14.11: чат — видны сообщения, а не пустой верх */
 .t-dark{background:var(--green-d);color:#fff}
 .t-dark p{color:rgba(255,255,255,.72)}
 .t-dark .ic{background:rgba(255,255,255,.1);color:var(--lime)}
@@ -405,6 +406,25 @@ footer{padding:48px 0 calc(40px + env(safe-area-inset-bottom))}
   summary{padding:18px 18px;font-size:16px}
   details .a{padding:0 18px 18px}
 }
+
+/* 14.11.2026: 9 категорий и подкатегории, как в приложении 1.0.2 */
+.grp{display:flex;align-items:center;gap:10px;margin:8px 0 14px;font-size:13px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--green)}
+.grp span{background:var(--mint);color:var(--green);border-radius:99px;padding:2px 9px;font-size:12px;letter-spacing:0}
+.grp::after{content:"";flex:1;height:1px;background:rgba(15,91,58,.15)}
+.cats2{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:26px}
+.cat2{display:flex;gap:16px;align-items:flex-start;padding:20px;border-radius:var(--r);background:var(--card);box-shadow:var(--shadow);transition:transform .2s,box-shadow .2s}
+.cat2:hover{transform:translateY(-4px);box-shadow:0 24px 50px -24px rgba(6,40,26,.35)}
+.cat2 .ico{width:64px;height:64px;border-radius:18px;background:var(--mint);display:grid;place-items:center;flex:none}
+.cat2 .ico img{width:44px;height:44px}
+.cat2 h3{font-size:19px}
+.subs{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.subs span{font-size:13px;font-weight:600;background:#F3F7F4;border:1px solid rgba(15,91,58,.12);border-radius:10px;padding:4px 9px}
+.subs .more{background:var(--green);color:#fff;border-color:var(--green);cursor:pointer;font:inherit;font-size:13px;font-weight:700;border-radius:10px;padding:4px 9px}
+.other{display:flex;gap:14px;align-items:center;padding:18px 22px;border-radius:var(--r);border:1.5px dashed rgba(15,91,58,.3);color:var(--muted);font-size:15px}
+.other b{color:var(--green)}
+.oi{font-size:26px}
+@media(max-width:900px){.cats2{grid-template-columns:1fr 1fr}}
+@media(max-width:600px){.cats2{grid-template-columns:1fr}.cat2{padding:16px}.cat2 .ico{width:52px;height:52px}.cat2 .ico img{width:36px;height:36px}}
 </style>
 </head>
 <body>
@@ -425,7 +445,7 @@ footer{padding:48px 0 calc(40px + env(safe-area-inset-bottom))}
     <symbol id="i-wallet" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 7V5.5A1.5 1.5 0 0 0 17.5 4h-12A2.5 2.5 0 0 0 3 6.5v11A2.5 2.5 0 0 0 5.5 20h13a1.5 1.5 0 0 0 1.5-1.5V15"/><path d="M21 9h-5a3 3 0 0 0 0 6h5z"/></symbol>
     <symbol id="i-board" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7.5" height="9" rx="2"/><rect x="13.5" y="3" width="7.5" height="5" rx="2"/><rect x="13.5" y="11" width="7.5" height="10" rx="2"/><rect x="3" y="15" width="7.5" height="6" rx="2"/></symbol>
     <symbol id="i-send" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.5 3.5 2.5 11l7 2.5 2.5 7z"/><path d="m21.5 3.5-12 10"/></symbol>
-    <symbol id="i-power" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="2.5" y="7" width="19" height="10" rx="5"/><circle cx="16.5" cy="12" r="2.6" fill="currentColor"/></symbol>
+    <symbol id="i-users" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.2"/><path d="M3 19.5c.6-3.3 3-5.2 6-5.2s5.4 1.9 6 5.2"/><circle cx="17" cy="9" r="2.6"/><path d="M16.2 14.4c2.6.1 4.3 1.8 4.8 4.6"/></symbol><symbol id="i-power" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="2.5" y="7" width="19" height="10" rx="5"/><circle cx="16.5" cy="12" r="2.6" fill="currentColor"/></symbol>
     <symbol id="i-sliders" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 6h10M18 6h2M4 12h4M12 12h8M4 18h12M20 18h0"/><circle cx="16" cy="6" r="2"/><circle cx="10" cy="12" r="2"/><circle cx="18" cy="18" r="2"/></symbol>
     <symbol id="i-bolt" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></symbol>
   </defs>
@@ -464,7 +484,7 @@ footer{padding:48px 0 calc(40px + env(safe-area-inset-bottom))}
       <div class="mh-swap" id="mhSwap" aria-live="polite">
         <span class="kicker" id="mhK">Для заказчика</span>
         <h2><span id="mhH1">Нужна помощь</span> <em id="mhH2">по дому?</em></h2>
-        <p class="lead" id="mhP">Опишите задачу, и исполнители рядом откликнутся за минуты.</p>
+        <p class="lead" id="mhP">Опишите задачу — исполнители рядом увидят её сразу.</p>
       </div>
     </div>
     <div class="mh-card" id="mhCard">
@@ -484,7 +504,7 @@ footer{padding:48px 0 calc(40px + env(safe-area-inset-bottom))}
     <div>
       <span class="kicker" data-i="heroKicker">Ташкент · бытовые услуги</span>
       <h1><span data-i="h1a">Задача есть —</span> <span class="hl" data-i="h1b">исполнитель найдётся</span></h1>
-      <p class="lead" data-i="heroLead">Уборка, ремонт, муж на час, переезд и любая помощь по дому. Опишите задачу — исполнители рядом откликнутся за минуты. Оплата напрямую, без комиссии платформы.</p>
+      <p class="lead" data-i="heroLead">Сантехника, электрика, сборка мебели, мелкий ремонт, уборка, переезд — 9 направлений и 52 вида работ. Выберите работу, ответьте на пару вопросов — исполнители рядом сразу увидят заказ. Оплата напрямую, без комиссии платформы.</p>
       <div class="chips">
         <span><svg><use href="#i-check"/></svg><b data-i="chip1">0% комиссии</b></span>
         <span><svg><use href="#i-check"/></svg><b data-i="chip2">Исполнители рядом</b></span>
@@ -495,7 +515,7 @@ footer{padding:48px 0 calc(40px + env(safe-area-inset-bottom))}
   <div class="wrap">
     <div class="stats rv">
       <div class="stat"><b>0%</b><span data-i="st1">комиссия платформы</span></div>
-      <div class="stat"><b>6</b><span data-i="st2">категорий услуг</span></div>
+      <div class="stat"><b>9</b><span data-i="st2">категорий · 52 вида работ</span></div>
       <div class="stat"><b>1</b><span data-i="st3">аккаунт — две роли</span></div>
       <div class="stat"><b>3</b><span data-i="st4">языка интерфейса</span></div>
     </div>
@@ -507,17 +527,11 @@ footer{padding:48px 0 calc(40px + env(safe-area-inset-bottom))}
   <div class="wrap">
     <div class="sec-head rv">
       <span class="kicker" data-i="catK">Услуги</span>
-      <h2 data-i="catH">Всё для дома — в одном приложении</h2>
-      <p class="lead" data-i="catP">Выберите категорию или опишите задачу своими словами — подходящие исполнители увидят её сразу.</p>
+      <h2 data-i="catH">9 направлений — 52 вида работ</h2>
+      <p class="lead" data-i="catP">Выберите категорию и конкретную работу, ответьте на 3–4 коротких вопроса — мастер сразу поймёт задачу.</p>
     </div>
-    <div class="cats">
-      <article class="cat rv"><div class="ph"><img src="img/cat_uborka.webp" alt="" loading="lazy" width="540" height="514"></div><div class="tx"><h3 data-i="c1h">Уборка</h3><p data-i="c1p">Квартиры, дома и офисы — разово или регулярно.</p></div></article>
-      <article class="cat rv"><div class="ph"><img src="img/cat_muj_na_chas.webp" alt="" loading="lazy" width="540" height="514"></div><div class="tx"><h3 data-i="c2h">Муж на час</h3><p data-i="c2p">Полки, люстры, карнизы, розетки и мелкий ремонт.</p></div></article>
-      <article class="cat rv"><div class="ph"><img src="img/cat_remont.webp" alt="" loading="lazy" width="540" height="514"></div><div class="tx"><h3 data-i="c3h">Ремонт</h3><p data-i="c3p">Сантехника, электрика, отделка, бытовая техника.</p></div></article>
-      <article class="cat rv"><div class="ph"><img src="img/cat_perenos_vishey.webp" alt="" loading="lazy" width="540" height="514"></div><div class="tx"><h3 data-i="c4h">Перенос вещей</h3><p data-i="c4p">Переезд, грузчики, подъём мебели на этаж.</p></div></article>
-      <article class="cat rv"><div class="ph"><img src="img/cat_sad_i_dvor.webp" alt="" loading="lazy" width="540" height="514"></div><div class="tx"><h3 data-i="c5h">Сад и двор</h3><p data-i="c5p">Уход за садом, покос, уборка двора и участка.</p></div></article>
-      <article class="cat rv"><div class="ph"><img src="img/cat_lyubaya_rabota.webp" alt="" loading="lazy" width="540" height="514"></div><div class="tx"><h3 data-i="c6h">Любая работа</h3><p data-i="c6p">Не нашли категорию? Опишите задачу — исполнитель найдётся.</p></div></article>
-    </div>
+    <div id="svc"></div>
+    <div class="other rv"><span class="oi" aria-hidden="true">✍️</span><div><b data-i="otherB">Не нашли свою задачу?</b> <span data-i="otherP">В каждой категории есть «Другое — опишу сам»: напишите текстом или голосом и добавьте фото.</span></div></div>
   </div>
 </section>
 
@@ -551,7 +565,7 @@ footer{padding:48px 0 calc(40px + env(safe-area-inset-bottom))}
         <div class="ic"><svg><use href="#i-chat"/></svg></div>
         <h3 data-i="f1h">Чат с исполнителем</h3>
         <p data-i="f1p">Текст, голосовые сообщения и реакции. Карточка заказа закреплена сверху — всё обсуждение в одном месте.</p>
-        <div class="shot"><img data-shot="chat" src="img/ru_chat.webp" alt="" loading="lazy" width="600" height="1300"></div>
+        <div class="shot bottom"><img data-shot="chat" src="img/ru_chat.webp" alt="" loading="lazy" width="600" height="1300"></div>
       </div>
       <div class="tile t-big t-dark rv">
         <div class="ic"><svg><use href="#i-route"/></svg></div>
@@ -567,8 +581,8 @@ footer{padding:48px 0 calc(40px + env(safe-area-inset-bottom))}
       </div>
       <div class="tile t-sm rv">
         <div class="ic"><svg><use href="#i-pin"/></svg></div>
-        <h3 data-i="f4h">Исполнители рядом</h3>
-        <p data-i="f4p">Выбирайте сами из тех, кто онлайн в вашем районе, или отправьте заказ всем сразу.</p>
+        <h3 data-i="f4h">Своя цена или свой мастер</h3>
+        <p data-i="f4p">Назовите свою цену — заказ увидят все исполнители рядом. Или выберите сами из тех, кто онлайн в вашем районе.</p>
       </div>
       <div class="tile t-sm rv">
         <div class="ic"><svg><use href="#i-phone"/></svg></div>
@@ -587,10 +601,10 @@ footer{padding:48px 0 calc(40px + env(safe-area-inset-bottom))}
       <h2 style="margin:16px 0" data-i="mH">Заказы сами находят вас</h2>
       <p class="lead" data-i="mP">Работайте, когда удобно, и получайте всю сумму от клиента — платформа не берёт комиссию.</p>
       <div class="m-list">
-        <div class="m-item"><svg><use href="#i-board"/></svg><b data-i="m1h">«Мне» и «Доска»</b><p data-i="m1p">Личные заказы от клиентов и общие задачи рядом с вами.</p></div>
+        <div class="m-item"><svg><use href="#i-board"/></svg><b data-i="m1h">«✓ Ваша работа»</b><p data-i="m1p">Отметьте в анкете, что умеете, — такие заказы помечены и стоят выше в ленте и уведомлениях.</p></div>
         <div class="m-item"><svg><use href="#i-send"/></svg><b data-i="m2h">Уведомления в Telegram</b><p data-i="m2p">Узнавайте о новых заказах сразу, даже с закрытым приложением.</p></div>
-        <div class="m-item"><svg><use href="#i-power"/></svg><b data-i="m3h">Онлайн, когда хотите</b><p data-i="m3p">Один переключатель — и вы видны клиентам или на отдыхе.</p></div>
-        <div class="m-item"><svg><use href="#i-sliders"/></svg><b data-i="m4h">Своя зона и ставка</b><p data-i="m4p">Районы, радиус, услуги и цена за час — настраиваете сами.</p></div>
+        <div class="m-item"><svg><use href="#i-users"/></svg><b data-i="m3h">С напарником</b><p data-i="m3p">Работаете вдвоём или втроём? Включите напарника — будут приходить заказы на 2–3 человек.</p></div>
+        <div class="m-item"><svg><use href="#i-sliders"/></svg><b data-i="m4h">Своя зона и ставка</b><p data-i="m4p">Районы или радиус, ставка за час, свой инструмент — настраиваете сами. «Онлайн» включается одним переключателем.</p></div>
       </div>
       <a class="btn btn-gold" href="#download" data-i="mCta">Стать исполнителем</a>
     </div>
@@ -695,49 +709,45 @@ var STORES={ios:'https://apps.apple.com/app/id6797779666',android:'https://play.
 
 var T={
 ru:{
- lbKc:'Для заказчика',lbHc1:'Нужна помощь',lbHc2:'по дому?',lbPc:'Опишите задачу, и исполнители рядом откликнутся за минуты.',lbKm:'Для исполнителя',lbHm1:'Умеете работать',lbHm2:'руками?',lbPm:'Берите заказы рядом с домом. Без комиссии: всё заработанное ваше.',lbKx:'Один аккаунт',lbHx:'Одна дверь. Два входа.',lbPx:'Роль переключается в профиле, без второй регистрации.',lbBc:'Я заказчик',lbBm:'Я исполнитель',lbHint:'Покрутите дверь',lbC1:'Исполнитель найден за 5 минут',lbC2:'Муж на час · сегодня 18:00',lbM1:'Новый заказ рядом',lbM2:'160 000 сум · 1,2 км',
+ lbKc:'Для заказчика',lbHc1:'Нужна помощь',lbHc2:'по дому?',lbPc:'Опишите задачу — исполнители рядом увидят её сразу.',lbKm:'Для исполнителя',lbHm1:'Умеете работать',lbHm2:'руками?',lbPm:'Берите заказы рядом с домом. Без комиссии: всё заработанное ваше.',lbKx:'Один аккаунт',lbHx:'Одна дверь. Два входа.',lbPx:'Роль переключается в профиле, без второй регистрации.',lbBc:'Я заказчик',lbBm:'Я исполнитель',lbHint:'Покрутите дверь',lbC1:'Исполнитель принял заказ',lbC2:'Сантехника · сегодня 18:00',lbM1:'Новый заказ рядом',lbM2:'Сантехника · 1,2 км',
  title:'TASK BOR — бытовые услуги в Ташкенте: исполнитель рядом за минуты',
- desc:'TASK BOR — приложение бытовых услуг в Ташкенте. Уборка, ремонт, муж на час, переезд. Исполнители рядом, чат и голосовые, оплата напрямую без комиссии.',
+ desc:'TASK BOR — приложение бытовых услуг в Ташкенте: сантехника, электрика, мебель и двери, мелкий ремонт, кондиционеры, ремонт и отделка, уборка, переезд, двор и сад. Исполнители рядом, чат, оплата напрямую без комиссии.',
  navServices:'Услуги',navHow:'Как это работает',navMasters:'Исполнителям',navFaq:'Вопросы',navCta:'Скачать',
  heroKicker:'Ташкент · бытовые услуги',h1a:'Задача есть —',h1b:'исполнитель найдётся',
- heroLead:'Уборка, ремонт, муж на час, переезд и любая помощь по дому. Опишите задачу — исполнители рядом откликнутся за минуты. Оплата напрямую, без комиссии платформы.',
+ heroLead:'Сантехника, электрика, сборка мебели, мелкий ремонт, уборка, переезд — 9 направлений и 52 вида работ. Выберите работу, ответьте на пару вопросов — исполнители рядом сразу увидят заказ. Оплата напрямую, без комиссии платформы.',
  chip1:'0% комиссии',chip2:'Исполнители рядом',
- fl1a:'Исполнитель в пути',fl1b:'будет через 20 минут',fl2b:'87 выполненных заказов',fl3a:'Новый заказ рядом',fl3b:'Муж на час · 1,2 км',
- st1:'комиссия платформы',st2:'категорий услуг',st3:'аккаунт — две роли',st4:'языка интерфейса',
+ fl1a:'Исполнитель в пути',fl1b:'заказ принят',fl2b:'Отзыв после каждого заказа',fl3a:'Новый заказ рядом',fl3b:'Сантехника · 1,2 км',
+ st1:'комиссия платформы',st2:'категорий · 52 вида работ',st3:'аккаунт — две роли',st4:'языка интерфейса',
  soon:'Скоро',on:'Скачать в',onSoon:'Скоро в',
- catK:'Услуги',catH:'Всё для дома — в одном приложении',catP:'Выберите категорию или опишите задачу своими словами — подходящие исполнители увидят её сразу.',
- c1h:'Уборка',c1p:'Квартиры, дома и офисы — разово или регулярно.',
- c2h:'Муж на час',c2p:'Полки, люстры, карнизы, розетки и мелкий ремонт.',
- c3h:'Ремонт',c3p:'Сантехника, электрика, отделка, бытовая техника.',
- c4h:'Перенос вещей',c4p:'Переезд, грузчики, подъём мебели на этаж.',
- c5h:'Сад и двор',c5p:'Уход за садом, покос, уборка двора и участка.',
- c6h:'Любая работа',c6p:'Не нашли категорию? Опишите задачу — исполнитель найдётся.',
+ catK:'Услуги',catH:'9 направлений — 52 вида работ',grpS:'Специалисты',grpH:'Помощники',otherB:'Не нашли свою задачу?',otherP:'В каждой категории есть «Другое — опишу сам»: напишите текстом или голосом и добавьте фото.',
+ catP:'Выберите категорию и конкретную работу, ответьте на 3–4 коротких вопроса — мастер сразу поймёт задачу.',
  howK:'Как это работает',howH:'Три шага — и задача решена',roleC:'Заказчику',roleM:'Исполнителю',
- stepsC:[['Опишите задачу','Категория, адрес, время и бюджет. Добавьте фото или голосовое — так исполнителю проще понять задачу.'],
-         ['Выберите исполнителя','Сами — из тех, кто сейчас онлайн рядом, по рейтингу и отзывам. Или отправьте заказ всем: первый свободный примет.'],
-         ['Следите и оцените','Статус меняется в реальном времени, детали — в чате. После работы оставьте отзыв.']],
- stepsM:[['Включите роль исполнителя','В профиле выберите «Исполнитель», отметьте услуги, районы и ставку за час.'],
-         ['Получайте заказы','Личные заказы — во вкладке «Мне», общие рядом — на «Доске». Уведомления приходят и в Telegram.'],
-         ['Работайте и растите','Клиент платит вам напрямую, без комиссии. Хорошие отзывы приносят новых клиентов.']],
+ stepsC:[['Выберите работу','Категория → конкретная работа → 3–4 коротких вопроса. Добавьте фото или голосовое — так мастер сразу поймёт задачу.'],
+         ['Где, когда и сколько','Адрес на карте и удобное время. Назовите свою цену — заказ увидят все исполнители рядом. Или выберите исполнителя сами — по рейтингу, отзывам и ставке.'],
+         ['Договоритесь и оцените','Детали — в чате: текст, фото, голосовые, точка на карте. Оплата напрямую исполнителю. После работы оставьте отзыв.']],
+ stepsM:[['Заполните анкету','В профиле включите роль «Исполнитель»: категории и конкретные работы, ставка за час, зона работы, свой инструмент и напарник.'],
+         ['Получайте заказы рядом','Заказы — в ленте, на доске и на карте, уведомления — в приложении и в Telegram. До принятия видно всё: ответы заказчика, фото, расстояние.'],
+         ['Работайте без комиссии','Клиент платит вам напрямую. Передумали — первые 10 минут после принятия можно отказаться без штрафа. Хорошие отзывы приносят новых клиентов.']],
  featK:'Возможности',featH:'Всё под рукой — от заказа до отзыва',
  f1h:'Чат с исполнителем',f1p:'Текст, голосовые сообщения и реакции. Карточка заказа закреплена сверху — всё обсуждение в одном месте.',
  f2h:'Статус в реальном времени',f2p:'Видно, когда исполнитель принял заказ, выехал и начал работу.',
  fs1:'Создан',fs2:'Принят',fs3:'В пути',fs4:'В работе',fs5:'Завершён',
  f3h:'Честные отзывы',f3p:'Оставить отзыв можно только после выполненного заказа — рейтингу можно доверять.',
- f4h:'Исполнители рядом',f4p:'Выбирайте сами из тех, кто онлайн в вашем районе, или отправьте заказ всем сразу.',
+ f4h:'Своя цена или свой мастер',f4p:'Назовите свою цену — заказ увидят все исполнители рядом. Или выберите сами из тех, кто онлайн в вашем районе.',
  f5h:'Вход по номеру',f5p:'Код из SMS — и вы внутри. Никаких паролей и долгих анкет.',
  mK:'Исполнителям',mH:'Заказы сами находят вас',mP:'Работайте, когда удобно, и получайте всю сумму от клиента — платформа не берёт комиссию.',
- m1h:'«Мне» и «Доска»',m1p:'Личные заказы от клиентов и общие задачи рядом с вами.',
+ m1h:'«✓ Ваша работа»',m1p:'Отметьте в анкете, что умеете, — такие заказы помечены и стоят выше в ленте и уведомлениях.',
  m2h:'Уведомления в Telegram',m2p:'Узнавайте о новых заказах сразу, даже с закрытым приложением.',
- m3h:'Онлайн, когда хотите',m3p:'Один переключатель — и вы видны клиентам или на отдыхе.',
- m4h:'Своя зона и ставка',m4p:'Районы, радиус, услуги и цена за час — настраиваете сами.',
+ m3h:'С напарником',m3p:'Работаете вдвоём или втроём? Включите напарника — будут приходить заказы на 2–3 человек.',
+ m4h:'Своя зона и ставка',m4p:'Районы или радиус, ставка за час, свой инструмент — настраиваете сами. «Онлайн» включается одним переключателем.',
  mCta:'Стать исполнителем',
  faqK:'Вопросы',faqH:'Коротко о главном',faqP:'Не нашли ответ? Напишите нам — ответим в течение дня.',faqBtn:'Написать в поддержку',
- faq:[['Когда приложение появится в App Store и Google Play?','Приложение проходит финальную проверку в магазинах. Как только оно станет доступно, кнопки на этой странице заработают.'],
+ faq:[['Какие работы можно заказать?','9 направлений: сантехника, электрика, мебель и двери, мелкий ремонт, кондиционеры и техника, ремонт и отделка, уборка, переезд и грузчики, двор и сад. Внутри — 52 вида работ. Не нашли свою — выберите «Другое — опишу сам».'],
       ['Сколько стоит пользоваться TASK BOR?','Приложение бесплатное. Платформа не берёт комиссию: заказчик и исполнитель рассчитываются напрямую — наличными или переводом.'],
-      ['Как формируется цена?','Почасово по ставке исполнителя или фиксированной суммой по договорённости. Сумму вы видите заранее, до подтверждения заказа.'],
+      ['Как формируется цена?','Два способа. «Своя цена»: вы называете сумму, заказ видят все исполнители рядом, берёт тот, кто согласен. «Выбрать исполнителя самому»: цена = его ставка × часы × число людей — сумму вы видите до подтверждения.'],
+      ['Можно заказать несколько человек?','Да, до 3 человек на один заказ — например, грузчиков или помощников по уборке.'],
       ['Где работает сервис?','Сейчас — в Ташкенте. Дальше — другие города Узбекистана и Центральной Азии.'],
-      ['Как стать исполнителем?','Войдите по номеру телефона, в профиле выберите роль «Исполнитель», отметьте услуги, районы и ставку. Переключаться между ролями можно в любой момент.'],
+      ['Как стать исполнителем?','Войдите по номеру телефона, в профиле включите роль «Исполнитель» и заполните анкету: категории и работы, ставка, зона, инструмент, напарник. Переключаться между ролями можно в любой момент.'],
       ['Как удалить аккаунт и данные?','В приложении: Профиль → Удалить аккаунт. Или по инструкции на странице <a href="delete-account.html">«Удаление аккаунта»</a>.']],
  ctaH:'Задача есть? Скачайте TASK BOR',ctaP:'Бесплатно для заказчиков и исполнителей. Регистрация по номеру телефона — меньше минуты.',
  qr:'Наведите камеру телефона, чтобы открыть сайт',
@@ -745,49 +755,45 @@ ru:{
  fLegal:'Условия и конфиденциальность',fRules:'Правила создания заказа',fDel:'Удаление аккаунта',fCity:'Ташкент, Узбекистан',socH:'Мы в соцсетях',socSub:'Подписывайтесь',socSub2:'Новости и видео',socTg:'Telegram-канал',fTgSup:'Поддержка в Telegram'
 },
 uz:{
- lbKc:'Mijoz uchun',lbHc1:'Uyda yordam',lbHc2:'kerakmi?',lbPc:'Vazifani yozing, yaqin atrofdagi ijrochilar bir necha daqiqada javob beradi.',lbKm:'Ijrochi uchun',lbHm1:'Qoʻlingizdan',lbHm2:'ish keladimi?',lbPm:'Uyingiz yaqinidagi buyurtmalarni oling. Komissiyasiz: ishlab topganingiz oʻzingizniki.',lbKx:'Bitta akkaunt',lbHx:'Bitta eshik. Ikki kirish.',lbPx:'Rol profilda almashtiriladi, qayta roʻyxatdan oʻtmasdan.',lbBc:'Men mijozman',lbBm:'Men ijrochiman',lbHint:'Eshikni aylantiring',lbC1:'Ijrochi 5 daqiqada topildi',lbC2:'Bir soatlik usta · bugun 18:00',lbM1:'Yaqinda yangi buyurtma',lbM2:'160 000 soʻm · 1,2 km',
+ lbKc:'Mijoz uchun',lbHc1:'Uyda yordam',lbHc2:'kerakmi?',lbPc:'Vazifani yozing — yaqin atrofdagi ijrochilar uni darhol koʻradi.',lbKm:'Ijrochi uchun',lbHm1:'Qoʻlingizdan',lbHm2:'ish keladimi?',lbPm:'Uyingiz yaqinidagi buyurtmalarni oling. Komissiyasiz: ishlab topganingiz oʻzingizniki.',lbKx:'Bitta akkaunt',lbHx:'Bitta eshik. Ikki kirish.',lbPx:'Rol profilda almashtiriladi, qayta roʻyxatdan oʻtmasdan.',lbBc:'Men mijozman',lbBm:'Men ijrochiman',lbHint:'Eshikni aylantiring',lbC1:'Ijrochi buyurtmani qabul qildi',lbC2:'Santexnika · bugun 18:00',lbM1:'Yaqinda yangi buyurtma',lbM2:'Santexnika · 1,2 km',
  title:'TASK BOR — Toshkentda maishiy xizmatlar: yaqin atrofdagi ijrochi bir necha daqiqada',
- desc:'TASK BOR — Toshkentdagi maishiy xizmatlar ilovasi. Tozalash, taʼmir, bir soatlik usta, koʻchish. Yaqin ijrochilar, chat va ovozli xabarlar, komissiyasiz toʻgʻridan-toʻgʻri toʻlov.',
+ desc:'TASK BOR — Toshkentdagi maishiy xizmatlar ilovasi: santexnika, elektrika, mebel va eshiklar, mayda taʼmirlash, konditsioner, taʼmirlash va pardozlash, tozalash, koʻchish, hovli va bogʻ. Yaqin ijrochilar, chat, komissiyasiz toʻgʻridan-toʻgʻri toʻlov.',
  navServices:'Xizmatlar',navHow:'Qanday ishlaydi',navMasters:'Ijrochilarga',navFaq:'Savollar',navCta:'Yuklab olish',
  heroKicker:'Toshkent · maishiy xizmatlar',h1a:'Vazifa bor —',h1b:'ijrochi topiladi',
- heroLead:'Tozalash, taʼmir, bir soatlik usta, koʻchish va uydagi har qanday yordam. Vazifani yozing — yaqin atrofdagi ijrochilar bir necha daqiqada javob beradi. Toʻlov toʻgʻridan-toʻgʻri, platforma komissiyasisiz.',
+ heroLead:'Santexnika, elektrika, mebel yigʻish, mayda taʼmirlash, tozalash, koʻchish — 9 yoʻnalish va 52 turdagi ish. Ishni tanlang, bir necha savolga javob bering — yaqin atrofdagi ijrochilar buyurtmani darhol koʻradi. Toʻlov toʻgʻridan-toʻgʻri, platforma komissiyasisiz.',
  chip1:'0% komissiya',chip2:'Ijrochilar yaqinda',
- fl1a:'Ijrochi yoʻlda',fl1b:'20 daqiqada yetib keladi',fl2b:'87 ta bajarilgan buyurtma',fl3a:'Yaqinda yangi buyurtma',fl3b:'Bir soatlik usta · 1,2 km',
- st1:'platforma komissiyasi',st2:'xizmat turi',st3:'akkaunt — ikki rol',st4:'interfeys tili',
+ fl1a:'Ijrochi yoʻlda',fl1b:'buyurtma qabul qilindi',fl2b:'Har bir buyurtmadan keyin sharh',fl3a:'Yaqinda yangi buyurtma',fl3b:'Santexnika · 1,2 km',
+ st1:'platforma komissiyasi',st2:'yoʻnalish · 52 turdagi ish',st3:'akkaunt — ikki rol',st4:'interfeys tili',
  soon:'Tez orada',on:'Yuklab oling',onSoon:'Tez orada',
- catK:'Xizmatlar',catH:'Uy uchun hammasi — bitta ilovada',catP:'Kategoriyani tanlang yoki vazifani oʻz soʻzlaringiz bilan yozing — mos ijrochilar uni darhol koʻradi.',
- c1h:'Tozalash',c1p:'Kvartira, uy va ofislar — bir martalik yoki muntazam.',
- c2h:'Bir soatlik usta',c2p:'Javon, qandil, parda ilgichi, rozetka va mayda taʼmir.',
- c3h:'Taʼmir',c3p:'Santexnika, elektrika, pardozlash, maishiy texnika.',
- c4h:'Yuk tashish',c4p:'Koʻchish, yuk tashuvchilar, mebelni qavatga koʻtarish.',
- c5h:'Bogʻ va hovli',c5p:'Bogʻni parvarish qilish, oʻt oʻrish, hovlini tozalash.',
- c6h:'Har qanday ish',c6p:'Kategoriya topilmadimi? Vazifani yozing — ijrochi topiladi.',
+ catK:'Xizmatlar',catH:'9 yoʻnalish — 52 turdagi ish',grpS:'Mutaxassislar',grpH:'Yordamchilar',otherB:'Ishingizni topmadingizmi?',otherP:'Har bir kategoriyada «Boshqa — oʻzim yozaman» bor: matn yoki ovoz bilan yozing va rasm qoʻshing.',
+ catP:'Kategoriya va aniq ishni tanlang, 3–4 ta qisqa savolga javob bering — usta vazifani darhol tushunadi.',
  howK:'Qanday ishlaydi',howH:'Uch qadam — va vazifa hal',roleC:'Mijozga',roleM:'Ijrochiga',
- stepsC:[['Vazifani yozing','Kategoriya, manzil, vaqt va byudjet. Foto yoki ovozli xabar qoʻshing — ijrochi uchun tushunish osonroq.'],
-         ['Ijrochini tanlang','Oʻzingiz — hozir yaqinda onlayn boʻlganlar orasidan, reyting va sharhlar boʻyicha. Yoki hammaga yuboring: birinchi boʻsh ijrochi qabul qiladi.'],
-         ['Kuzating va baholang','Holat real vaqtda yangilanadi, tafsilotlar — chatda. Ishdan keyin sharh qoldiring.']],
- stepsM:[['Ijrochi rolini yoqing','Profilda «Ijrochi»ni tanlang, xizmatlar, tumanlar va soatlik narxni belgilang.'],
-         ['Buyurtmalarni oling','Shaxsiy buyurtmalar — «Menga» boʻlimida, yaqindagi umumiylari — «Doska»da. Bildirishnomalar Telegramga ham keladi.'],
-         ['Ishlang va oʻsing','Mijoz sizga toʻgʻridan-toʻgʻri toʻlaydi, komissiyasiz. Yaxshi sharhlar yangi mijozlar olib keladi.']],
+ stepsC:[['Ishni tanlang','Kategoriya → aniq ish → 3–4 ta qisqa savol. Rasm yoki ovozli xabar qoʻshing — usta vazifani darhol tushunadi.'],
+         ['Qayerda, qachon va qanchaga','Xaritada manzil va qulay vaqt. Oʻz narxingizni ayting — buyurtmani yaqindagi barcha ijrochilar koʻradi. Yoki ijrochini oʻzingiz tanlang — reyting, sharhlar va narx boʻyicha.'],
+         ['Kelishing va baholang','Tafsilotlar — chatda: matn, rasm, ovozli xabar, xaritadagi nuqta. Toʻlov toʻgʻridan-toʻgʻri ijrochiga. Ishdan keyin sharh qoldiring.']],
+ stepsM:[['Anketani toʻldiring','Profilda «Ijrochi» rolini yoqing: kategoriyalar va aniq ishlar, soatlik narx, ish hududi, oʻz asbobingiz va sherik.'],
+         ['Yaqindagi buyurtmalarni oling','Buyurtmalar — lentada, doskada va xaritada, bildirishnomalar — ilovada va Telegramda. Qabul qilishdan oldin hammasi koʻrinadi: mijoz javoblari, rasmlar, masofa.'],
+         ['Komissiyasiz ishlang','Mijoz sizga toʻgʻridan-toʻgʻri toʻlaydi. Fikringiz oʻzgarsa — qabul qilgandan keyin 10 daqiqa ichida jarimasiz voz kechish mumkin. Yaxshi sharhlar yangi mijozlar olib keladi.']],
  featK:'Imkoniyatlar',featH:'Buyurtmadan sharhgacha — hammasi qoʻl ostida',
  f1h:'Ijrochi bilan chat',f1p:'Matn, ovozli xabarlar va reaksiyalar. Buyurtma kartasi tepada mahkamlangan — butun muhokama bir joyda.',
  f2h:'Real vaqtdagi holat',f2p:'Ijrochi buyurtmani qachon qabul qilgani, yoʻlga chiqqani va ishni boshlagani koʻrinadi.',
  fs1:'Yaratildi',fs2:'Qabul qilindi',fs3:'Yoʻlda',fs4:'Ishda',fs5:'Yakunlandi',
  f3h:'Halol sharhlar',f3p:'Sharhni faqat bajarilgan buyurtmadan keyin qoldirish mumkin — reytingga ishonsa boʻladi.',
- f4h:'Yaqindagi ijrochilar',f4p:'Tumaningizda onlayn boʻlganlardan oʻzingiz tanlang yoki buyurtmani hammaga birdan yuboring.',
+ f4h:'Oʻz narxingiz yoki oʻz ustangiz',f4p:'Oʻz narxingizni ayting — buyurtmani yaqindagi barcha ijrochilar koʻradi. Yoki tumaningizda onlayn boʻlganlardan oʻzingiz tanlang.',
  f5h:'Raqam orqali kirish',f5p:'SMS-kod — va siz ichkaridasiz. Parollar va uzun anketalarsiz.',
  mK:'Ijrochilarga',mH:'Buyurtmalar sizni oʻzi topadi',mP:'Qulay vaqtda ishlang va mijozdan butun summani oling — platforma komissiya olmaydi.',
- m1h:'«Menga» va «Doska»',m1p:'Mijozlardan shaxsiy buyurtmalar va yaqiningizdagi umumiy vazifalar.',
+ m1h:'«✓ Sizning ishingiz»',m1p:'Anketada nimani qila olishingizni belgilang — bunday buyurtmalar belgilanadi va lentada hamda bildirishnomalarda yuqorida turadi.',
  m2h:'Telegramda bildirishnomalar',m2p:'Yangi buyurtmalar haqida darhol biling, ilova yopiq boʻlsa ham.',
- m3h:'Xohlaganingizda onlayn',m3p:'Bitta tugma — va siz mijozlarga koʻrinasiz yoki dam olasiz.',
- m4h:'Oʻz hududingiz va narxingiz',m4p:'Tumanlar, radius, xizmatlar va soatlik narx — oʻzingiz sozlaysiz.',
+ m3h:'Sherik bilan',m3p:'Ikki-uch kishi boʻlib ishlaysizmi? Sherikni yoqing — 2–3 kishilik buyurtmalar ham keladi.',
+ m4h:'Oʻz hududingiz va narxingiz',m4p:'Tumanlar yoki radius, soatlik narx, oʻz asbobingiz — oʻzingiz sozlaysiz. «Onlayn» bitta tugma bilan yoqiladi.',
  mCta:'Ijrochi boʻlish',
  faqK:'Savollar',faqH:'Qisqacha asosiysi',faqP:'Javob topmadingizmi? Bizga yozing — bir kun ichida javob beramiz.',faqBtn:'Qoʻllab-quvvatlashga yozish',
- faq:[['Ilova App Store va Google Playʼda qachon chiqadi?','Ilova doʻkonlarda yakuniy tekshiruvdan oʻtmoqda. U mavjud boʻlishi bilan shu sahifadagi tugmalar ishlay boshlaydi.'],
+ faq:[['Qanday ishlarni buyurtma qilish mumkin?','9 yoʻnalish: santexnika, elektrika, mebel va eshiklar, mayda taʼmirlash, konditsioner va texnika, taʼmirlash va pardozlash, tozalash, koʻchish va yuk tashish, hovli va bogʻ. Ichida — 52 turdagi ish. Oʻzingiznikini topmasangiz — «Boshqa — oʻzim yozaman»ni tanlang.'],
       ['TASK BORdan foydalanish qancha turadi?','Ilova bepul. Platforma komissiya olmaydi: buyurtmachi va ijrochi toʻgʻridan-toʻgʻri hisob-kitob qiladi — naqd yoki oʻtkazma orqali.'],
-      ['Narx qanday belgilanadi?','Ijrochi stavkasi boʻyicha soatbay yoki kelishilgan qatʼiy summa. Summani buyurtmani tasdiqlashdan oldin koʻrasiz.'],
+      ['Narx qanday belgilanadi?','Ikki usul. «Oʻz narxingiz»: summani oʻzingiz aytasiz, buyurtmani yaqindagi barcha ijrochilar koʻradi, rozi boʻlgani oladi. «Ijrochini oʻzim tanlayman»: narx = uning soatlik narxi × soat × odamlar soni — summani tasdiqlashdan oldin koʻrasiz.'],
+      ['Bir necha kishini chaqirsa boʻladimi?','Ha, bitta buyurtmaga 3 kishigacha — masalan, yuk tashuvchilar yoki tozalash boʻyicha yordamchilar.'],
       ['Xizmat qayerda ishlaydi?','Hozir — Toshkentda. Keyin — Oʻzbekiston va Markaziy Osiyoning boshqa shaharlari.'],
-      ['Qanday qilib ijrochi boʻlish mumkin?','Telefon raqami orqali kiring, profilda «Ijrochi» rolini tanlang, xizmatlar, tumanlar va narxni belgilang. Rollarni istalgan vaqtda almashtirish mumkin.'],
+      ['Qanday qilib ijrochi boʻlish mumkin?','Telefon raqamingiz bilan kiring, profilda «Ijrochi» rolini yoqing va anketani toʻldiring: kategoriyalar va ishlar, narx, hudud, asbob, sherik. Rollarni istalgan vaqtda almashtirish mumkin.'],
       ['Akkaunt va maʼlumotlarni qanday oʻchirish mumkin?','Ilovada: Profil → Akkauntni oʻchirish. Yoki <a href="delete-account.html">«Akkauntni oʻchirish»</a> sahifasidagi yoʻriqnoma boʻyicha.']],
  ctaH:'Vazifa bormi? TASK BORni yuklab oling',ctaP:'Buyurtmachilar va ijrochilar uchun bepul. Telefon raqami orqali roʻyxatdan oʻtish — bir daqiqadan kam.',
  qr:'Saytni ochish uchun telefon kamerasini tuting',
@@ -795,49 +801,45 @@ uz:{
  fLegal:'Shartlar va maxfiylik',fRules:'Buyurtma berish qoidalari',fDel:'Akkauntni oʻchirish',fCity:'Toshkent, Oʻzbekiston',socH:'Biz ijtimoiy tarmoqlarda',socSub:'Obuna boʻling',socSub2:'Yangiliklar va videolar',socTg:'Telegram kanal',fTgSup:'Telegramda yordam'
 },
 en:{
- lbKc:'For clients',lbHc1:'Need help',lbHc2:'at home?',lbPc:'Describe the task and executors nearby respond within minutes.',lbKm:'For executors',lbHm1:'Good with',lbHm2:'your hands?',lbPm:'Take jobs near home. No commission: you keep everything you earn.',lbKx:'One account',lbHx:'One door. Two ways in.',lbPx:'Switch roles in your profile, no second sign-up.',lbBc:'I’m a client',lbBm:'I’m an executor',lbHint:'Spin the door',lbC1:'Executor found in 5 minutes',lbC2:'Handyman · today 6:00 PM',lbM1:'New order nearby',lbM2:'160,000 UZS · 1.2 km',
+ lbKc:'For clients',lbHc1:'Need help',lbHc2:'at home?',lbPc:'Describe the task — executors nearby see it right away.',lbKm:'For executors',lbHm1:'Good with',lbHm2:'your hands?',lbPm:'Take jobs near home. No commission: you keep everything you earn.',lbKx:'One account',lbHx:'One door. Two ways in.',lbPx:'Switch roles in your profile, no second sign-up.',lbBc:'I’m a client',lbBm:'I’m an executor',lbHint:'Spin the door',lbC1:'An executor accepted the order',lbC2:'Plumbing · today 6:00 PM',lbM1:'New order nearby',lbM2:'Plumbing · 1.2 km',
  title:'TASK BOR — home services in Tashkent: a pro nearby in minutes',
- desc:'TASK BOR is a home services app in Tashkent. Cleaning, repairs, handyman, moving. Pros nearby, chat with voice messages, direct payment with no commission.',
+ desc:'TASK BOR is a home services app in Tashkent: plumbing, electrical, furniture & doors, small repairs, AC & appliances, renovation, cleaning, moving, yard & garden. Pros nearby, chat, direct payment with no commission.',
  navServices:'Services',navHow:'How it works',navMasters:'For executors',navFaq:'FAQ',navCta:'Get the app',
  heroKicker:'Tashkent · home services',h1a:'Got a task?',h1b:'We’ll find a pro',
- heroLead:'Cleaning, repairs, handyman jobs, moving and any help around the house. Describe the task — pros nearby respond within minutes. Pay them directly, with no platform commission.',
+ heroLead:'Plumbing, electrical, furniture assembly, small repairs, cleaning, moving — 9 service areas and 52 kinds of jobs. Pick the job, answer a couple of questions — pros nearby see your order right away. Pay them directly, with no platform commission.',
  chip1:'0% commission',chip2:'Executors nearby',
- fl1a:'Pro on the way',fl1b:'arriving in 20 minutes',fl2b:'87 completed orders',fl3a:'New order nearby',fl3b:'Handyman · 1.2 km',
- st1:'platform commission',st2:'service categories',st3:'account, two roles',st4:'app languages',
+ fl1a:'Pro on the way',fl1b:'order accepted',fl2b:'A review after every order',fl3a:'New order nearby',fl3b:'Plumbing · 1.2 km',
+ st1:'platform commission',st2:'categories · 52 kinds of jobs',st3:'account, two roles',st4:'app languages',
  soon:'Soon',on:'Download on',onSoon:'Soon on',
- catK:'Services',catH:'Everything for your home — in one app',catP:'Pick a category or describe the task in your own words — the right pros see it right away.',
- c1h:'Cleaning',c1p:'Apartments, houses and offices — one-off or regular.',
- c2h:'Handyman',c2p:'Shelves, chandeliers, curtain rails, sockets and small fixes.',
- c3h:'Repairs',c3p:'Plumbing, electrics, finishing, home appliances.',
- c4h:'Moving',c4p:'Relocation, movers, carrying furniture upstairs.',
- c5h:'Garden & yard',c5p:'Garden care, mowing, yard and plot clean-up.',
- c6h:'Any task',c6p:'Can’t find a category? Describe the task — a pro will turn up.',
+ catK:'Services',catH:'9 service areas — 52 kinds of jobs',grpS:'Specialists',grpH:'Helpers',otherB:'Can’t find your task?',otherP:'Every category has “Something else — I’ll describe it”: type it or say it, and add a photo.',
+ catP:'Pick a category and the exact job, answer 3–4 short questions — the pro understands the task right away.',
  howK:'How it works',howH:'Three steps and it’s done',roleC:'For clients',roleM:'For executors',
- stepsC:[['Describe the task','Category, address, time and budget. Add a photo or a voice note so the pro gets it right.'],
-         ['Choose a pro','Pick one yourself from those online nearby, by rating and reviews. Or send it to everyone — the first free pro takes it.'],
-         ['Track and rate','The status updates in real time, details are in the chat. Leave a review when the job is done.']],
- stepsM:[['Turn on the pro role','In your profile choose “Provider”, then pick services, districts and your hourly rate.'],
-         ['Get orders','Personal orders land in “Mine”, open jobs nearby on the “Board”. Alerts also come to Telegram.'],
-         ['Work and grow','Clients pay you directly, no commission. Good reviews bring new clients.']],
+ stepsC:[['Pick the job','Category → exact job → 3–4 short questions. Add a photo or a voice note so the pro gets it right away.'],
+         ['Where, when and how much','Address on the map and a convenient time. Name your price — every pro nearby sees the order. Or choose a pro yourself, by rating, reviews and rate.'],
+         ['Agree and rate','Details in the chat: text, photos, voice notes, a pin on the map. Pay the pro directly. Leave a review when the job is done.']],
+ stepsM:[['Fill in your profile','Turn on the executor role: categories and exact jobs, hourly rate, work area, your own tools and a partner.'],
+         ['Get orders nearby','Orders in the feed, on the board and on the map; alerts in the app and on Telegram. Before accepting you see everything: the client’s answers, photos, distance.'],
+         ['Work with no commission','Clients pay you directly. Changed your mind? Within 10 minutes of accepting you can back out with no penalty. Good reviews bring new clients.']],
  featK:'Features',featH:'Everything at hand — from order to review',
  f1h:'Chat with your pro',f1p:'Text, voice messages and reactions. The order card stays pinned on top — the whole conversation in one place.',
  f2h:'Real-time status',f2p:'See when the pro accepts the order, heads out and starts the job.',
  fs1:'Created',fs2:'Accepted',fs3:'On the way',fs4:'In progress',fs5:'Done',
  f3h:'Honest reviews',f3p:'Reviews can only be left after a completed order — so ratings can be trusted.',
- f4h:'Pros nearby',f4p:'Choose from pros online in your area, or send the order to all of them at once.',
+ f4h:'Your price or your pro',f4p:'Name your price — every pro nearby sees the order. Or pick one yourself from those online in your area.',
  f5h:'Phone sign-in',f5p:'An SMS code and you’re in. No passwords, no long forms.',
  mK:'For executors',mH:'Orders come to you',mP:'Work when it suits you and keep the full amount — the platform takes no commission.',
- m1h:'“Mine” and “Board”',m1p:'Personal orders from clients and open jobs near you.',
+ m1h:'“✓ Your kind of job”',m1p:'Tick what you do in your profile — those orders are marked and shown first in the feed and alerts.',
  m2h:'Telegram alerts',m2p:'Hear about new orders instantly, even with the app closed.',
- m3h:'Online when you want',m3p:'One switch — visible to clients, or off duty.',
- m4h:'Your area, your rate',m4p:'Districts, radius, services and hourly price — you set them.',
+ m3h:'With a partner',m3p:'Work in a pair or a team of three? Turn on “partner” to get orders for 2–3 people.',
+ m4h:'Your area, your rate',m4p:'Districts or a radius, hourly rate, your own tools — you set them. “Online” is one switch.',
  mCta:'Become an executor',
  faqK:'FAQ',faqH:'The short version',faqP:'Didn’t find your answer? Write to us — we reply within a day.',faqBtn:'Contact support',
- faq:[['When will the app be on the App Store and Google Play?','The app is going through final store review. As soon as it’s available, the buttons on this page will start working.'],
+ faq:[['What jobs can I order?','9 service areas: plumbing, electrical, furniture & doors, small repairs, AC & appliances, renovation & finishing, cleaning, moving & loaders, yard & garden — 52 kinds of jobs inside. Can’t find yours? Choose “Something else — I’ll describe it”.'],
       ['How much does TASK BOR cost?','The app is free. The platform takes no commission: customers and pros settle directly — in cash or by transfer.'],
-      ['How is the price set?','Hourly at the pro’s rate, or a fixed amount you agree on. You see the price upfront, before confirming.'],
+      ['How is the price set?','Two ways. “Your price”: you name the amount, every pro nearby sees the order, and one who agrees takes it. “Choose a pro yourself”: price = their hourly rate × hours × number of people — you see the total before confirming.'],
+      ['Can I order more than one person?','Yes, up to 3 people per order — for example movers or cleaning helpers.'],
       ['Where does it work?','Tashkent for now. Next — other cities in Uzbekistan and Central Asia.'],
-      ['How do I become a pro?','Sign in with your phone number, choose the “Provider” role in your profile, then set services, districts and rate. You can switch roles anytime.'],
+      ['How do I become a pro?','Sign in with your phone number, turn on the executor role in your profile and fill in the form: categories and jobs, rate, area, tools, partner. You can switch roles anytime.'],
       ['How do I delete my account and data?','In the app: Profile → Delete account. Or follow the steps on the <a href="delete-account.html">Delete account</a> page.']],
  ctaH:'Got a task? Get TASK BOR',ctaP:'Free for customers and pros. Sign up with your phone number in under a minute.',
  qr:'Point your phone camera to open the site',
@@ -873,6 +875,20 @@ function renderSteps(){
   var img=document.querySelector('#howPhone img');
   img.dataset.shot=role==='c'?'cdetail':'tasks'; img.src=shot(img.dataset.shot);
 }
+/* 14.11.2026: блок «Услуги» — 9 категорий и 52 подкатегории (как в приложении 1.0.2) */
+var SVC=[{"s": "plumbing", "g": "S", "n": ["Сантехника", "Santexnika", "Plumbing"], "t": [["Смеситель и кран", "Smesitel va jumrak", "Faucet and tap"], ["Засор", "Tiqilish", "Clog"], ["Унитаз, раковина, ванна", "Unitaz, rakovina, vanna", "Toilet, sink, bath"], ["Трубы и протечки", "Quvurlar va oqish", "Pipes and leaks"], ["Бойлер и водонагреватель", "Boyler va suv isitgich", "Water heater"]]}, {"s": "electrical", "g": "S", "n": ["Электрика", "Elektrika", "Electrical"], "t": [["Розетки и выключатели", "Rozetka va vyklyuchatellar", "Sockets and switches"], ["Люстры и светильники", "Qandil va chiroqlar", "Chandeliers and lights"], ["Проводка и щиток", "Elektr simlari va shit (elektr shkafi)", "Wiring and the panel"], ["Камеры, домофон, звонок", "Kamera, domofon, qoʻngʻiroq", "Cameras, intercom, doorbell"]]}, {"s": "furniture", "g": "S", "n": ["Мебель и двери", "Mebel va eshiklar", "Furniture & doors"], "t": [["Шкаф и гардероб", "Shkaf va garderob", "Wardrobe"], ["Кровать и диван", "Karavot va divan", "Bed and sofa"], ["Столы, комоды, полки", "Stol, komod, javonlar", "Tables, dressers, shelves"], ["Кухонный гарнитур", "Oshxona mebeli", "Kitchen units"], ["Разборка мебели", "Mebelni ajratish", "Furniture disassembly"], ["Двери и замки", "Eshik va qulflar", "Doors and locks"]]}, {"s": "handyman", "g": "S", "n": ["Мелкий ремонт", "Mayda taʼmirlash", "Small repairs"], "t": [["Повесить телевизор", "Televizorni osish", "Mount a TV"], ["Полка, картина, карниз, жалюзи", "Javon, rasm, karniz, jalyuzi", "Shelf, picture, curtain rod, blinds"], ["Мелкий ремонт по дому", "Uydagi mayda taʼmir", "Small home repairs"]]}, {"s": "appliances", "g": "S", "n": ["Кондиционеры и техника", "Konditsioner va texnika", "AC & appliances"], "t": [["Кондиционер: установка", "Konditsioner oʻrnatish", "Air conditioner: installation"], ["Кондиционер: чистка, заправка", "Konditsioner: tozalash, freon", "Air conditioner: cleaning, refill"], ["Подключить технику", "Texnikani ulash", "Connect appliances"], ["Ремонт техники", "Texnikani taʼmirlash", "Appliance repair"]]}, {"s": "repair", "g": "S", "n": ["Ремонт и отделка", "Taʼmirlash va pardozlash", "Renovation & finishing"], "t": [["Покраска стен и потолков", "Devor va shiftni boʻyash", "Painting walls and ceilings"], ["Поклейка обоев", "Gulqogʻoz yopishtirish", "Wallpapering"], ["Укладка плитки", "Kafel yotqizish", "Tiling"], ["Штукатурка и шпаклёвка", "Suvoq va shpaklyovka", "Plastering"], ["Полы: ламинат, линолеум", "Pol: laminat, linoleum", "Floors: laminate, linoleum"], ["Гипсокартон", "Gipsokarton", "Drywall"], ["Потолки: натяжные, подвесные", "Shiftlar: tortma, osma", "Ceilings: stretch, suspended"], ["Косметический ремонт квартиры", "Kvartirani kosmetik taʼmirlash", "Cosmetic apartment renovation"], ["Окна, откосы, сетки", "Derazalar, otkoslar, toʻrlar", "Windows, reveals, screens"]]}, {"s": "cleaning", "g": "H", "n": ["Уборка", "Tozalash", "Cleaning"], "t": [["Поддерживающая уборка", "Muntazam tozalash", "Regular cleaning"], ["Генеральная уборка", "Umumiy tozalash", "Deep cleaning"], ["Уборка после ремонта", "Taʼmirdan keyin tozalash", "Post-renovation cleaning"], ["Мытьё окон", "Deraza yuvish", "Window cleaning"], ["Ковры и мягкая мебель", "Gilam va yumshoq mebel", "Carpets and upholstery"], ["Кухня, плита, духовка", "Oshxona, plita, duxovka", "Kitchen, stove, oven"], ["Ванная и туалет", "Vanna va hojatxona", "Bathroom and toilet"], ["Уборка офиса", "Ofis tozalash", "Office cleaning"], ["Стирка и глажка", "Kir yuvish va dazmollash", "Laundry and ironing"], ["Уборка посуточной квартиры", "Kunlik ijara kvartirasini tozalash", "Short-term rental cleaning"]]}, {"s": "moving", "g": "H", "n": ["Переезд и грузчики", "Koʻchish va yuk tashish", "Moving & loaders"], "t": [["Переезд квартиры или офиса", "Kvartira yoki ofis koʻchishi", "Apartment or office move"], ["Погрузить или разгрузить", "Ortish yoki tushirish", "Load or unload"], ["Перенести мебель, холодильник", "Mebel, muzlatgichni koʻchirish", "Move furniture, a fridge"], ["Вынести мусор, старую мебель", "Chiqindi, eski mebelni chiqarish", "Take out rubbish, old furniture"], ["Помощь по хозяйству (мардикор)", "Uy ishlarida yordam (mardikor)", "General labour (helper)"], ["Помощь на празднике (туй)", "Toʻyda yordam", "Help at a celebration (tuy)"]]}, {"s": "garden", "g": "H", "n": ["Двор и сад", "Hovli va bogʻ", "Yard & garden"], "t": [["Газон и трава", "Maysa va oʻt", "Lawn and grass"], ["Деревья и виноградник", "Daraxtlar va uzumzor", "Trees and grapevines"], ["Уборка двора и листьев", "Hovli va barglarni tozalash", "Yard and leaf clean-up"], ["Огород, посадка, полив", "Tomorqa, ekish, sugʻorish", "Vegetable garden, planting, watering"], ["Крыша, водостоки, снег", "Tom, tarnovlar, qor", "Roof, gutters, snow"]]}];
+var svcOpen={};
+function renderSvc(){
+  var t=T[lang], li=lang==='uz'?1:lang==='en'?2:0, box=document.getElementById('svc'); if(!box) return;
+  function card(c){
+    var all=svcOpen[c.s], show=all?c.t:c.t.slice(0,3), more=c.t.length-show.length;
+    return '<article class="cat2"><div class="ico"><img src="img/cat_'+c.s+'.png" alt="" width="44" height="44" loading="lazy"></div><div class="tx"><h3>'+esc(c.n[li])+'</h3><div class="subs">'+
+      show.map(function(x){return '<span>'+esc(x[li])+'</span>'}).join('')+(more>0?'<button type="button" class="more" data-more="'+c.s+'">+'+more+'</button>':'')+'</div></div></article>';
+  }
+  function grp(g,title){var list=SVC.filter(function(c){return c.g===g});return '<div class="grp"><b>'+esc(title)+'</b><span>'+list.length+'</span></div><div class="cats2">'+list.map(card).join('')+'</div>'}
+  box.innerHTML=grp('S',t.grpS)+grp('H',t.grpH);
+}
+document.addEventListener('click',function(e){var b=e.target.closest&&e.target.closest('[data-more]');if(!b)return;svcOpen[b.getAttribute('data-more')]=true;renderSvc();});
 function renderFaq(){
   document.getElementById('faqList').innerHTML=T[lang].faq.map(function(f,i){
     return '<details'+(i===0?' open':'')+'><summary>'+esc(f[0])+'</summary><div class="a">'+f[1]+'</div></details>';
@@ -886,7 +902,7 @@ function apply(l){
   document.querySelectorAll('[data-i]').forEach(function(el){var k=el.getAttribute('data-i'); if(t[k]!=null) el.textContent=t[k];});
   document.querySelectorAll('img[data-shot]').forEach(function(img){img.src=shot(img.dataset.shot)});
   document.querySelectorAll('.langs button').forEach(function(b){b.setAttribute('aria-pressed',b.dataset.lang===l)});
-  renderStores(); renderSteps(); renderFaq();
+  renderStores(); renderSteps(); renderFaq(); renderSvc();
   try{document.dispatchEvent(new CustomEvent('taskbor:lang',{detail:l}))}catch(e){}
   var s=store(); try{s&&s.setItem('taskbor_lang',l)}catch(e){}
 }
@@ -948,17 +964,17 @@ var reduce=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').mat
 var MT={
  ru:{capC:'Исполнители рядом с вами',capM:'Заказы рядом с вами',
   names:['Дилноза','Жасур','Сардор','Малика','Бекзод','Нодира'],
-  cats:['Уборка','Муж на час','Ремонт','Перенос вещей','Сад и двор'],
+  cats:['Сантехника','Электрика','Уборка','Переезд и грузчики','Мелкий ремонт'],
   sum:function(n){return fmt(n,' ')+' сум'},km:function(x){return String(x).replace('.',',')+' км'},
   lm:{tv:'Телебашня',temur:'Сквер Амира Темура',minor:'Мечеть Минор',chorsu:'Чорсу'}},
  uz:{capC:'Yaqiningizdagi ijrochilar',capM:'Yaqiningizdagi buyurtmalar',
   names:['Dilnoza','Jasur','Sardor','Malika','Bekzod','Nodira'],
-  cats:['Tozalash','Usta chaqirish','Taʼmir','Yuk tashish','Bogʻ va hovli'],
+  cats:['Santexnika','Elektrika','Tozalash','Koʻchish va yuk tashish','Mayda taʼmirlash'],
   sum:function(n){return fmt(n,' ')+' soʻm'},km:function(x){return String(x).replace('.',',')+' km'},
   lm:{tv:'Teleminora',temur:'Amir Temur xiyoboni',minor:'Minor masjidi',chorsu:'Chorsu'}},
  en:{capC:'Executors near you',capM:'Orders near you',
   names:['Dilnoza','Jasur','Sardor','Malika','Bekzod','Nodira'],
-  cats:['Cleaning','Handyman','Repair','Moving help','Garden & yard'],
+  cats:['Plumbing','Electrical','Cleaning','Moving & loaders','Small repairs'],
   sum:function(n){return fmt(n,',')+' UZS'},km:function(x){return x+' km'},
   lm:{tv:'TV Tower',temur:'Amir Temur Square',minor:'Minor Mosque',chorsu:'Chorsu Bazaar'}}
 };
@@ -1072,17 +1088,16 @@ function build(code){
     var x=cx+side*off, y=ys[i];
     var g=el('g',{'class':'it'},gs), right=side>0;
     if(role==='c'){
-      var ni=(i+step)%6, name=t.names[ni], label=name+'  ★'+RAT[ni];
+      var ni=(i+step)%6, name=t.names[ni], label=name;
       var w=label.length*7.2+18; x=cl(x,X0+19,X1-19); right=side>0?(x+22+w<=X1):(x-22-w<X0); var lx=right?x+22:x-22-w;
       el('circle',{cx:x,cy:y,r:17,fill:AVC[ni],'class':'av'},g);
       el('text',{x:x,y:y+0.5,'class':'avt'},g).textContent=name.charAt(0);
       el('rect',{x:lx,y:y-12,width:w,height:24,rx:12,'class':'pill'},g);
       var tx=el('text',{x:lx+9,y:y+0.5,'class':'pt'},g);
-      tx.appendChild(document.createTextNode(name+'  '));
-      el('tspan',{'class':'s'},tx).textContent='★ '+RAT[ni];
+      tx.appendChild(document.createTextNode(name));
       items.push({g:g,x:x,y:y,name:name,ni:ni});
     } else {
-      var o=ORD[(i+step)%ORD.length], txt=t.cats[o[0]]+' · '+t.sum(o[1]);
+      var o=ORD[(i+step)%ORD.length], txt=t.cats[o[0]]+' · '+t.km(o[2]);
       var w2=txt.length*6.9+30, lx2=cl(right?x-12:x-w2+12,X0,X1-w2); x=right?lx2+12:lx2+w2-12;
       el('rect',{x:lx2,y:y-13,width:w2,height:26,rx:13,'class':'ord'},g);
       el('circle',{cx:right?lx2+13:lx2+w2-13,cy:y,r:4,fill:'#1A1300'},g);
@@ -1103,8 +1118,8 @@ function build(code){
   later(function(){
     var tt=(window.T&&T[lng])||{};
     $('mhTi').innerHTML=ICON[role];
-    if(role==='c'){$('mhTb').textContent=tt.lbC1;$('mhTs').textContent=best.name+' ★'+RAT[best.ni]+' · '+t.cats[step%5]+' · '+where}
-    else{$('mhTb').textContent=tt.lbM1;$('mhTs').textContent=t.cats[best.o[0]]+' · '+t.sum(best.o[1])+' · '+t.km(best.o[2])}
+    if(role==='c'){$('mhTb').textContent=tt.lbC1;$('mhTs').textContent=best.name+' · '+t.cats[step%5]+' · '+where}
+    else{$('mhTb').textContent=tt.lbM1;$('mhTs').textContent=t.cats[best.o[0]]+' · '+t.km(best.o[2])}
     $('mhToast').classList.add('show');
   },3000);
   later(function(){step++;scene()},6200);
