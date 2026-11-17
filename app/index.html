@@ -36,7 +36,15 @@
     send({ t: 'view', r: document.referrer || '', u: utm ? decodeURIComponent(utm) : '' });
     if (isIOS || isAnd) send({ t: 'store', st: isIOS ? 'ios' : 'android' });
   } catch (e) {}
-  setTimeout(function () { location.replace(target); }, 80);
+  // Правка 17.11.2026: во встроенном браузере Telegram (iPhone) переход на
+  // https://apps.apple.com висит и не открывает App Store. Поэтому на iPhone
+  // сначала открываем само приложение App Store (itms-apps://), а на странице
+  // остаётся кнопка «App Store» — нажатие пальцем открывает магазин всегда.
+  if (isIOS) {
+    setTimeout(function () { location.href = 'itms-apps://apps.apple.com/app/id6797779666'; }, 80);
+  } else {
+    setTimeout(function () { location.replace(target); }, 80);
+  }
 })();
 </script>
 <style>
@@ -53,7 +61,7 @@
 <div class="box">
   <img src="/img/apple-touch-icon.png" alt="TASK BOR" onerror="this.style.display='none'">
   <h1>TASK BOR</h1>
-  <p>Ochilmoqda… · Открываем…</p>
+  <p>Ochilmoqda… · Открываем…<br><small>Ochilmasa — tugmani bosing · Если не открылось — нажмите кнопку</small></p>
   <a href="https://apps.apple.com/app/id6797779666">App Store</a>
   <a class="alt" href="https://play.google.com/store/apps/details?id=uz.taskbor.app">Google Play</a>
 </div>
